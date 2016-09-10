@@ -47,7 +47,7 @@
        <configLocation>src/checkstyle.xml</configLocation>
        <consoleOutput>true</consoleOutput>
        <failsOnError>true</failsOnError>
-       <encoding>${project.reporting.outputEncoding}</encoding>
+       <encoding>${project.build.sourceEncoding}</encoding>
       </configuration>
       <goals>
        <goal>check</goal>
@@ -80,6 +80,7 @@
  </build>
 
  <properties>
+  <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   <version.jdk>1.8</version.jdk>
  </properties>
 </project>
