@@ -1,3 +1,19 @@
+# Unix
+*˜
+
+# IntelliJ
+.idea
+
+# Eclipse
+bin
+.settings
+.classpath
+.project
+
+# Apache Maven
+target
+
+# Java
 *.class
 
 # Mobile Tools for Java (J2ME)
