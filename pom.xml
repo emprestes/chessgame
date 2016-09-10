@@ -22,4 +22,22 @@
    <timezone>-3</timezone>
   </developer>
  </developers>
+
+ <build>
+  <plugins>
+   <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-compiler-plugin</artifactId>
+    <version>3.1</version>
+    <configuration>
+     <source>${version.jdk}</source>
+     <target>${version.jdk}</target>
+    </configuration>
+   </plugin>
+  </plugins>
+ </build>
+
+ <properties>
+  <version.jdk>1.8</version.jdk>
+ </properties>
 </project>
