@@ -12,4 +12,12 @@
  <artifactId>chessgame-app-swing</artifactId>
  <name>[CHESS][APP] Desktop Application (JavaSwing)</name>
 
+ <dependencies>
+  <!-- SVG -->
+  <dependency>
+   <groupId>batik</groupId>
+   <artifactId>batik-swing</artifactId>
+   <version>1.6-1</version>
+  </dependency>
+ </dependencies>
 </project>
