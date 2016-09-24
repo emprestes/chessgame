@@ -94,6 +94,10 @@
   </plugins>
  </build>
 
+ <modules>
+  <module>app-fx</module>
+ </modules>
+
  <dependencies>
   <!-- Jakarta Commons -->
   <dependency>
