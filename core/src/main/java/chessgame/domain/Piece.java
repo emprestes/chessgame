@@ -1,7 +1,9 @@
 package chessgame.domain;
 
+import chessgame.domain.exception.PieceException;
 import chessgame.domain.model.Board;
 import chessgame.domain.model.BoardPosition;
+import chessgame.domain.model.King;
 import chessgame.domain.model.PieceColor;
 
 import java.io.Serializable;
@@ -30,4 +32,12 @@ public interface Piece extends Serializable {
      * @return Set
      */
     Set<BoardPosition> getAvailablePositions();
+
+    default Piece createKingBlack(Board board) throws PieceException {
+        return PieceFactory.create(board, PieceColor.BLACK, King.class);
+    }
+
+    default Piece createKingWhite(Board board) throws PieceException {
+        return PieceFactory.create(board, PieceColor.WHITE, King.class);
+    }
 }
