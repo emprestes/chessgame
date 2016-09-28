@@ -4,16 +4,25 @@ import chessgame.domain.Piece;
 
 abstract class AbstractPiece implements Piece {
 
-    private PieceColor color;
+    private final Board board;
+
+    private final PieceColor color;
 
     private BoardPosition position;
 
-    public PieceColor getColor() {
-        return color;
+    AbstractPiece(Board board, PieceColor color) {
+        super();
+
+        this.board = board;
+        this.color = color;
     }
 
-    public void setColor(PieceColor color) {
-        this.color = color;
+    public Board getBoard() {
+        return board;
+    }
+
+    public PieceColor getColor() {
+        return color;
     }
 
     public BoardPosition getPosition() {

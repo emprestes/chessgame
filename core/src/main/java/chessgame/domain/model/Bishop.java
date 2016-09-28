@@ -5,6 +5,10 @@ import java.util.Set;
 
 public class Bishop extends AbstractPiece {
 
+    public Bishop(Board board, PieceColor color) {
+        super(board, color);
+    }
+
     /**
      * {@inheritDoc}
      */

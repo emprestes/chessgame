@@ -5,6 +5,10 @@ import java.util.Set;
 
 public class Knight extends AbstractPiece {
 
+    public Knight(Board board, PieceColor color) {
+        super(board, color);
+    }
+
     /**
      * {@inheritDoc}
      */

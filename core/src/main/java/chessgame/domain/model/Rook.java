@@ -5,6 +5,10 @@ import java.util.Set;
 
 public class Rook extends AbstractPiece {
 
+    public Rook(Board board, PieceColor color) {
+        super(board, color);
+    }
+
     /**
      * {@inheritDoc}
      */

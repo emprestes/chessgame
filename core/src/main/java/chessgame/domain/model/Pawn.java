@@ -5,6 +5,10 @@ import java.util.Set;
 
 public class Pawn extends AbstractPiece {
 
+    public Pawn(Board board, PieceColor color) {
+        super(board, color);
+    }
+
     /**
      * {@inheritDoc}
      */
