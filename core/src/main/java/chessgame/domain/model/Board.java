@@ -6,12 +6,23 @@ import chessgame.domain.exception.BoardException;
 
 import java.util.TreeMap;
 
+/**
+ * Chessboard.
+ *
+ * @author Prestes, E. M.
+ * @see Piece
+ * @see Player
+ * @since September 2016
+ */
 public class Board extends TreeMap<BoardPosition, Piece> {
 
     private final Player whitePlayer;
 
     private final Player blackPlayer;
 
+    /**
+     * Default constructor
+     */
     public Board() {
         super();
 
@@ -21,7 +32,12 @@ public class Board extends TreeMap<BoardPosition, Piece> {
         init();
     }
 
-    public Board init() {
+    /**
+     * Set up a chess game.
+     *
+     * @return Board
+     */
+    private Board init() {
         for (BoardPosition p : BoardPosition.values()) {
             switch (p) {
                 case A1:
@@ -89,11 +105,19 @@ public class Board extends TreeMap<BoardPosition, Piece> {
         return this;
     }
 
+    /**
+     * Put chess piece of a relevant player on the chessboard.
+     *
+     * @param player Player informed.
+     * @param piece  Piece informed.
+     * @return Piece
+     */
     private Piece put(Player player, Piece piece) {
         player.add(piece);
         return super.put(piece.getPosition(), piece);
     }
 
+    /** {@inheritDoc} */
     @Override
     public Piece put(BoardPosition key, Piece value) {
         if (size() <= BoardPosition.values().length) {

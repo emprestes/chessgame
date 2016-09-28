@@ -5,16 +5,37 @@ import chessgame.domain.model.Board;
 import chessgame.domain.model.BoardPosition;
 import chessgame.domain.model.PieceColor;
 
+/**
+ * Factory to create chess pieces.
+ *
+ * @author Prestes, E. M.
+ * @since September 2016
+ */
 final class PieceFactory {
 
+    /**
+     * Private default constructor.
+     */
     private PieceFactory() {
         super();
     }
 
-    static Piece create(Board board, BoardPosition position, PieceColor color, Class<? extends Piece> _class)
+    /**
+     * @param board    Board informed.
+     * @param position Board position informed.
+     * @param color    Piece color informed.
+     * @param classs   Piece class informed.
+     * @return Piece
+     * @throws PieceException Throw this exception in a cause of instantiation problems.
+     * @see Board
+     * @see BoardPosition
+     * @see PieceColor
+     * @see Piece
+     */
+    static Piece create(Board board, BoardPosition position, PieceColor color, Class<? extends Piece> classs)
             throws PieceException {
         try {
-            return _class.getConstructor(Board.class, PieceColor.class)
+            return classs.getConstructor(Board.class, PieceColor.class)
                     .newInstance(board, color)
                     .setPosition(position);
         } catch (ReflectiveOperationException cause) {
