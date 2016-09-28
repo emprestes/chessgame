@@ -4,6 +4,7 @@ import chessgame.domain.exception.PieceException;
 import chessgame.domain.model.Board;
 import chessgame.domain.model.BoardPosition;
 import chessgame.domain.model.King;
+import chessgame.domain.model.Knight;
 import chessgame.domain.model.PieceColor;
 import chessgame.domain.model.Queen;
 
@@ -53,6 +54,10 @@ public interface Piece extends Serializable {
         return PieceFactory.create(board, position, BLACK, Queen.class);
     }
 
+    default Piece createBlackKnight(Board board, BoardPosition position) throws PieceException {
+        return PieceFactory.create(board, position, BLACK, Knight.class);
+    }
+
     default Piece createWhiteKing(Board board) throws PieceException {
         return PieceFactory.create(board, E1, WHITE, King.class);
     }
@@ -63,5 +68,9 @@ public interface Piece extends Serializable {
 
     default Piece createWhiteBishop(Board board, BoardPosition position) throws PieceException {
         return PieceFactory.create(board, position, WHITE, Queen.class);
+    }
+
+    default Piece createWhiteKnight(Board board, BoardPosition position) throws PieceException {
+        return PieceFactory.create(board, position, WHITE, Knight.class);
     }
 }
