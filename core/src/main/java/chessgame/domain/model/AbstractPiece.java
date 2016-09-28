@@ -17,19 +17,24 @@ abstract class AbstractPiece implements Piece {
         this.color = color;
     }
 
+    @Override
     public Board getBoard() {
         return board;
     }
 
+    @Override
     public PieceColor getColor() {
         return color;
     }
 
+    @Override
     public BoardPosition getPosition() {
         return position;
     }
 
-    public void setPosition(BoardPosition position) {
+    @Override
+    public Piece setPosition(BoardPosition position) {
         this.position = position;
+        return this;
     }
 }

@@ -1,6 +1,8 @@
 package chessgame.domain;
 
+import chessgame.domain.model.Board;
 import chessgame.domain.model.BoardPosition;
+import chessgame.domain.model.PieceColor;
 
 import java.io.Serializable;
 import java.util.Set;
@@ -13,6 +15,14 @@ import java.util.Set;
  * @since September 2016
  */
 public interface Piece extends Serializable {
+
+    Board getBoard();
+
+    PieceColor getColor();
+
+    BoardPosition getPosition();
+
+    Piece setPosition(BoardPosition position);
 
     /**
      * Recovering available positions of a piece.
