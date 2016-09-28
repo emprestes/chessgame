@@ -5,6 +5,7 @@ import chessgame.domain.model.Board;
 import chessgame.domain.model.BoardPosition;
 import chessgame.domain.model.King;
 import chessgame.domain.model.Knight;
+import chessgame.domain.model.Pawn;
 import chessgame.domain.model.PieceColor;
 import chessgame.domain.model.Queen;
 import chessgame.domain.model.Rook;
@@ -63,6 +64,10 @@ public interface Piece extends Serializable {
         return PieceFactory.create(board, position, BLACK, Rook.class);
     }
 
+    default Piece createBlackPawn(Board board, BoardPosition position) throws PieceException {
+        return PieceFactory.create(board, position, BLACK, Pawn.class);
+    }
+
     default Piece createWhiteKing(Board board) throws PieceException {
         return PieceFactory.create(board, E1, WHITE, King.class);
     }
@@ -81,5 +86,9 @@ public interface Piece extends Serializable {
 
     default Piece createWhiteRook(Board board, BoardPosition position) throws PieceException {
         return PieceFactory.create(board, position, WHITE, Rook.class);
+    }
+
+    default Piece createWhitePawn(Board board, BoardPosition position) throws PieceException {
+        return PieceFactory.create(board, position, WHITE, Pawn.class);
     }
 }
