@@ -49,11 +49,19 @@ public interface Piece extends Serializable {
         return PieceFactory.create(board, D8, BLACK, Queen.class);
     }
 
+    default Piece createBlackBishop(Board board, BoardPosition position) throws PieceException {
+        return PieceFactory.create(board, position, BLACK, Queen.class);
+    }
+
     default Piece createWhiteKing(Board board) throws PieceException {
         return PieceFactory.create(board, E1, WHITE, King.class);
     }
 
     default Piece createWhiteQueen(Board board) throws PieceException {
         return PieceFactory.create(board, D1, WHITE, Queen.class);
+    }
+
+    default Piece createWhiteBishop(Board board, BoardPosition position) throws PieceException {
+        return PieceFactory.create(board, position, WHITE, Queen.class);
     }
 }
