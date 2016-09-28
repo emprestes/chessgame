@@ -1,6 +1,5 @@
 package chessgame.domain;
 
-import chessgame.domain.exception.PieceException;
 import chessgame.domain.model.Board;
 import chessgame.domain.model.BoardPosition;
 import chessgame.domain.model.King;
@@ -29,51 +28,51 @@ import static chessgame.domain.model.PieceColor.WHITE;
  */
 public interface Piece extends Serializable {
 
-    static Piece createBlackKing(Board board) throws PieceException {
+    static Piece createBlackKing(Board board) {
         return PieceFactory.create(board, E8, BLACK, King.class);
     }
 
-    static Piece createBlackQueen(Board board) throws PieceException {
+    static Piece createBlackQueen(Board board) {
         return PieceFactory.create(board, D8, BLACK, Queen.class);
     }
 
-    static Piece createBlackBishop(Board board, BoardPosition position) throws PieceException {
+    static Piece createBlackBishop(Board board, BoardPosition position) {
         return PieceFactory.create(board, position, BLACK, Queen.class);
     }
 
-    static Piece createBlackKnight(Board board, BoardPosition position) throws PieceException {
+    static Piece createBlackKnight(Board board, BoardPosition position) {
         return PieceFactory.create(board, position, BLACK, Knight.class);
     }
 
-    static Piece createBlackRook(Board board, BoardPosition position) throws PieceException {
+    static Piece createBlackRook(Board board, BoardPosition position) {
         return PieceFactory.create(board, position, BLACK, Rook.class);
     }
 
-    static Piece createBlackPawn(Board board, BoardPosition position) throws PieceException {
+    static Piece createBlackPawn(Board board, BoardPosition position) {
         return PieceFactory.create(board, position, BLACK, Pawn.class);
     }
 
-    static Piece createWhiteKing(Board board) throws PieceException {
+    static Piece createWhiteKing(Board board) {
         return PieceFactory.create(board, E1, WHITE, King.class);
     }
 
-    static Piece createWhiteQueen(Board board) throws PieceException {
+    static Piece createWhiteQueen(Board board) {
         return PieceFactory.create(board, D1, WHITE, Queen.class);
     }
 
-    static Piece createWhiteBishop(Board board, BoardPosition position) throws PieceException {
+    static Piece createWhiteBishop(Board board, BoardPosition position) {
         return PieceFactory.create(board, position, WHITE, Queen.class);
     }
 
-    static Piece createWhiteKnight(Board board, BoardPosition position) throws PieceException {
+    static Piece createWhiteKnight(Board board, BoardPosition position) {
         return PieceFactory.create(board, position, WHITE, Knight.class);
     }
 
-    static Piece createWhiteRook(Board board, BoardPosition position) throws PieceException {
+    static Piece createWhiteRook(Board board, BoardPosition position) {
         return PieceFactory.create(board, position, WHITE, Rook.class);
     }
 
-    static Piece createWhitePawn(Board board, BoardPosition position) throws PieceException {
+    static Piece createWhitePawn(Board board, BoardPosition position) {
         return PieceFactory.create(board, position, WHITE, Pawn.class);
     }
 
