@@ -90,6 +90,7 @@ public class Board extends TreeMap<BoardPosition, Piece> {
     }
 
     private Piece put(Player player, Piece piece) {
+        player.add(piece);
         return super.put(piece.getPosition(), piece);
     }
 
