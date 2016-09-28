@@ -1,6 +1,6 @@
 package chessgame.domain.exception;
 
-public class PieceException extends Exception {
+public class PieceException extends RuntimeException {
 
     public PieceException(String message) {
         super(message);
