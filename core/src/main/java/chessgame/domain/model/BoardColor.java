@@ -1,11 +1,11 @@
 package chessgame.domain.model;
 
 /**
- * Colors of Chess piece.
+ * Colors of Chessboard.
  *
  * @author Prestes, E. M.
  * @since September 2016
  */
-public enum PieceColor {
-    BLACK, WHITE
+public enum BoardColor {
+    DARK, LIGHT
 }
