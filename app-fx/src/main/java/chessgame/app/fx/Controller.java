@@ -1,5 +1,10 @@
 package chessgame.app.fx;
 
+import javafx.stage.Stage;
+
 public interface Controller {
-    // TODO Implementation here.
+
+    Stage getStage();
+
+    void setStage(Stage stage);
 }
