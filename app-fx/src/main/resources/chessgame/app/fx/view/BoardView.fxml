@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- TODO Implemantation using JavaFX Scene Builder 2.0 -->
-
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:id="mainView" maxHeight="-Infinity" maxWidth="-Infinity"
-            minHeight="-Infinity"
-            minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8"
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8"
+            maxHeight="-Infinity" maxWidth="-Infinity"
+            minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0"
             fx:controller="chessgame.app.fx.controller.BoardController">
  <center>
-  <BorderPane fx:id="chessboardView" maxHeight="-Infinity" maxWidth="-Infinity"
+  <BorderPane maxHeight="-Infinity" maxWidth="-Infinity"
               minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0">
    <center>
     <GridPane fx:id="boardView" BorderPane.alignment="CENTER">
@@ -169,7 +167,7 @@
     </GridPane>
    </center>
    <top>
-    <GridPane fx:id="columnUpLabel" BorderPane.alignment="CENTER">
+    <GridPane BorderPane.alignment="CENTER">
      <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="15.0"/>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
@@ -197,7 +195,7 @@
     </GridPane>
    </top>
    <left>
-    <GridPane fx:id="rowLeftLabel" prefWidth="10.0" BorderPane.alignment="CENTER">
+    <GridPane prefWidth="10.0" BorderPane.alignment="CENTER">
      <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="15.0" prefWidth="100.0"/>
      </columnConstraints>
