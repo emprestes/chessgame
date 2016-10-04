@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8"
+            maxHeight="-Infinity" maxWidth="-Infinity"
+            minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0"
+            fx:controller="chessgame.app.fx.controller.BoardController">
+ <center>
+  <BorderPane maxHeight="-Infinity" maxWidth="-Infinity"
+              minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0">
+   <center>
+    <GridPane fx:id="boardView" BorderPane.alignment="CENTER">
+     <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+     </columnConstraints>
+     <rowConstraints>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+     </rowConstraints>
+
+     <Pane fx:id="A8" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFCE9E;"
+           GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+     <Pane fx:id="B8" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D18B47;"
+           GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+     <Pane fx:id="C8" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFCE9E;"
+           GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+     <Pane fx:id="D8" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D18B47;"
+           GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+     <Pane fx:id="E8" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFCE9E;"
+           GridPane.columnIndex="4" GridPane.rowIndex="0"/>
+     <Pane fx:id="F8" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D18B47;"
+           GridPane.columnIndex="5" GridPane.rowIndex="0"/>
+     <Pane fx:id="G8" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFCE9E;"
+           GridPane.columnIndex="6" GridPane.rowIndex="0"/>
+     <Pane fx:id="H8" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D18B47;"
+           GridPane.columnIndex="7" GridPane.rowIndex="0"/>
+     <Pane fx:id="A7" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D18B47;"
+           GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+     <Pane fx:id="B7" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFCE9E;"
+           GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+     <Pane fx:id="C7" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D18B47;"
+           GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+     <Pane fx:id="D7" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFCE9E;"
+           GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+     <Pane fx:id="E7" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D18B47;"
+           GridPane.columnIndex="4" GridPane.rowIndex="1"/>
+     <Pane fx:id="F7" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFCE9E;"
+           GridPane.columnIndex="5" GridPane.rowIndex="1"/>
+     <Pane fx:id="G7" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D18B47;"
+           GridPane.columnIndex="6" GridPane.rowIndex="1"/>
+     <Pane fx:id="H7" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFCE9E;"
+           GridPane.columnIndex="7" GridPane.rowIndex="1"/>
+     <Pane fx:id="A6" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFCE9E;"
+           GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+     <Pane fx:id="B6" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D18B47;"
+           GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+     <Pane fx:id="C6" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFCE9E;"
+           GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+     <Pane fx:id="D6" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D18B47;"
+           GridPane.columnIndex="3" GridPane.rowIndex="2"/>
+     <Pane fx:id="E6" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFCE9E;"
+           GridPane.columnIndex="4" GridPane.rowIndex="2"/>
+     <Pane fx:id="F6" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D18B47;"
+           GridPane.columnIndex="5" GridPane.rowIndex="2"/>
+     <Pane fx:id="G6" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFCE9E;"
+           GridPane.columnIndex="6" GridPane.rowIndex="2"/>
+     <Pane fx:id="H6" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D18B47;"
+           GridPane.columnIndex="7" GridPane.rowIndex="2"/>
+     <Pane fx:id="A5" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D18B47;"
+           GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+     <Pane fx:id="B5" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFCE9E;"
+           GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+     <Pane fx:id="C5" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D18B47;"
+           GridPane.columnIndex="2" GridPane.rowIndex="3"/>
+     <Pane fx:id="D5" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFCE9E;"
+           GridPane.columnIndex="3" GridPane.rowIndex="3"/>
+     <Pane fx:id="E5" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D18B47;"
+           GridPane.columnIndex="4" GridPane.rowIndex="3"/>
+     <Pane fx:id="F5" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFCE9E;"
+           GridPane.columnIndex="5" GridPane.rowIndex="3"/>
+     <Pane fx:id="G5" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D18B47;"
+           GridPane.columnIndex="6" GridPane.rowIndex="3"/>
+     <Pane fx:id="H5" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFCE9E;"
+           GridPane.columnIndex="7" GridPane.rowIndex="3"/>
+     <Pane fx:id="A4" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFCE9E;"
+           GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+     <Pane fx:id="B4" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D18B47;"
+           GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+     <Pane fx:id="C4" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFCE9E;"
+           GridPane.columnIndex="2" GridPane.rowIndex="4"/>
+     <Pane fx:id="D4" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D18B47;"
+           GridPane.columnIndex="3" GridPane.rowIndex="4"/>
+     <Pane fx:id="E4" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFCE9E;"
+           GridPane.columnIndex="4" GridPane.rowIndex="4"/>
+     <Pane fx:id="F4" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D18B47;"
+           GridPane.columnIndex="5" GridPane.rowIndex="4"/>
+     <Pane fx:id="G4" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFCE9E;"
+           GridPane.columnIndex="6" GridPane.rowIndex="4"/>
+     <Pane fx:id="H4" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D18B47;"
+           GridPane.columnIndex="7" GridPane.rowIndex="4"/>
+     <Pane fx:id="A3" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D18B47;"
+           GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+     <Pane fx:id="B3" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFCE9E;"
+           GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+     <Pane fx:id="C3" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D18B47;"
+           GridPane.columnIndex="2" GridPane.rowIndex="5"/>
+     <Pane fx:id="D3" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFCE9E;"
+           GridPane.columnIndex="3" GridPane.rowIndex="5"/>
+     <Pane fx:id="E3" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D18B47;"
+           GridPane.columnIndex="4" GridPane.rowIndex="5"/>
+     <Pane fx:id="F3" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFCE9E;"
+           GridPane.columnIndex="5" GridPane.rowIndex="5"/>
+     <Pane fx:id="G3" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D18B47;"
+           GridPane.columnIndex="6" GridPane.rowIndex="5"/>
+     <Pane fx:id="H3" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFCE9E;"
+           GridPane.columnIndex="7" GridPane.rowIndex="5"/>
+     <Pane fx:id="A2" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFCE9E;"
+           GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+     <Pane fx:id="B2" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D18B47;"
+           GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+     <Pane fx:id="C2" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFCE9E;"
+           GridPane.columnIndex="2" GridPane.rowIndex="6"/>
+     <Pane fx:id="D2" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D18B47;"
+           GridPane.columnIndex="3" GridPane.rowIndex="6"/>
+     <Pane fx:id="E2" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFCE9E;"
+           GridPane.columnIndex="4" GridPane.rowIndex="6"/>
+     <Pane fx:id="F2" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D18B47;"
+           GridPane.columnIndex="5" GridPane.rowIndex="6"/>
+     <Pane fx:id="G2" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFCE9E;"
+           GridPane.columnIndex="6" GridPane.rowIndex="6"/>
+     <Pane fx:id="H2" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D18B47;"
+           GridPane.columnIndex="7" GridPane.rowIndex="6"/>
+     <Pane fx:id="A1" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D18B47;"
+           GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+     <Pane fx:id="B1" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFCE9E;"
+           GridPane.columnIndex="1" GridPane.rowIndex="7"/>
+     <Pane fx:id="C1" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D18B47;"
+           GridPane.columnIndex="2" GridPane.rowIndex="7"/>
+     <Pane fx:id="D1" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFCE9E;"
+           GridPane.columnIndex="3" GridPane.rowIndex="7"/>
+     <Pane fx:id="E1" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D18B47;"
+           GridPane.columnIndex="4" GridPane.rowIndex="7"/>
+     <Pane fx:id="F1" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFCE9E;"
+           GridPane.columnIndex="5" GridPane.rowIndex="7"/>
+     <Pane fx:id="G1" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #D18B47;"
+           GridPane.columnIndex="6" GridPane.rowIndex="7"/>
+     <Pane fx:id="H1" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FFCE9E;"
+           GridPane.columnIndex="7" GridPane.rowIndex="7"/>
+    </GridPane>
+   </center>
+   <top>
+    <GridPane BorderPane.alignment="CENTER">
+     <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="15.0"/>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="15.0"/>
+     </columnConstraints>
+     <rowConstraints>
+      <RowConstraints minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES"/>
+     </rowConstraints>
+
+     <Label text="A" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+     <Label text="B" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+     <Label text="C" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+     <Label text="D" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+     <Label text="E" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+     <Label text="F" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+     <Label text="G" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+     <Label text="H" GridPane.columnIndex="8" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+    </GridPane>
+   </top>
+   <left>
+    <GridPane prefWidth="10.0" BorderPane.alignment="CENTER">
+     <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="15.0" prefWidth="100.0"/>
+     </columnConstraints>
+     <rowConstraints>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+     </rowConstraints>
+
+     <Label text="8" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER"/>
+     <Label text="7" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER"/>
+     <Label text="6" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER"/>
+     <Label text="5" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER"/>
+     <Label text="4" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER"/>
+     <Label text="3" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER"/>
+     <Label text="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER"/>
+     <Label text="1" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER"/>
+    </GridPane>
+   </left>
+   <right>
+    <GridPane prefWidth="10.0" BorderPane.alignment="CENTER">
+     <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="15.0" prefWidth="100.0"/>
+     </columnConstraints>
+     <rowConstraints>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+     </rowConstraints>
+
+     <Label text="8" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER"/>
+     <Label text="7" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER"/>
+     <Label text="6" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER"/>
+     <Label text="5" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER"/>
+     <Label text="4" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER"/>
+     <Label text="3" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER"/>
+     <Label text="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER"/>
+     <Label text="1" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="CENTER"/>
+    </GridPane>
+   </right>
+   <bottom>
+    <GridPane BorderPane.alignment="CENTER">
+     <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="15.0"/>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="15.0"/>
+     </columnConstraints>
+     <rowConstraints>
+      <RowConstraints minHeight="10.0" prefHeight="15.0" vgrow="SOMETIMES"/>
+     </rowConstraints>
+     <Label text="A" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+     <Label text="B" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+     <Label text="C" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+     <Label text="D" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+     <Label text="E" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+     <Label text="F" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+     <Label text="G" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+     <Label text="H" GridPane.columnIndex="8" GridPane.halignment="CENTER" GridPane.valignment="CENTER"/>
+    </GridPane>
+   </bottom>
+  </BorderPane>
+ </center>
+</BorderPane>
