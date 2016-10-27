@@ -4,8 +4,22 @@ import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
 
+/**
+ * Abstract application for Swing Applications.
+ *
+ * @author Prestes, E. M.
+ * @see SwingUtilities
+ * @see JFrame
+ * @since October 2016
+ */
 public abstract class Application {
 
+    /**
+     * Static behaviour to launch the application.
+     *
+     * @param classs Application class informed.
+     * @param args   Arguments informed.
+     */
     protected static void launch(Class<? extends Application> classs, String... args) {
         SwingUtilities.invokeLater(() -> {
             try {
@@ -23,5 +37,12 @@ public abstract class Application {
         });
     }
 
+    /**
+     * Behaviour to start the application.
+     *
+     * @param view Window informed.
+     *
+     * @throws Exception Throw problem during application initialization.
+     */
     public abstract void start(JFrame view) throws Exception;
 }

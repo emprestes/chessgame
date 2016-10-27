@@ -2,27 +2,70 @@ package chessgame.app.swing;
 
 import java.awt.Dimension;
 
-public abstract class Controller {
+/**
+ * Controller interface.
+ *
+ * @author Prestes, E. M.
+ * @see View
+ * @see Dimension
+ * @since October 20116
+ */
+public interface Controller {
 
-    public abstract View getView();
+    /**
+     * Recovering the view.
+     *
+     * @return View
+     */
+    View getView();
 
-    public abstract String getTitle();
+    /**
+     * Recovering the view title.
+     *
+     * @return String
+     */
+    String getTitle();
 
-    public abstract Dimension getSize();
+    /**
+     * Recovering the view size.
+     *
+     * @return Dimension
+     */
+    Dimension getSize();
 
-    public Object[] getWest() {
+    /**
+     * Recovering labels of west region.
+     *
+     * @return Array
+     */
+    default Object[] getLabelWest() {
         return new Object[]{};
     }
 
-    public Object[] getEast() {
+    /**
+     * Recovering labels of east region.
+     *
+     * @return Array
+     */
+    default Object[] getLabelEast() {
         return new Object[]{};
     }
 
-    public Object[] getNorth() {
+    /**
+     * Recovering labels of north region.
+     *
+     * @return Array
+     */
+    default Object[] getLabelNorth() {
         return new Object[]{};
     }
 
-    public Object[] getSouth() {
+    /**
+     * Recovering labels of south region.
+     *
+     * @return Array
+     */
+    default Object[] getLabelSouth() {
         return new Object[]{};
     }
 }

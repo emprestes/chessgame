@@ -7,17 +7,31 @@ import javax.swing.JPanel;
 import java.awt.Color;
 import java.awt.GridLayout;
 
+/**
+ * Chessboard view.
+ *
+ * @author Prestes, E. M.
+ * @see View
+ * @see GridLayout
+ * @since October 2016
+ */
 public class BoardView extends View {
 
     private static final int COLS = 8;
     private static final int ROWS = 8;
 
+    /**
+     * Default constructor.
+     */
     public BoardView() {
         super(new GridLayout(ROWS, COLS));
 
         init();
     }
 
+    /**
+     * Behaviour to initialize view.
+     */
     private void init() {
         JPanel block;
         Color b, w;
