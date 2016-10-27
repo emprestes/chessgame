@@ -30,7 +30,7 @@ public final class LabelView extends View {
         labels = new LabelView(1, items.length);
         labels = create(labels, false, items);
 
-        d = new Dimension(12, 0);
+        d = new Dimension(14, 0);
         b = BorderFactory.createEtchedBorder();
         c = createLabel(d, b);
         view.add(c, BorderLayout.WEST);
