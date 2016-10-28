@@ -1,20 +1,8 @@
-# Chessgame
-Chess Game Project, an OOP's example for Java beginners.
+## Chess Game Project
 
-* [Pull-request](#pull-request)
+<p>A reference of Object Oriented Programming for Java beginners.</p>
 
-## Pull-request
+### Welcome
+![Chess Game Project](https://raw.githubusercontent.com/emprestes/wiki/master/chessgame/images/welcome.png)
 
-### How to create pull-request
-
-#### Choice your branch
-Example
-- git checkout <branch>
-
-#### Create your branch using labels:
-- feature
-- hotfix
-- chore
-
-Example
-- git checkout -b <feature/module-name-your-branch>
+* [Go to WIKI](#wiki)
