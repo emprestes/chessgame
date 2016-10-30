@@ -5,4 +5,4 @@
 ### Welcome
 ![Chess Game Project](https://raw.githubusercontent.com/emprestes/wiki/master/chessgame/images/welcome.png)
 
-* [Let't go to WIKI](https://github.com/emprestes/chessgame/wiki)
+* [Let's go to WIKI](https://github.com/emprestes/chessgame/wiki)
