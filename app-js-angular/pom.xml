@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+ <parent>
+  <artifactId>chessgame</artifactId>
+  <groupId>br.opensource.game.chessgame</groupId>
+  <version>1.0-SNAPSHOT</version>
+ </parent>
+ <modelVersion>4.0.0</modelVersion>
+
+ <artifactId>chessgame-app-js-angular</artifactId>
+ <name>[CHESS][APP] Web Application (Angular.JS)</name>
+
+ <build>
+  <plugins>
+   <plugin>
+    <groupId>com.github.searls</groupId>
+    <artifactId>jasmine-maven-plugin</artifactId>
+    <version>2.2</version>
+    <executions>
+     <execution>
+      <goals>
+       <goal>test</goal>
+      </goals>
+     </execution>
+    </executions>
+    <configuration>
+     <jsSrcDir>src/main/javascript</jsSrcDir>
+     <jsTestSrcDir>src/test/javascript</jsTestSrcDir>
+     <preloadSources>
+      <preloadSource>lib/angular.js</preloadSource>
+     </preloadSources>
+    </configuration>
+   </plugin>
+
+   <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-source-plugin</artifactId>
+    <version>2.1.2</version>
+    <executions>
+     <execution>
+      <id>attach-sources</id>
+      <goals>
+       <goal>jar</goal>
+      </goals>
+     </execution>
+    </executions>
+   </plugin>
+
+   <plugin>
+    <groupId>net.alchim31.maven</groupId>
+    <artifactId>yuicompressor-maven-plugin</artifactId>
+    <version>1.1</version>
+    <executions>
+     <execution>
+      <id>compress-js</id>
+      <goals>
+       <goal>compress</goal>
+      </goals>
+     </execution>
+    </executions>
+   </plugin>
+  </plugins>
+
+  <resources>
+   <resource>
+    <directory>src/main/javascript</directory>
+    <filtering>true</filtering>
+   </resource>
+  </resources>
+ </build>
+</project>
