@@ -10,7 +10,7 @@
  <modelVersion>4.0.0</modelVersion>
 
  <artifactId>chessgame-app-js-angular</artifactId>
- <name>[CHESS][APP] Web Application (Angular.JS)</name>
+ <name>[CHESS][JS] Web Application (Angular.JS)</name>
 
  <build>
   <plugins>
