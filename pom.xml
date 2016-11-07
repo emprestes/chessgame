@@ -94,6 +94,10 @@
   </plugins>
  </build>
 
+ <modules>
+  <module>core-js</module>
+ </modules>
+
  <dependencies>
   <!-- Jakarta Commons -->
   <dependency>
