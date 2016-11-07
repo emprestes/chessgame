@@ -95,7 +95,7 @@
  </build>
 
  <modules>
-  <module>app-swing</module>
+  <module>app-java-swing</module>
  </modules>
 
  <dependencies>
