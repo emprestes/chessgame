@@ -95,7 +95,7 @@
  </build>
 
  <modules>
-  <module>core</module>
+  <module>core-java</module>
  </modules>
 
  <dependencies>
