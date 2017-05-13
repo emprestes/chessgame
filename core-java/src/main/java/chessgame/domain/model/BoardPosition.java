@@ -23,4 +23,49 @@ public enum BoardPosition {
         this.column = column;
         this.row = row;
     }
+
+    public BoardPosition nextColumn() {
+        return valueOf(this.column + 1, this.row);
+    }
+
+    public BoardPosition nextRow() {
+        return valueOf(this.column, this.row + 1);
+    }
+
+    public BoardPosition previousRow() {
+        return valueOf(this.column - 1 , this.row);
+    }
+
+    public BoardPosition previousColumn() {
+        return valueOf(this.column, this.row - 1);
+    }
+
+    public BoardPosition diagonalRightUp() {
+        return nextRow().nextColumn();
+    }
+
+    public BoardPosition diagonalRightDown() {
+        return previousRow().nextColumn();
+    }
+
+    public BoardPosition diagonalLeftUp() {
+        return nextRow().previousColumn();
+    }
+
+    public BoardPosition diagonalLeftDown() {
+        return previousRow().previousColumn();
+    }
+
+    private BoardPosition valueOf(int c, int r) {
+        for (BoardPosition i : values()) {
+            if (i.column == c && i.row == r) {
+                return i;
+            }
+        }
+
+        // FIXME We need Exception here.
+        // throw new Exception("");
+
+        return this;
+    }
 }
