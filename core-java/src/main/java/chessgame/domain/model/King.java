@@ -1,6 +1,7 @@
 package chessgame.domain.model;
 
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -29,7 +30,52 @@ public class King extends AbstractPiece {
      */
     @Override
     public Set<BoardPosition> getAvailablePositions() {
-        // TODO Implementation here.
-        return Collections.emptySet();
+        BoardPosition myP = getPosition(), aP;
+        Board b = getBoard();
+        Object o;
+        Set<BoardPosition> bps = new HashSet<>();
+
+        aP = myP.nextRow();
+        o = b.get(aP);
+        if (o == null) {
+            bps.add(aP);
+        }
+        aP = myP.previousRow();
+        o = b.get(aP);
+        if (o == null) {
+            bps.add(aP);
+        }
+        aP = myP.nextColumn();
+        o = b.get(aP);
+        if (o == null) {
+            bps.add(aP);
+        }
+        aP = myP.previousColumn();
+        o = b.get(aP);
+        if (o == null) {
+            bps.add(aP);
+        }
+        aP = myP.diagonalLeftDown();
+        o = b.get(aP);
+        if (o == null) {
+            bps.add(aP);
+        }
+        aP = myP.diagonalLeftUp();
+        o = b.get(aP);
+        if (o == null) {
+            bps.add(aP);
+        }
+        aP = myP.diagonalRightDown();
+        o = b.get(aP);
+        if (o == null) {
+            bps.add(aP);
+        }
+        aP = myP.diagonalRightUp();
+        o = b.get(aP);
+        if (o == null) {
+            bps.add(aP);
+        }
+
+        return bps;
     }
 }
