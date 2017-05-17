@@ -6,6 +6,7 @@ package chessgame.domain.model;
  * @author Prestes, E. M.
  * @since September 2016
  */
+
 public enum BoardPosition {
     A1(1, 1), A2(1, 2), A3(1, 3), A4(1, 4), A5(1, 5), A6(1, 6), A7(1, 7), A8(1, 8),
     B1(2, 1), B2(2, 2), B3(2, 3), B4(2, 4), B5(2, 5), B6(2, 6), B7(2, 7), B8(2, 8),
@@ -63,7 +64,7 @@ public enum BoardPosition {
             }
         }
 
-        // FIXME We need Exception here.
+        // TODO FIXME We need Exception here.
         // throw new Exception("");
 
         return this;
