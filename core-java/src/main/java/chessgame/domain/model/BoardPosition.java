@@ -34,11 +34,11 @@ public enum BoardPosition {
     }
 
     public BoardPosition previousRow() {
-        return valueOf(this.column - 1 , this.row);
+        return valueOf(this.column , this.row -1);
     }
 
     public BoardPosition previousColumn() {
-        return valueOf(this.column, this.row - 1);
+        return valueOf(this.column -1, this.row);
     }
 
     public BoardPosition diagonalRightUp() {

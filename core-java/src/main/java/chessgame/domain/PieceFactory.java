@@ -35,9 +35,11 @@ final class PieceFactory {
     static Piece create(Board board, BoardPosition position, PieceColor color, Class<? extends Piece> classs)
             throws PieceException {
         try {
-            return classs.getConstructor(Board.class, PieceColor.class)
+            Piece piece = classs.getConstructor(Board.class, PieceColor.class)
                     .newInstance(board, color)
                     .setPosition(position);
+            board.put(position, piece);
+            return piece;
         } catch (ReflectiveOperationException cause) {
             throw new PieceException(cause);
         }

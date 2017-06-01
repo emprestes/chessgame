@@ -59,4 +59,10 @@ abstract class AbstractPiece implements Piece {
         this.position = position;
         return this;
     }
+
+    public void move(BoardPosition position) {
+        getBoard().put(getPosition(), null);
+        setPosition(position);
+        getBoard().put(getPosition(), this);
+    }
 }

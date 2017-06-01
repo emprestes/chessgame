@@ -1,16 +1,22 @@
 package chessgame.domain.model;
 
-import org.junit.Assert;
+import chessgame.domain.Piece;
+import junitx.framework.Assert;
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.Set;
-
 public class KingTest {
 
-    private Board board = new Board();
+    private Board board;
 
-    @Test
+    @Before
+    public void init() {
+        board = new Board();
+    }
+
+    @Ignore
     public void getAvailablePositionsFromF5() throws Exception {
 
     }
@@ -34,11 +40,9 @@ public class KingTest {
 
     @Test
     public void getAvailablePositionsFromH1() throws Exception {
-        King king = (King) board.get(BoardPosition.E1);
-        Set<BoardPosition> pos;
-
-        king.setPosition(BoardPosition.H1);
-        pos = king.getAvailablePositions();
+        King king = (King) Piece.createWhiteKing(board);
+        king.move(BoardPosition.H1);
+        Set<BoardPosition> pos = king.getAvailablePositions();
 
         Assert.assertNotNull(king);
         Assert.assertEquals(3, pos.size());

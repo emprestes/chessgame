@@ -1,6 +1,5 @@
 package chessgame.domain.model;
 
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -77,5 +76,10 @@ public class King extends AbstractPiece {
         }
 
         return bps;
+    }
+
+    @Override
+    public String toString() {
+        return "King";
     }
 }

@@ -32,12 +32,18 @@ public class Board extends TreeMap<BoardPosition, Piece> {
         init();
     }
 
+    public void init() {
+        for (BoardPosition p : BoardPosition.values()) {
+            put(p, null);
+        }
+    }
+
     /**
      * Set up a chess game.
      *
      * @return Board
      */
-    private Board init() {
+    public Board initPieces() {
         for (BoardPosition p : BoardPosition.values()) {
             switch (p) {
                 case A1:
@@ -121,9 +127,12 @@ public class Board extends TreeMap<BoardPosition, Piece> {
     @Override
     public Piece put(BoardPosition key, Piece value) {
         if (size() <= BoardPosition.values().length) {
+            if (value != null) {
+                value.setPosition(key);
+            }
             return super.put(key, value);
         }
 
-        throw new BoardException("Board created! More positions aren't allow!");
+        throw new BoardException("Board created! More positions aren't allowed!");
     }
 }
