@@ -16,23 +16,32 @@ public class KingTest {
         board = new Board();
     }
 
-    @Ignore
+    @Test
     public void getAvailablePositionsFromF5() throws Exception {
+        King king = (King) Piece.createWhiteKing(board);
+        king.move(BoardPosition.F5);
+        Set<BoardPosition> pos = king.getAvailablePositions();
+
+        Assert.assertNotNull(king);
+        Assert.assertEquals(8, pos.size());
 
     }
 
     @Test
     public void getAvailablePositionsFromH5() throws Exception {
+        King king = (King) Piece.createWhiteKing(board);
+        king.move(BoardPosition.H5);
+        Set<BoardPosition> pos = king.getAvailablePositions();
 
+        Assert.assertNotNull(king);
+        Assert.assertEquals(5, pos.size());
     }
 
     @Test
     public void getAvailablePositionsFromA1() throws Exception {
-        King king = (King) board.get(BoardPosition.E1);
-        Set<BoardPosition> pos;
-
-        king.setPosition(BoardPosition.A1);
-        pos = king.getAvailablePositions();
+        King king = (King) Piece.createWhiteKing(board);
+        king.move(BoardPosition.A1);
+        Set<BoardPosition> pos = king.getAvailablePositions();
 
         Assert.assertNotNull(king);
         Assert.assertEquals(3, pos.size());
@@ -50,11 +59,9 @@ public class KingTest {
 
     @Test
     public void getAvailablePositionsFromA8() throws Exception {
-        King king = (King) board.get(BoardPosition.E1);
-        Set<BoardPosition> pos;
-
-        king.setPosition(BoardPosition.H8);
-        pos = king.getAvailablePositions();
+        King king = (King) Piece.createWhiteKing(board);
+        king.move(BoardPosition.A8);
+        Set<BoardPosition> pos = king.getAvailablePositions();
 
         Assert.assertNotNull(king);
         Assert.assertEquals(3, pos.size());
@@ -62,11 +69,9 @@ public class KingTest {
 
     @Test
     public void getAvailablePositionsFromH8() throws Exception {
-        King king = (King) board.get(BoardPosition.E1);
-        Set<BoardPosition> pos;
-
-        king.setPosition(BoardPosition.A8);
-        pos = king.getAvailablePositions();
+        King king = (King) Piece.createWhiteKing(board);
+        king.move(BoardPosition.H8);
+        Set<BoardPosition> pos = king.getAvailablePositions();
 
         Assert.assertNotNull(king);
         Assert.assertEquals(3, pos.size());
