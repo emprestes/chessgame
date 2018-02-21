@@ -5,4 +5,3 @@ app.filter('trustAsHtml', ['$sce', function ($sce) {
         return $sce.trustAsHtml(value);
     };
 }]);
-
