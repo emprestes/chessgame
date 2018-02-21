@@ -1,5 +1,7 @@
+// Creating a module
 var app = angular.module('chessboard', []);
 
+// Creating a service
 app.service('$board', function () {
     this.getColumns = function () {
         return ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
@@ -58,6 +60,7 @@ app.service('$board', function () {
     }
 });
 
+// Create a directive
 app.directive('chessBoard', function () {
     return {
         restrict: 'E',
