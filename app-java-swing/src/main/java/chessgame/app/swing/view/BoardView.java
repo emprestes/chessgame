@@ -3,8 +3,10 @@ package chessgame.app.swing.view;
 import chessgame.app.swing.View;
 
 import javax.swing.BorderFactory;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.GridLayout;
 
 /**
@@ -17,35 +19,68 @@ import java.awt.GridLayout;
  */
 public class BoardView extends View {
 
-    private static final int COLS = 8;
-    private static final int ROWS = 8;
-
     /**
      * Default constructor.
      */
-    public BoardView() {
-        super(new GridLayout(ROWS, COLS));
+    public BoardView(String[] cols, Integer[] rows) {
+        super(new GridLayout(cols.length, rows.length));
 
-        init();
+        init(cols, rows);
     }
 
     /**
      * Behaviour to initialize view.
+     * @param cols Columns on the board
+     * @param rows Rows on the board
      */
-    private void init() {
+    private void init(String[] cols, Integer[] rows) {
         JPanel block;
+        String pos;
         Color b, w;
 
         b = new Color(209, 139, 71);
         w = new Color(255, 206, 158);
-        setLayout(new GridLayout(ROWS, COLS));
 
-        for (int row = 0; row < ROWS; row++) {
-            for (int col = 0; col < COLS; col++) {
+        for (int row = rows.length - 1; row >= 0; row--) {
+            for (int col = 0; col < cols.length; col++) {
                 block = new JPanel();
+                pos = cols[col] + rows[row];
+                block.setName(pos);
+                block.setToolTipText(pos);
                 block.setBorder(BorderFactory.createEtchedBorder());
-                block.setBackground((row % 2 != 0 && col % 2 != 0) || (row % 2 == 0 && col % 2 == 0) ? w : b);
+                block.setBackground((row % 2 != 0 && col % 2 != 0) || (row % 2 == 0 && col % 2 == 0) ? b : w);
                 add(block);
+            }
+        }
+    }
+
+    public void add(String pos, String piece) {
+        Component[] blocks = getComponents();
+        JPanel found;
+
+        for (Component block : blocks) {
+            if (block instanceof JPanel) {
+                if (pos.equals(block.getName())) {
+                    found = (JPanel) block;
+                    piece = String.format("<html><body style='font-size: 30px;'>%s</body></html>", piece);
+                    found.add(new JLabel(piece));
+                    break;
+                }
+            }
+        }
+    }
+
+    public void remove(String pos) {
+        Component[] blocks = getComponents();
+        JPanel found;
+
+        for (Component block : blocks) {
+            if (block instanceof JPanel) {
+                if (pos.equals(block.getName())) {
+                    found = (JPanel) block;
+                    found.removeAll();
+                    break;
+                }
             }
         }
     }

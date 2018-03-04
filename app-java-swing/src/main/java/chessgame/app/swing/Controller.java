@@ -33,6 +33,8 @@ public interface Controller {
      */
     Dimension getSize();
 
+    void initMatch();
+
     /**
      * Recovering labels of west region.
      *

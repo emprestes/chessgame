@@ -20,6 +20,16 @@ public class BoardController implements Controller {
 
     private static final String[] COLS_LABEL = {"A", "B", "C", "D", "E", "F", "G", "H"};
     private static final Integer[] ROWS_LABEL = {1, 2, 3, 4, 5, 6, 7, 8};
+    private static final String[] PIECES = {
+            "A8:&#9820;", "B8:&#9822;", "C8:&#9821;", "D8:&#9819;",
+            "E8:&#9818;", "F8:&#9821;", "G8:&#9822;", "H8:&#9820;",
+            "A7:&#9823;", "B7:&#9823;", "C7:&#9823;", "D7:&#9823;",
+            "E7:&#9823;", "F7:&#9823;", "G7:&#9823;", "H7:&#9823;",
+            "A2:&#9817;", "B2:&#9817;", "C2:&#9817;", "D2:&#9817;",
+            "E2:&#9817;", "F2:&#9817;", "G2:&#9817;", "H2:&#9817;",
+            "A1:&#9814;", "B1:&#9816;", "C1:&#9815;", "D1:&#9813;",
+            "E1:&#9812;", "F1:&#9815;", "G1:&#9816;", "H1:&#9814;"
+    };
 
     private final Dimension size;
     private final BoardView view;
@@ -31,7 +41,7 @@ public class BoardController implements Controller {
         super();
 
         this.size = new Dimension(500, 500);
-        this.view = new BoardView();
+        this.view = new BoardView(COLS_LABEL, ROWS_LABEL);
     }
 
     /**
@@ -56,6 +66,15 @@ public class BoardController implements Controller {
     @Override
     public Dimension getSize() {
         return size;
+    }
+
+    @Override
+    public void initMatch() {
+        String[] piece;
+        for (String i : PIECES) {
+            piece = i.split(":");
+            view.add(piece[0], piece[1]);
+        }
     }
 
     /**

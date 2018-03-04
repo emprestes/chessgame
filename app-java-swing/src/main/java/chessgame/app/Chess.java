@@ -36,7 +36,7 @@ public class Chess extends Application {
      * {@inheritDoc}
      */
     @Override
-    public void start(JFrame frame) throws Exception {
+    public void start(JFrame frame) {
         Controller controller;
         View board, rows, cols;
 
@@ -53,6 +53,8 @@ public class Chess extends Application {
         frame.add(cols, BorderLayout.NORTH);
         cols = createCols(controller.getLabelSouth());
         frame.add(cols, BorderLayout.SOUTH);
+
+        controller.initMatch();
 
         frame.setTitle(controller.getTitle());
         frame.setSize(controller.getSize());
