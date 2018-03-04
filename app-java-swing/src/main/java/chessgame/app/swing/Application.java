@@ -26,11 +26,11 @@ public abstract class Application {
                 JFrame view = new JFrame();
                 Application app = classs.newInstance();
 
+                app.start(view);
+
                 view.setLocationRelativeTo(null);
                 view.setResizable(Boolean.FALSE);
                 view.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
-                app.start(view);
             } catch (Exception cause) {
                 throw new RuntimeException(cause);
             }
