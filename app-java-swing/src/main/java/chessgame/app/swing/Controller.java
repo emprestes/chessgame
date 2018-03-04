@@ -33,6 +33,9 @@ public interface Controller {
      */
     Dimension getSize();
 
+    /**
+     * Match initialization of the game.
+     */
     void initMatch();
 
     /**

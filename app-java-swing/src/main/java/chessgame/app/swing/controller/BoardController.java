@@ -68,6 +68,9 @@ public class BoardController implements Controller {
         return size;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void initMatch() {
         String[] piece;

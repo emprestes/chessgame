@@ -20,7 +20,10 @@ import java.awt.GridLayout;
 public class BoardView extends View {
 
     /**
-     * Default constructor.
+     * Constructor composing by columns and rows informed.
+     *
+     * @param cols Columns
+     * @param rows Rows
      */
     public BoardView(String[] cols, Integer[] rows) {
         super(new GridLayout(cols.length, rows.length));
@@ -30,6 +33,7 @@ public class BoardView extends View {
 
     /**
      * Behaviour to initialize view.
+     *
      * @param cols Columns on the board
      * @param rows Rows on the board
      */
@@ -54,6 +58,12 @@ public class BoardView extends View {
         }
     }
 
+    /**
+     * Adding Piece's symbol on specific position.
+     *
+     * @param pos   Position
+     * @param piece Piece's symbol
+     */
     public void add(String pos, String piece) {
         Component[] blocks = getComponents();
         JPanel found;
@@ -64,21 +74,6 @@ public class BoardView extends View {
                     found = (JPanel) block;
                     piece = String.format("<html><body style='font-size: 30px;'>%s</body></html>", piece);
                     found.add(new JLabel(piece));
-                    break;
-                }
-            }
-        }
-    }
-
-    public void remove(String pos) {
-        Component[] blocks = getComponents();
-        JPanel found;
-
-        for (Component block : blocks) {
-            if (block instanceof JPanel) {
-                if (pos.equals(block.getName())) {
-                    found = (JPanel) block;
-                    found.removeAll();
                     break;
                 }
             }
