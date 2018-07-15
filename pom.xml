@@ -94,6 +94,10 @@
   </plugins>
  </build>
 
+ <modules>
+  <module>core-kotlin</module>
+ </modules>
+
  <dependencies>
   <!-- Jakarta Commons -->
   <dependency>
