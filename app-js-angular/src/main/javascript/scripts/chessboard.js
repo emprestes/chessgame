@@ -1,17 +1,26 @@
 // Creating a module
-var app = angular.module('chessboard', []);
+const chessBoard = angular.module('chessboard', []);
+
+// Create a directive
+chessBoard.directive('chessBoard', function () {
+    return {
+        restrict: 'E',
+        templateUrl: "../chessboard.html",
+        controller: ['$board', function ($board) {
+            const controller = this;
+            controller.cols = $board.getColumns();
+            controller.rows = $board.getRows();
+
+            controller.getPiece = $board.getPiece;
+        }],
+        controllerAs: 'board'
+    };
+});
 
 // Creating a service
-app.service('$board', function () {
-    this.getColumns = function () {
-        return ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
-    };
-
-    this.getRows = function () {
-        return [8, 7, 6, 5, 4, 3, 2, 1];
-    };
-
-    var pieces = [
+chessBoard.service('$board', function () {
+    const service = this;
+    const pieces = [
         { initPos: 'A8', pos: 'A8', symbol: '&#9820;' },
         { initPos: 'B8', pos: 'B8', symbol: '&#9822;' },
         { initPos: 'C8', pos: 'C8', symbol: '&#9821;' },
@@ -46,33 +55,13 @@ app.service('$board', function () {
         { initPos: 'H1', pos: 'H1', symbol: '&#9814;' }
     ];
 
-    this.getPiece = function (col, row) {
-        var pos = col + row;
+    service.getColumns = () => ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+    service.getRows = () => [8, 7, 6, 5, 4, 3, 2, 1];
+    service.getPiece = (col, row) => {
+        const pos = col + row;
 
-        for (var i in pieces) {
-            var piece = pieces[i];
-            if (piece.initPos === pos) {
-                return piece.symbol;
-            }
-        }
-
-        return '';
+        return pieces
+            .filter(piece => piece.pos === pos)
+            .reduce((acc, piece) => piece.symbol, '');
     }
-});
-
-// Create a directive
-app.directive('chessBoard', function () {
-    return {
-        restrict: 'E',
-        templateUrl: "../chessboard.html",
-        controller: ['$board', function($board) {
-            this.cols = $board.getColumns();
-            this.rows = $board.getRows();
-
-            this.getPiece = function (col, row) {
-                return $board.getPiece(col, row);
-            }
-        }],
-        controllerAs: 'board'
-    };
 });
