@@ -36,7 +36,7 @@ class PieceFactory {
         @Throws(PieceException::class)
         private fun create(board: Board, position: BoardPosition, color: PieceColor, _class: Class<out Piece>): Piece {
             try {
-                return _class.getConstructor(Board::class.java, PieceColor::class.java)
+                return _class.getConstructor(Board::class.java, PieceColor::class.java, BoardPosition::class.java)
                         .newInstance(board, color, position)
             } catch (cause: ReflectiveOperationException) {
                 throw PieceException(cause)
