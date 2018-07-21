@@ -8,7 +8,7 @@ enum class PieceColor {
     BLACK, WHITE
 }
 
-open class AbstractPiece(
+abstract class AbstractPiece(
         override val board: Board,
         override val color: PieceColor,
         override var position: BoardPosition) : Piece {
