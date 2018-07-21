@@ -20,4 +20,8 @@ interface Player : Serializable {
 
 interface SpecialMovement : Serializable
 
-interface Promotion : Serializable
+interface Promotion : Serializable {
+    val board: Board
+    val position: BoardPosition
+    val color: PieceColor
+}
