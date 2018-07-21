@@ -19,3 +19,5 @@ interface Player : Serializable {
 }
 
 interface SpecialMovement : Serializable
+
+interface Promotion : Serializable

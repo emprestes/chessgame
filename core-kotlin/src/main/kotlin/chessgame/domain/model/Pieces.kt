@@ -1,6 +1,7 @@
 package chessgame.domain.model
 
 import chessgame.domain.Piece
+import chessgame.domain.Promotion
 import chessgame.domain.SpecialMovement
 import java.util.*
 
@@ -56,7 +57,7 @@ class Knight(
 class Pawn(
         override val board: Board,
         override val color: PieceColor,
-        override var position: BoardPosition) : AbstractPiece(board, color, position), SpecialMovement
+        override var position: BoardPosition) : AbstractPiece(board, color, position), SpecialMovement, Promotion
 
 class Queen(
         override val board: Board,
