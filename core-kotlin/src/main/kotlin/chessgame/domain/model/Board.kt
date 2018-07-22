@@ -33,12 +33,12 @@ enum class BoardPosition {
     H1, H2, H3, H4, H5, H6, H7, H8
 }
 
-class Board : TreeMap<BoardPosition, Piece>() {
+class Board : TreeMap<BoardPosition, Piece?>() {
 
-    private val whitePlayer: Player = HumanPlayer()
-    private val blackPlayer: Player = HumanPlayer()
+    private val whitePlayer = HumanPlayer()
+    private val blackPlayer = HumanPlayer()
 
-    private fun init(): Board {
+    fun init(): Board {
         BoardPosition.values().forEach { position ->
             when (position) {
                 A1, H1 -> put(whitePlayer, createWhiteRook(this, position))
@@ -60,14 +60,14 @@ class Board : TreeMap<BoardPosition, Piece>() {
         return this
     }
 
-    private fun put(player: Player, piece: Piece): Piece? {
-        player.add(piece)
-        return put(piece.position, piece)
+    private fun put(player: Player, piece: Piece?): Piece? {
+        piece?.let { player.add(piece) }
+        return put(piece!!.position, piece)
     }
 
-    fun put(key: BoardPosition, value: Piece?): Piece? {
+    override fun put(key: BoardPosition, value: Piece?): Piece? {
         if (size <= BoardPosition.values().size) {
-            return super.put(key, value!!)
+            return super.put(key, value)
         }
 
         throw BoardException("Board created! More positions aren't allowed!")

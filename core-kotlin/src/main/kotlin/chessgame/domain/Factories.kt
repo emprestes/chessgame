@@ -15,7 +15,7 @@ class PieceFactory {
 
         fun createBlackQueen(board: Board, position: BoardPosition) = create(board, position, BLACK, Queen::class.java)
 
-        fun createBlackBishop(board: Board, position: BoardPosition) = create(board, position, BLACK, Queen::class.java)
+        fun createBlackBishop(board: Board, position: BoardPosition) = create(board, position, BLACK, Bishop::class.java)
 
         fun createBlackKnight(board: Board, position: BoardPosition) = create(board, position, BLACK, Knight::class.java)
 
@@ -29,7 +29,7 @@ class PieceFactory {
 
         fun createWhiteQueen(board: Board, position: BoardPosition) = create(board, position, WHITE, Queen::class.java)
 
-        fun createWhiteBishop(board: Board, position: BoardPosition) = create(board, position, WHITE, Queen::class.java)
+        fun createWhiteBishop(board: Board, position: BoardPosition) = create(board, position, WHITE, Bishop::class.java)
 
         fun createWhiteKnight(board: Board, position: BoardPosition) = create(board, position, WHITE, Knight::class.java)
 
