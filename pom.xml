@@ -94,6 +94,10 @@
   </plugins>
  </build>
 
+ <modules>
+  <module>app-kotlin-fx</module>
+ </modules>
+
  <dependencies>
   <!-- Jakarta Commons -->
   <dependency>
