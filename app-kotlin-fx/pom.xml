@@ -33,6 +33,15 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.2.1</version>
+                <configuration>
+                    <mainClass>chessgame.app.ChessKt</mainClass>
+                </configuration>
+            </plugin>
         </plugins>
 
         <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
