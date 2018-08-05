@@ -15,26 +15,6 @@
  <build>
   <plugins>
    <plugin>
-    <groupId>com.github.searls</groupId>
-    <artifactId>jasmine-maven-plugin</artifactId>
-    <version>2.2</version>
-    <executions>
-     <execution>
-      <goals>
-       <goal>test</goal>
-      </goals>
-     </execution>
-    </executions>
-    <configuration>
-     <jsSrcDir>src/main/javascript</jsSrcDir>
-     <jsTestSrcDir>src/test/javascript</jsTestSrcDir>
-     <preloadSources>
-      <preloadSource>lib/angular.js</preloadSource>
-     </preloadSources>
-    </configuration>
-   </plugin>
-
-   <plugin>
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-source-plugin</artifactId>
     <version>2.1.2</version>
@@ -43,20 +23,6 @@
       <id>attach-sources</id>
       <goals>
        <goal>jar</goal>
-      </goals>
-     </execution>
-    </executions>
-   </plugin>
-
-   <plugin>
-    <groupId>net.alchim31.maven</groupId>
-    <artifactId>yuicompressor-maven-plugin</artifactId>
-    <version>1.1</version>
-    <executions>
-     <execution>
-      <id>compress-js</id>
-      <goals>
-       <goal>compress</goal>
       </goals>
      </execution>
     </executions>

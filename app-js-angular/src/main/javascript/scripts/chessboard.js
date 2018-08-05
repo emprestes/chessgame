@@ -1,24 +1,4 @@
-// Creating a module
-const chessBoard = angular.module('chessboard', []);
-
-// Create a directive
-chessBoard.directive('chessBoard', function () {
-    return {
-        restrict: 'E',
-        templateUrl: "../chessboard.html",
-        controller: ['$board', function ($board) {
-            const controller = this;
-            controller.cols = $board.getColumns();
-            controller.rows = $board.getRows();
-
-            controller.getPiece = $board.getPiece;
-        }],
-        controllerAs: 'board'
-    };
-});
-
-// Creating a service
-chessBoard.service('$board', function () {
+function boardService() {
     const service = this;
     const pieces = [
         { initPos: 'A8', pos: 'A8', symbol: '&#9820;' },
@@ -54,14 +34,37 @@ chessBoard.service('$board', function () {
         { initPos: 'G1', pos: 'G1', symbol: '&#9816;' },
         { initPos: 'H1', pos: 'H1', symbol: '&#9814;' }
     ];
-
     service.getColumns = () => ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+
     service.getRows = () => [8, 7, 6, 5, 4, 3, 2, 1];
     service.getPiece = (col, row) => {
         const pos = col + row;
-
+        const captured = {symbol: ''};
         return pieces
             .filter(piece => piece.pos === pos)
-            .reduce((acc, piece) => piece.symbol, '');
-    }
-});
+            .reduce((acc, piece) => piece, captured);
+
+    };
+    service.getPieceSymbol = (col, row) => service.getPiece(col, row).symbol;
+}
+
+function chessboardController($board) {
+    const controller = this;
+    controller.cols = $board.getColumns();
+    controller.rows = $board.getRows();
+    controller.getPieceSymbol = $board.getPieceSymbol;
+
+}
+
+function chessboardDirective() {
+    return {
+        restrict: 'E',
+        templateUrl: "../chessboard.html",
+        controller: ['$board', chessboardController],
+        controllerAs: 'board'
+    };
+}
+
+angular.module('chessboard', [])
+    .directive('chessBoard', chessboardDirective)
+    .service('$board', boardService);

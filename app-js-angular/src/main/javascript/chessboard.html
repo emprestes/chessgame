@@ -7,7 +7,7 @@
              ng-repeat="row in board.rows">
             <div id="{{col}}{{row}}"
                  ng-repeat="col in board.cols"
-                 ng-bind-html="board.getPiece(col, row) | trustAsHtml"></div>
+                 ng-bind-html="board.getPieceSymbol(col, row) | trustAsHtml"></div>
         </div>
     </div>
 </div>
