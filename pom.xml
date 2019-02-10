@@ -64,6 +64,9 @@
      <execution>
       <id>javadoc-run</id>
       <phase>package</phase>
+      <configuration>
+       <additionalJOption>-html5</additionalJOption>
+      </configuration>
       <goals>
        <goal>jar</goal>
       </goals>
