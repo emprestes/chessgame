@@ -28,17 +28,40 @@
    <plugin>
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-compiler-plugin</artifactId>
-    <version>3.1</version>
+    <version>3.8.1</version>
+   </plugin>
+
+   <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-jar-plugin</artifactId>
+    <version>3.1.2</version>
+   </plugin>
+
+   <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-toolchains-plugin</artifactId>
+    <version>3.0.0</version>
     <configuration>
-     <source>${version.jdk}</source>
-     <target>${version.jdk}</target>
+     <toolchains>
+      <jdk>
+       <version>${maven.compiler.source}</version>
+       <vendor>oracle</vendor>
+      </jdk>
+     </toolchains>
     </configuration>
+    <executions>
+     <execution>
+      <goals>
+       <goal>toolchain</goal>
+      </goals>
+     </execution>
+    </executions>
    </plugin>
 
    <plugin>
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-checkstyle-plugin</artifactId>
-    <version>2.15</version>
+    <version>3.1.0</version>
     <executions>
      <execution>
       <id>validate</id>
@@ -48,6 +71,7 @@
        <consoleOutput>true</consoleOutput>
        <failsOnError>true</failsOnError>
        <encoding>${project.build.sourceEncoding}</encoding>
+       <excludes>**/module-info.java</excludes>
       </configuration>
       <goals>
        <goal>check</goal>
@@ -60,15 +84,6 @@
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-javadoc-plugin</artifactId>
     <version>2.9.1</version>
-    <executions>
-     <execution>
-      <id>javadoc-run</id>
-      <phase>package</phase>
-      <goals>
-       <goal>jar</goal>
-      </goals>
-     </execution>
-    </executions>
    </plugin>
 
    <plugin>
@@ -139,6 +154,8 @@
 
  <properties>
   <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  <version.jdk>1.8</version.jdk>
+  <maven.compiler.source>1.9</maven.compiler.source>
+  <maven.compiler.target>1.9</maven.compiler.target>
+  <maven.compiler.release>9</maven.compiler.release>
  </properties>
 </project>
