@@ -1,7 +1,9 @@
 package chessgame.domain.model;
 
-import java.util.HashSet;
+import java.util.List;
+import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * King of Chess game.
@@ -29,57 +31,19 @@ public class King extends AbstractPiece {
      */
     @Override
     public Set<BoardPosition> getAvailablePositions() {
-        BoardPosition myP = getPosition(), aP;
-        Board b = getBoard();
-        Object o;
-        Set<BoardPosition> bps = new HashSet<>();
-
-        aP = myP.nextRow();
-        o = b.get(aP);
-        if (o == null) {
-            bps.add(aP);
-        }
-        aP = myP.previousRow();
-        o = b.get(aP);
-        if (o == null) {
-            bps.add(aP);
-        }
-        aP = myP.nextColumn();
-        o = b.get(aP);
-        if (o == null) {
-            bps.add(aP);
-        }
-        aP = myP.previousColumn();
-        o = b.get(aP);
-        if (o == null) {
-            bps.add(aP);
-        }
-        aP = myP.diagonalLeftDown();
-        o = b.get(aP);
-        if (o == null) {
-            bps.add(aP);
-        }
-        aP = myP.diagonalLeftUp();
-        o = b.get(aP);
-        if (o == null) {
-            bps.add(aP);
-        }
-        aP = myP.diagonalRightDown();
-        o = b.get(aP);
-        if (o == null) {
-            bps.add(aP);
-        }
-        aP = myP.diagonalRightUp();
-        o = b.get(aP);
-        if (o == null) {
-            bps.add(aP);
-        }
-
-        return bps;
+        BoardPosition myPosition = getPosition();
+        Board board = getBoard();
+        return List.of(myPosition.nextRow(), myPosition.previousRow(),
+                myPosition.nextColumn(), myPosition.previousColumn(),
+                myPosition.diagonalLeftDown(), myPosition.diagonalLeftUp(),
+                myPosition.diagonalRightDown(), myPosition.diagonalRightUp()).stream()
+                .filter(position -> !position.equals(myPosition))
+                .filter(position -> Objects.isNull(board.get(position)))
+                .collect(Collectors.toSet());
     }
 
     @Override
     public String toString() {
-        return "King";
+        return String.format("%s King @ %s", getColor(), getPosition());
     }
 }
