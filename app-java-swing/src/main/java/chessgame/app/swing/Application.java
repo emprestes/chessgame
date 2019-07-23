@@ -3,6 +3,7 @@ package chessgame.app.swing;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import javax.swing.WindowConstants;
+import java.lang.reflect.Constructor;
 
 /**
  * Abstract application for Swing Applications.
@@ -24,7 +25,8 @@ public abstract class Application {
         SwingUtilities.invokeLater(() -> {
             try {
                 JFrame view = new JFrame();
-                Application app = classs.newInstance();
+                Constructor<? extends Application> constructor = classs.getConstructor();
+                Application app = constructor.newInstance();
 
                 app.start(view);
 

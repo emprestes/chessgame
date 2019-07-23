@@ -2,14 +2,11 @@ package chessgame.app.swing.view;
 
 import chessgame.app.swing.View;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 import javax.swing.JEditorPane;
 import javax.swing.JTextPane;
 import javax.swing.TransferHandler;
-import javax.swing.border.BevelBorder;
 import javax.swing.border.Border;
 import java.awt.Color;
 import java.awt.GridLayout;
@@ -25,6 +22,12 @@ import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static java.awt.Color.GREEN;
+import static javax.swing.BorderFactory.createEtchedBorder;
+import static javax.swing.BorderFactory.createSoftBevelBorder;
+import static javax.swing.border.BevelBorder.RAISED;
+import static org.slf4j.LoggerFactory.getLogger;
+
 /**
  * Chessboard view.
  *
@@ -35,9 +38,9 @@ import java.util.regex.Pattern;
  */
 public class BoardView extends View {
 
-    private static final Border SELECTED = BorderFactory.createSoftBevelBorder(BevelBorder.RAISED, Color.GREEN, Color.GREEN);
-    private static final Border NORMAL = BorderFactory.createEtchedBorder();
-    private static final Logger LOG = LoggerFactory.getLogger(BoardView.class);
+    private static final Border SELECTED = createSoftBevelBorder(RAISED, GREEN, GREEN);
+    private static final Border NORMAL = createEtchedBorder();
+    private static final Logger LOG = getLogger(BoardView.class);
 
     /**
      * Constructor composing by columns and rows informed.
@@ -93,17 +96,24 @@ public class BoardView extends View {
      * @param piece Piece's symbol
      */
     public void add(String pos, final String piece) {
+        final String pieceView = "<html>"
+                + "<head><style>.piece {font-size: 35px;}</style></head>"
+                + "<body class='piece'>"
+                + "<center>"
+                + piece
+                + "</center>"
+                + "</body>"
+                + "</html>";
         Arrays.stream(getComponents())
                 .filter(block -> block instanceof JTextPane)
                 .map(block -> (JTextPane) block)
                 .filter(block -> block.getName().equals(pos))
                 .filter(block -> !block.getText().isEmpty())
                 .findFirst()
-                .ifPresent(found -> found.setText(String.format(
-                        "<html><head><style>.piece {font-size: 35px;}</style></head><body class='piece'><center>%s</center</body></html>", piece)));
+                .ifPresent(found -> found.setText(pieceView));
     }
 
-    private class PieceMouseAdapter extends MouseAdapter {
+    private final class PieceMouseAdapter extends MouseAdapter {
 
         @Override
         public void mouseDragged(MouseEvent e) {
@@ -144,7 +154,7 @@ public class BoardView extends View {
         }
     }
 
-    private class PieceTransferable implements Transferable {
+    private final class PieceTransferable implements Transferable {
 
         private final Object piece;
 
@@ -173,7 +183,7 @@ public class BoardView extends View {
         }
     }
 
-    private class PieceTransferHandler extends TransferHandler {
+    private final class PieceTransferHandler extends TransferHandler {
 
         @Override
         public int getSourceActions(JComponent c) {
@@ -190,7 +200,7 @@ public class BoardView extends View {
         }
     }
 
-    private class PositionDropTarget extends DropTarget {
+    private final class PositionDropTarget extends DropTarget {
 
         private final Pattern piecePattern = Pattern.compile("&[#]\\d{1,4};");
 
@@ -219,7 +229,7 @@ public class BoardView extends View {
                     event.dropComplete(Boolean.TRUE);
                 }
 
-                LOG.debug(String.format("%s %s", piece, drop.getName()));
+                LOG.debug("{} {}", piece, drop.getName());
             } catch (Exception cause) {
                 LOG.error("Problem moving piece", cause);
             }
