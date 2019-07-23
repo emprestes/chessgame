@@ -60,6 +60,7 @@ abstract class AbstractPiece implements Piece {
         return this;
     }
 
+    @Override
     public void move(BoardPosition position) {
         getBoard().put(getPosition(), null);
         setPosition(position);
