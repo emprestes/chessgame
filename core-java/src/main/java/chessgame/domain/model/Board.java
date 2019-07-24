@@ -106,6 +106,10 @@ public class Board extends TreeMap<BoardPosition, Piece> {
         }
     }
 
+    Piece get(String key) {
+        return super.get(BoardPosition.valueOf(key));
+    }
+
     /**
      * Put chess piece of a relevant player on the chessboard.
      *
@@ -123,7 +127,8 @@ public class Board extends TreeMap<BoardPosition, Piece> {
     public Piece put(BoardPosition key, Piece value) {
         if (size() <= BoardPosition.values().length) {
             if (value != null) {
-                value.setPosition(key);
+                super.put(value.getPosition(), null);
+                ((AbstractPiece) value).setPosition(key);
             }
             return super.put(key, value);
         }

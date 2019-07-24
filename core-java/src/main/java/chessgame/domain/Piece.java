@@ -38,15 +38,6 @@ public interface Piece extends Serializable {
     BoardPosition getPosition();
 
     /**
-     * Set a new position to a chess piece.
-     *
-     * @param position New position
-     *
-     * @return Piece
-     */
-    Piece setPosition(BoardPosition position);
-
-    /**
      * Recovery available positions of a piece.
      *
      * @return Set
@@ -58,5 +49,9 @@ public interface Piece extends Serializable {
      *
      * @param position Position informed.
      */
-    void move(BoardPosition position);
+    Piece moveTo(BoardPosition position);
+
+    default Piece moveTo(String position) {
+        return moveTo(BoardPosition.valueOf(position));
+    }
 }

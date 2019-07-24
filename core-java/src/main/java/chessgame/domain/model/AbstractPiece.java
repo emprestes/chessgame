@@ -2,6 +2,9 @@ package chessgame.domain.model;
 
 import chessgame.domain.Piece;
 
+import java.util.Objects;
+import java.util.Optional;
+
 /**
  * Abstract class of chess piece with common state and behaviour.
  *
@@ -54,16 +57,29 @@ abstract class AbstractPiece implements Piece {
     }
 
     /** {@inheritDoc} */
-    @Override
-    public Piece setPosition(BoardPosition position) {
+    void setPosition(BoardPosition position) {
         this.position = position;
-        return this;
     }
 
     @Override
-    public void move(BoardPosition position) {
-        getBoard().put(getPosition(), null);
-        setPosition(position);
-        getBoard().put(getPosition(), this);
+    public Piece moveTo(BoardPosition position) {
+        Optional.of(this)
+                .filter(piece -> Objects.isNull(piece.position))
+                .ifPresent(piece -> piece.setPosition(position));
+
+        getAvailablePositions().stream()
+                .filter(position::equals)
+                .findFirst()
+                .ifPresent(availablePosition -> getBoard().put(availablePosition, this));
+
+        return this;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String toString() {
+        return String.format("%s %s @ %s", getColor(), getClass().getSimpleName(), getPosition());
     }
 }

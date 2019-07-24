@@ -1,6 +1,7 @@
 package chessgame.domain.model;
 
 import java.util.Arrays;
+import java.util.Optional;
 
 /**
  * Positions of Chessboard.
@@ -52,19 +53,63 @@ public enum BoardPosition {
     }
 
     public BoardPosition diagonalRightUp() {
-        return nextRow().nextColumn();
+        return Optional.of(this)
+                .filter(BoardPosition::nonLastColumn)
+                .map(BoardPosition::nextColumn)
+                .filter(this::nonEquals)
+                .filter(BoardPosition::nonLastRow)
+                .map(BoardPosition::nextRow)
+                .orElse(this);
     }
 
     public BoardPosition diagonalRightDown() {
-        return previousRow().nextColumn();
+        return Optional.of(this)
+                .filter(BoardPosition::nonLastColumn)
+                .map(BoardPosition::nextColumn)
+                .filter(this::nonEquals)
+                .filter(BoardPosition::nonFirstRow)
+                .map(BoardPosition::previousRow)
+                .orElse(this);
     }
 
     public BoardPosition diagonalLeftUp() {
-        return nextRow().previousColumn();
+        return Optional.of(this)
+                .filter(BoardPosition::nonFirstColumn)
+                .map(BoardPosition::previousColumn)
+                .filter(this::nonEquals)
+                .filter(BoardPosition::nonLastRow)
+                .map(BoardPosition::nextRow)
+                .orElse(this);
     }
 
     public BoardPosition diagonalLeftDown() {
-        return previousRow().previousColumn();
+        return Optional.of(this)
+                .filter(BoardPosition::nonFirstColumn)
+                .map(BoardPosition::previousColumn)
+                .filter(this::nonEquals)
+                .filter(BoardPosition::nonFirstRow)
+                .map(BoardPosition::previousRow)
+                .orElse(this);
+    }
+
+    private Boolean nonFirstColumn() {
+        return this.column > 1;
+    }
+
+    private Boolean nonLastColumn() {
+        return this.column < 8;
+    }
+
+    private Boolean nonFirstRow() {
+        return this.row > 1;
+    }
+
+    private Boolean nonLastRow() {
+        return this.row < 8;
+    }
+
+    private Boolean nonEquals(BoardPosition position) {
+        return !this.equals(position);
     }
 
     private BoardPosition valueOf(int column, int row) {
@@ -72,8 +117,5 @@ public enum BoardPosition {
                 .filter(position -> position.column == column && position.row == row)
                 .findFirst()
                 .orElse(this);
-
-        // TODO We need Exception here.
-        // throw new Exception("");
     }
 }

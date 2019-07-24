@@ -42,12 +42,4 @@ public class King extends AbstractPiece {
                 .filter(position -> isNull(board.get(position)))
                 .collect(Collectors.toSet());
     }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public String toString() {
-        return String.format("%s King @ %s", getColor(), getPosition());
-    }
 }

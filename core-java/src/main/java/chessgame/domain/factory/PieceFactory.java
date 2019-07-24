@@ -179,7 +179,7 @@ public final class PieceFactory {
         try {
             Piece piece = classs.getConstructor(Board.class, PieceColor.class)
                     .newInstance(board, color)
-                    .setPosition(position);
+                    .moveTo(position);
             board.put(position, piece);
             return piece;
         } catch (ReflectiveOperationException cause) {
