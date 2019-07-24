@@ -39,7 +39,9 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-public class WhiteKingTest {
+public class KingWhiteTest {
+
+    private static final BoardPosition INITIAL_POSITION = E1;
 
     private Board board;
 
@@ -59,29 +61,29 @@ public class WhiteKingTest {
 
     @Test
     public void initPositionTest() {
-        assertEquals(E1, whiteKing.getPosition());
-        assertEquals(whiteKing, board.get(E1));
+        assertEquals(INITIAL_POSITION, whiteKing.getPosition());
+        assertEquals(whiteKing, board.get(INITIAL_POSITION));
     }
 
     @Test
-    public void moveToValidaPositionTest() {
-        assertNotNull(board.get(E1));
+    public void moveToValidPositionTest() {
+        assertNotNull(board.get(INITIAL_POSITION));
         assertNull(board.get(F1));
 
         whiteKing.moveTo(F1);
 
-        assertNull(board.get(E1));
+        assertNull(board.get(INITIAL_POSITION));
         assertNotNull(board.get(F1));
     }
 
     @Test
     public void moveToInvalidPositionTest() {
-        assertNotNull(board.get(E1));
+        assertNotNull(board.get(INITIAL_POSITION));
         assertNull(board.get(C3));
 
         whiteKing.moveTo(C3);
 
-        assertNotNull(board.get(E1));
+        assertNotNull(board.get(INITIAL_POSITION));
         assertNull(board.get(C3));
     }
 

@@ -3,17 +3,17 @@ package chessgame.domain.model;
 import org.junit.Ignore;
 import org.junit.Test;
 
-public class KnightTest {
+public class KnightWhiteTest {
 
     @Test
-    
-    public void getAvailablePositionsOK() throws Exception {
+    @Ignore
+    public void getAvailablePositionsOK() {
         // TODO Test here.
     }
 
     @Test
-  
-    public void getAvailablePositionsNOK() throws Exception {
+    @Ignore
+    public void getAvailablePositionsNOK() {
         // TODO Test here.
     }
 }

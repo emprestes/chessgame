@@ -1,6 +1,5 @@
 package chessgame.domain.model;
 
-import java.util.Collections;
 import java.util.Set;
 
 /**
@@ -29,7 +28,7 @@ public class Bishop extends AbstractPiece {
      */
     @Override
     public Set<BoardPosition> getAvailablePositions() {
-        // TODO Implementation here.
-        return Collections.emptySet();
+        final BoardPosition myPosition = getPosition();
+        return collectDiagonals(myPosition);
     }
 }
