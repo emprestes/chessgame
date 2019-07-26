@@ -60,6 +60,11 @@ public class KingWhiteTest {
     }
 
     @Test
+    public void whiteColorTest() {
+        assertEquals(PieceColor.WHITE, whiteKing.getColor());
+    }
+
+    @Test
     public void initPositionTest() {
         assertEquals(INITIAL_POSITION, whiteKing.getPosition());
         assertEquals(whiteKing, board.get(INITIAL_POSITION));

@@ -37,19 +37,27 @@ public enum BoardPosition {
     }
 
     public BoardPosition nextColumn() {
-        return valueOf(this.column + 1, this.row);
+        return Optional.of(this)
+                .filter(BoardPosition::isLastColumn)
+                .orElse(valueOf(this.column + 1, this.row));
     }
 
     public BoardPosition nextRow() {
-        return valueOf(this.column, this.row + 1);
+        return Optional.of(this)
+                .filter(BoardPosition::isLastRow)
+                .orElse(valueOf(this.column, this.row + 1));
     }
 
     public BoardPosition previousRow() {
-        return valueOf(this.column, this.row - 1);
+        return Optional.of(this)
+                .filter(BoardPosition::isFirstRow)
+                .orElse(valueOf(this.column, this.row - 1));
     }
 
     public BoardPosition previousColumn() {
-        return valueOf(this.column - 1, this.row);
+        return Optional.of(this)
+                .filter(BoardPosition::isFirstColumn)
+                .orElse(valueOf(this.column - 1, this.row));
     }
 
     public BoardPosition diagonalRightUp() {
@@ -92,23 +100,39 @@ public enum BoardPosition {
                 .orElse(this);
     }
 
-    private Boolean nonFirstColumn() {
-        return this.column > 1;
+    public Boolean isFirstColumn() {
+        return this.column == 1;
     }
 
-    private Boolean nonLastColumn() {
-        return this.column < 8;
+    public Boolean nonFirstColumn() {
+        return !isFirstColumn();
     }
 
-    private Boolean nonFirstRow() {
-        return this.row > 1;
+    public Boolean isLastColumn() {
+        return this.column == 8;
     }
 
-    private Boolean nonLastRow() {
-        return this.row < 8;
+    public Boolean nonLastColumn() {
+        return !isLastColumn();
     }
 
-    private Boolean nonEquals(BoardPosition position) {
+    public Boolean isFirstRow() {
+        return this.row == 1;
+    }
+
+    public Boolean nonFirstRow() {
+        return !isFirstRow();
+    }
+
+    public Boolean isLastRow() {
+        return this.row == 8;
+    }
+
+    public Boolean nonLastRow() {
+        return !isLastRow();
+    }
+
+    public Boolean nonEquals(BoardPosition position) {
         return !this.equals(position);
     }
 

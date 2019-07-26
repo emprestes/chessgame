@@ -2,9 +2,8 @@ package chessgame.domain.model;
 
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
-import static java.util.Objects.isNull;
+import static java.util.stream.Collectors.toSet;
 
 /**
  * King of Chess game.
@@ -33,13 +32,12 @@ public class King extends AbstractPiece {
     @Override
     public Set<BoardPosition> getAvailablePositions() {
         final BoardPosition myPosition = getPosition();
-        final Board board = getBoard();
         return List.of(myPosition.nextRow(), myPosition.previousRow(),
                 myPosition.nextColumn(), myPosition.previousColumn(),
                 myPosition.diagonalLeftDown(), myPosition.diagonalLeftUp(),
                 myPosition.diagonalRightDown(), myPosition.diagonalRightUp()).stream()
-                .filter(position -> !position.equals(myPosition))
-                .filter(position -> isNull(board.get(position)))
-                .collect(Collectors.toSet());
+                .filter(myPosition::nonEquals)
+                .filter(this::isEmptyBoardPosition)
+                .collect(toSet());
     }
 }

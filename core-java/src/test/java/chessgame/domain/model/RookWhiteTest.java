@@ -50,6 +50,11 @@ public class RookWhiteTest {
     }
 
     @Test
+    public void whiteColorTest() {
+        assertEquals(PieceColor.WHITE, whiteRook.getColor());
+    }
+
+    @Test
     public void initPositionTest() {
         assertEquals(INITIAL_POSITION, whiteRook.getPosition());
         assertEquals(whiteRook, board.get(INITIAL_POSITION));

@@ -43,6 +43,11 @@ public class BishopWhileTest {
     }
 
     @Test
+    public void whiteColorTest() {
+        assertEquals(PieceColor.WHITE, whiteBishop.getColor());
+    }
+
+    @Test
     public void initPositionTest() {
         assertEquals(INITIAL_POSITION, whiteBishop.getPosition());
         assertEquals(whiteBishop, board.get(INITIAL_POSITION));

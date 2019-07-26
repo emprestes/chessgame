@@ -3,12 +3,11 @@ package chessgame.domain.model;
 import chessgame.domain.Piece;
 
 import java.util.LinkedHashSet;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
 
-import static java.util.Objects.nonNull;
+import static java.util.Objects.isNull;
 
 /**
  * Abstract class of chess piece with common state and behaviour.
@@ -119,15 +118,12 @@ abstract class AbstractPiece implements Piece {
     private void collect(BoardPosition position,
                          Set<BoardPosition> availablePositions,
                          Function<BoardPosition, BoardPosition> updatePosition) {
-        final BoardPosition newPosition = updatePosition.apply(position);
-        final Piece piece = getBoard().get(newPosition);
-
-        if (position.equals(newPosition) || nonNull(piece)) {
-            return;
-        }
-
-        availablePositions.add(newPosition);
-        collect(newPosition, availablePositions, updatePosition);
+        Optional.of(position)
+                .map(updatePosition)
+                .filter(position::nonEquals)
+                .filter(newPosition -> isNull(getBoard().get(newPosition)))
+                .filter(availablePositions::add)
+                .ifPresent(newPosition -> collect(newPosition, availablePositions, updatePosition));
     }
 
     Set<BoardPosition> collectColumns(BoardPosition position) {
@@ -160,7 +156,7 @@ abstract class AbstractPiece implements Piece {
     @Override
     public Piece moveTo(BoardPosition position) {
         Optional.of(this)
-                .filter(piece -> Objects.isNull(piece.position))
+                .filter(piece -> isNull(piece.position))
                 .ifPresent(piece -> piece.setPosition(position));
 
         getAvailablePositions().stream()
@@ -169,6 +165,10 @@ abstract class AbstractPiece implements Piece {
                 .ifPresent(availablePosition -> getBoard().put(availablePosition, this));
 
         return this;
+    }
+
+    Boolean isEmptyBoardPosition(BoardPosition position) {
+        return isNull(board.get(position));
     }
 
     /**

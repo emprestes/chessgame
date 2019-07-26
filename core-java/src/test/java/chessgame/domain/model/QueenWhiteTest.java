@@ -40,6 +40,11 @@ public class QueenWhiteTest {
     }
 
     @Test
+    public void whiteColorTest() {
+        assertEquals(PieceColor.WHITE, whiteQueen.getColor());
+    }
+
+    @Test
     public void initPositionTest() {
         assertEquals(INITIAL_POSITION, whiteQueen.getPosition());
         assertEquals(whiteQueen, board.get(INITIAL_POSITION));
