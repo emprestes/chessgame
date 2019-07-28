@@ -23,6 +23,8 @@ abstract class AbstractPiece implements Piece {
 
     private final PieceColor color;
 
+    private BoardPosition initialPosition;
+
     private BoardPosition position;
 
     /**
@@ -54,10 +56,18 @@ abstract class AbstractPiece implements Piece {
         return color;
     }
 
+    Boolean isInitialPosition() {
+        return initialPosition.equals(getPosition());
+    }
+
     /** {@inheritDoc} */
     @Override
     public BoardPosition getPosition() {
         return position;
+    }
+
+    private void setInitialPosition(BoardPosition initialPosition) {
+        this.initialPosition = initialPosition;
     }
 
     /** {@inheritDoc} */
@@ -157,7 +167,10 @@ abstract class AbstractPiece implements Piece {
     public Piece moveTo(BoardPosition position) {
         Optional.of(this)
                 .filter(piece -> isNull(piece.position))
-                .ifPresent(piece -> piece.setPosition(position));
+                .ifPresent(piece -> {
+                    piece.setInitialPosition(position);
+                    piece.setPosition(position);
+                });
 
         getAvailablePositions().stream()
                 .filter(position::equals)
