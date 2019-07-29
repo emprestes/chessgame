@@ -84,7 +84,7 @@ enum class BoardPosition(val column: Int, val row: Int) {
 
     private fun nonLastRow() = !isLastRow()
 
-    private fun nonEquals(position: BoardPosition): Boolean = this != position
+    fun nonEquals(position: BoardPosition): Boolean = this != position
 
     private fun valueOf(column: Int, row: Int): BoardPosition = Arrays.stream(values())
             .filter { it.column == column && it.row == row }

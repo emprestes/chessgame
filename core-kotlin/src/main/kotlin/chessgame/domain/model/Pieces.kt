@@ -133,7 +133,7 @@ abstract class AbstractPiece(
         return this
     }
 
-    private fun isEmptyBoardPosition(position: BoardPosition): Boolean {
+    fun isEmptyBoardPosition(position: BoardPosition): Boolean {
         return isNull(board[position])
     }
 
@@ -157,10 +157,6 @@ abstract class AbstractPiece(
 
     override fun toString() = "$color ${this.javaClass.simpleName} @ $position"
 }
-
-class King(
-        override val board: Board,
-        override val color: PieceColor) : AbstractPiece(board, color), SpecialMovement
 
 class Knight(
         override val board: Board,

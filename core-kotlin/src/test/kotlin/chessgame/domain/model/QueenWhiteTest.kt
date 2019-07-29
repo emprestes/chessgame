@@ -3,6 +3,7 @@ package chessgame.domain.model
 import chessgame.domain.Piece
 import chessgame.domain.PieceFactory.Companion.createWhiteQueen
 import chessgame.domain.model.BoardPosition.*
+import chessgame.domain.model.PieceColor.WHITE
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
@@ -27,7 +28,7 @@ class QueenWhiteTest {
     fun createInstanceTest() = assertTrue(whiteQueen is Queen)
 
     @Test
-    fun whiteColorTest() = assertEquals(PieceColor.WHITE, whiteQueen!!.color)
+    fun whiteColorTest() = assertEquals(WHITE, whiteQueen!!.color)
 
     @Test
     fun initPositionTest() {
