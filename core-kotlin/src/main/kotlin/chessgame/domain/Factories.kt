@@ -37,19 +37,12 @@ class PieceFactory {
 
         fun createWhitePawn(board: Board, position: BoardPosition) = create(board, position, WHITE, Pawn::class.java)
 
-        fun createQueen(piece: Promotion) = create(piece.board, piece.position, piece.color, Queen::class.java)
-
-        fun createKnight(piece: Promotion) = create(piece.board, piece.position, piece.color, Knight::class.java)
-
-        fun createBishop(piece: Promotion) = create(piece.board, piece.position, piece.color, Bishop::class.java)
-
-        fun createRook(piece: Promotion) = create(piece.board, piece.position, piece.color, Rook::class.java)
-
         @Throws(PieceException::class)
         private fun create(board: Board, position: BoardPosition, color: PieceColor, _class: Class<out Piece>): Piece {
             try {
-                return _class.getConstructor(Board::class.java, PieceColor::class.java, BoardPosition::class.java)
-                        .newInstance(board, color, position)
+                return _class.getConstructor(Board::class.java, PieceColor::class.java)
+                        .newInstance(board, color)
+                        .moveTo(position)
             } catch (cause: ReflectiveOperationException) {
                 throw PieceException(cause)
             }

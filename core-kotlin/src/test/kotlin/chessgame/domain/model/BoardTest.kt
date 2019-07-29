@@ -5,7 +5,7 @@ import org.junit.Test
 
 class BoardTest {
 
-    val board = Board().init()
+    val board = Board().start()
 
     @Test
     fun initializationTest() = assertEquals(64, board.size)

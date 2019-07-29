@@ -9,11 +9,17 @@ interface Piece : Serializable, Comparable<Piece> {
 
     val board: Board
     val color: PieceColor
-    var position: BoardPosition
+    var position: BoardPosition?
 
     fun getAvailablePositions(): Set<BoardPosition>
 
-    override fun compareTo(other: Piece) = position.compareTo(other.position)
+    fun moveTo(position: BoardPosition): Piece
+
+    fun moveTo(position: String): Piece {
+        return moveTo(BoardPosition.valueOf(position))
+    }
+
+    override fun compareTo(other: Piece) = position!!.compareTo(other.position!!)
 }
 
 interface Player : Serializable {
@@ -22,8 +28,4 @@ interface Player : Serializable {
 
 interface SpecialMovement : Serializable
 
-interface Promotion : Serializable {
-    val board: Board
-    val position: BoardPosition
-    val color: PieceColor
-}
+interface Promotion : Serializable

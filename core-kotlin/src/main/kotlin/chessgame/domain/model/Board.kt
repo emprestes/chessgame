@@ -22,24 +22,18 @@ enum class BoardColor {
     DARK, LIGHT
 }
 
-enum class BoardPosition {
-    A1, A2, A3, A4, A5, A6, A7, A8,
-    B1, B2, B3, B4, B5, B6, B7, B8,
-    C1, C2, C3, C4, C5, C6, C7, C8,
-    D1, D2, D3, D4, D5, D6, D7, D8,
-    E1, E2, E3, E4, E5, E6, E7, E8,
-    F1, F2, F3, F4, F5, F6, F7, F8,
-    G1, G2, G3, G4, G5, G6, G7, G8,
-    H1, H2, H3, H4, H5, H6, H7, H8
-}
-
 class Board : TreeMap<BoardPosition, Piece?>() {
 
     private val whitePlayer = HumanPlayer()
     private val blackPlayer = HumanPlayer()
 
     fun init(): Board {
-        BoardPosition.values().forEach { position ->
+        values().forEach { position -> put(position, null) }
+        return this
+    }
+
+    fun start(): Board {
+        values().forEach { position ->
             when (position) {
                 A1, H1 -> put(whitePlayer, createWhiteRook(this, position))
                 B1, G1 -> put(whitePlayer, createWhiteKnight(this, position))
@@ -60,13 +54,21 @@ class Board : TreeMap<BoardPosition, Piece?>() {
         return this
     }
 
+    operator fun get(key: String): Piece? {
+        return super.get(valueOf(key))
+    }
+
     private fun put(player: Player, piece: Piece?): Piece? {
         piece?.let { player.add(piece) }
-        return put(piece!!.position, piece)
+        return put(piece!!.position!!, piece)
     }
 
     override fun put(key: BoardPosition, value: Piece?): Piece? {
         if (size <= BoardPosition.values().size) {
+            if (value != null) {
+                super.put(value.position!!, null)
+                value.position = key
+            }
             return super.put(key, value)
         }
 
