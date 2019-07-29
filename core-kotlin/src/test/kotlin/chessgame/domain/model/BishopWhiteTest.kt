@@ -9,7 +9,10 @@ import org.junit.Test
 
 class BishopWhiteTest {
 
-    private val initialPosition: BoardPosition = F1
+    companion object {
+        private val INITIAL_POSITION: BoardPosition = F1
+    }
+
     private var board: Board? = null
     private var whiteBishop: Piece? = null
 
@@ -17,7 +20,7 @@ class BishopWhiteTest {
     fun setUp() {
         board = Board()
         board!!.init()
-        whiteBishop = createWhiteBishop(board!!, initialPosition)
+        whiteBishop = createWhiteBishop(board!!, INITIAL_POSITION)
     }
 
     @Test
@@ -28,69 +31,58 @@ class BishopWhiteTest {
 
     @Test
     fun initPositionTest() {
-        assertEquals(initialPosition, whiteBishop!!.position)
-        assertEquals(whiteBishop, board!![initialPosition])
+        assertEquals(INITIAL_POSITION, whiteBishop!!.position)
+        assertEquals(whiteBishop, board!![INITIAL_POSITION])
     }
 
     @Test
     fun moveToA6Test() {
-        assertNotNull(board!![initialPosition.toString()])
+        assertNotNull(board!![INITIAL_POSITION.toString()])
         assertNull(board!![A6])
 
         whiteBishop!!.moveTo(A6)
 
-        assertNull(board!![initialPosition])
+        assertNull(board!![INITIAL_POSITION])
         assertNotNull(board!![A6])
     }
 
     @Test
-    fun getAvailablePositionsFromD5Test() {
-        val pos = whiteBishop!!
-                .moveTo(G2)
-                .moveTo(D5)
-                .getAvailablePositions()
-        assertEquals(13, pos.size)
-    }
+    fun getAvailablePositionsFromD5Test() = assertEquals(13, whiteBishop!!
+            .moveTo(G2)
+            .moveTo(D5)
+            .getAvailablePositions()
+            .size)
 
     @Test
-    fun getAvailablePositionsFromB3Test() {
-        val pos = whiteBishop!!
-                .moveTo(C4)
-                .moveTo(B3)
-                .getAvailablePositions()
-        assertEquals(9, pos.size)
-    }
+    fun getAvailablePositionsFromB3Test() = assertEquals(9, whiteBishop!!
+            .moveTo(C4)
+            .moveTo(B3)
+            .getAvailablePositions()
+            .size)
 
     @Test
-    fun getAvailablePositionsFromInitialPositionTest() {
-        val pos = whiteBishop!!.getAvailablePositions()
-        assertEquals(7, pos.size)
-    }
+    fun getAvailablePositionsFromInitialPositionTest() = assertEquals(7, whiteBishop!!
+            .getAvailablePositions()
+            .size)
 
     @Test
-    fun getAvailablePositionsFromH1Test() {
-        val pos = whiteBishop!!
-                .moveTo(G2)
-                .moveTo(H1)
-                .getAvailablePositions()
-        assertEquals(7, pos.size)
-    }
+    fun getAvailablePositionsFromH1Test() = assertEquals(7, whiteBishop!!
+            .moveTo(G2)
+            .moveTo(H1)
+            .getAvailablePositions()
+            .size)
 
     @Test
-    fun getAvailablePositionsFromA8Test() {
-        val pos = whiteBishop!!
-                .moveTo(G2)
-                .moveTo(A8)
-                .getAvailablePositions()
-        assertEquals(7, pos.size)
-    }
+    fun getAvailablePositionsFromA8Test() = assertEquals(7, whiteBishop!!
+            .moveTo(G2)
+            .moveTo(A8)
+            .getAvailablePositions()
+            .size)
 
     @Test
-    fun getAvailablePositionsFromH7Test() {
-        val pos = whiteBishop!!
-                .moveTo(D3)
-                .moveTo(H7)
-                .getAvailablePositions()
-        assertEquals(7, pos.size)
-    }
+    fun getAvailablePositionsFromH7Test() = assertEquals(7, whiteBishop!!
+            .moveTo(D3)
+            .moveTo(H7)
+            .getAvailablePositions()
+            .size)
 }

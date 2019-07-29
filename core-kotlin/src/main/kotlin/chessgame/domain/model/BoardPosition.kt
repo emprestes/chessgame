@@ -20,19 +20,19 @@ enum class BoardPosition(val column: Int, val row: Int) {
     H1(8, 1), H2(8, 2), H3(8, 3), H4(8, 4),
     H5(8, 5), H6(8, 6), H7(8, 7), H8(8, 8);
 
-    private fun nextColumn(): BoardPosition = Optional.of(this)
+    fun nextColumn(): BoardPosition = Optional.of(this)
             .filter(BoardPosition::isLastColumn)
             .orElse(valueOf(this.column + 1, this.row))
 
-    private fun nextRow(): BoardPosition = Optional.of(this)
+    fun nextRow(): BoardPosition = Optional.of(this)
             .filter(BoardPosition::isLastRow)
             .orElse(valueOf(this.column, this.row + 1))
 
-    private fun previousRow(): BoardPosition = Optional.of(this)
+    fun previousRow(): BoardPosition = Optional.of(this)
             .filter(BoardPosition::isFirstRow)
             .orElse(valueOf(this.column, this.row - 1))
 
-    private fun previousColumn(): BoardPosition = Optional.of(this)
+    fun previousColumn(): BoardPosition = Optional.of(this)
             .filter(BoardPosition::isFirstColumn)
             .orElse(valueOf(this.column - 1, this.row))
 

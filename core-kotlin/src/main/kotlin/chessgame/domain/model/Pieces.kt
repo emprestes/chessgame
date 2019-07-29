@@ -56,6 +56,22 @@ abstract class AbstractPiece(
         collect(position, availablePositions, Function { it.diagonalRightDown() })
     }
 
+    private fun collectPreviousColumns(position: BoardPosition?, availablePositions: MutableSet<BoardPosition>) {
+        collect(position, availablePositions, Function { it.previousColumn() })
+    }
+
+    private fun collectNextColumns(position: BoardPosition?, availablePositions: MutableSet<BoardPosition>) {
+        collect(position, availablePositions, Function { it.nextColumn() })
+    }
+
+    private fun collectPreviousRows(position: BoardPosition?, availablePositions: MutableSet<BoardPosition>) {
+        collect(position, availablePositions, Function { it.previousRow() })
+    }
+
+    private fun collectNextRows(position: BoardPosition?, availablePositions: MutableSet<BoardPosition>) {
+        collect(position, availablePositions, Function { it.nextRow() })
+    }
+
     private fun collect(position: BoardPosition?,
                         availablePositions: MutableSet<BoardPosition>,
                         updatePosition: Function<BoardPosition, BoardPosition>) {
@@ -76,6 +92,24 @@ abstract class AbstractPiece(
 
         availablePositions.addAll(collectDiagonalLeft(position))
         availablePositions.addAll(collectDiagonalRight(position))
+
+        return availablePositions
+    }
+
+    fun collectColumns(position: BoardPosition?): Set<BoardPosition> {
+        val availablePositions = mutableSetOf<BoardPosition>()
+
+        collectPreviousColumns(position, availablePositions)
+        collectNextColumns(position, availablePositions)
+
+        return availablePositions
+    }
+
+    fun collectRows(position: BoardPosition?): Set<BoardPosition> {
+        val availablePositions = mutableSetOf<BoardPosition>()
+
+        collectPreviousRows(position, availablePositions)
+        collectNextRows(position, availablePositions)
 
         return availablePositions
     }
@@ -135,10 +169,6 @@ class Knight(
 class Pawn(
         override val board: Board,
         override val color: PieceColor) : AbstractPiece(board, color), SpecialMovement, Promotion
-
-class Queen(
-        override val board: Board,
-        override val color: PieceColor) : AbstractPiece(board, color)
 
 class Rook(
         override val board: Board,
