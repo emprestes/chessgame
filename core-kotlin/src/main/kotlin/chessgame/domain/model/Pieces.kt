@@ -1,8 +1,6 @@
 package chessgame.domain.model
 
 import chessgame.domain.Piece
-import chessgame.domain.Promotion
-import chessgame.domain.SpecialMovement
 import java.util.*
 import java.util.Objects.isNull
 import java.util.function.Function
@@ -20,6 +18,8 @@ abstract class AbstractPiece(
 
     override var position: BoardPosition? = null
 
+    fun isInitialPosition() = initialPosition == position!!
+
     override fun getAvailablePositions(): Set<BoardPosition> = Collections.emptySet()
 
     private fun collectDiagonalLeft(position: BoardPosition?): Set<BoardPosition> {
@@ -31,13 +31,11 @@ abstract class AbstractPiece(
         return availablePositions
     }
 
-    private fun collectDiagonalLeftUp(position: BoardPosition?, availablePositions: MutableSet<BoardPosition>) {
-        collect(position, availablePositions, Function { it.diagonalLeftUp() })
-    }
+    private fun collectDiagonalLeftUp(position: BoardPosition?, availablePositions: MutableSet<BoardPosition>) =
+            collect(position, availablePositions, Function { it.diagonalLeftUp() })
 
-    private fun collectDiagonalLeftDowns(position: BoardPosition?, availablePositions: MutableSet<BoardPosition>) {
-        collect(position, availablePositions, Function { it.diagonalLeftDown() })
-    }
+    private fun collectDiagonalLeftDowns(position: BoardPosition?, availablePositions: MutableSet<BoardPosition>) =
+            collect(position, availablePositions, Function { it.diagonalLeftDown() })
 
     private fun collectDiagonalRight(position: BoardPosition?): Set<BoardPosition> {
         val availablePositions = LinkedHashSet<BoardPosition>()
@@ -48,36 +46,30 @@ abstract class AbstractPiece(
         return availablePositions
     }
 
-    private fun collectDiagonalRightUp(position: BoardPosition?, availablePositions: MutableSet<BoardPosition>) {
-        collect(position, availablePositions, Function { it.diagonalRightUp() })
-    }
+    private fun collectDiagonalRightUp(position: BoardPosition?, availablePositions: MutableSet<BoardPosition>) =
+            collect(position, availablePositions, Function { it.diagonalRightUp() })
 
-    private fun collectDiagonalRightDown(position: BoardPosition?, availablePositions: MutableSet<BoardPosition>) {
-        collect(position, availablePositions, Function { it.diagonalRightDown() })
-    }
+    private fun collectDiagonalRightDown(position: BoardPosition?, availablePositions: MutableSet<BoardPosition>) =
+            collect(position, availablePositions, Function { it.diagonalRightDown() })
 
-    private fun collectPreviousColumns(position: BoardPosition?, availablePositions: MutableSet<BoardPosition>) {
-        collect(position, availablePositions, Function { it.previousColumn() })
-    }
+    private fun collectPreviousColumns(position: BoardPosition?, availablePositions: MutableSet<BoardPosition>) =
+            collect(position, availablePositions, Function { it.previousColumn() })
 
-    private fun collectNextColumns(position: BoardPosition?, availablePositions: MutableSet<BoardPosition>) {
-        collect(position, availablePositions, Function { it.nextColumn() })
-    }
+    private fun collectNextColumns(position: BoardPosition?, availablePositions: MutableSet<BoardPosition>) =
+            collect(position, availablePositions, Function { it.nextColumn() })
 
-    private fun collectPreviousRows(position: BoardPosition?, availablePositions: MutableSet<BoardPosition>) {
-        collect(position, availablePositions, Function { it.previousRow() })
-    }
+    private fun collectPreviousRows(position: BoardPosition?, availablePositions: MutableSet<BoardPosition>) =
+            collect(position, availablePositions, Function { it.previousRow() })
 
-    private fun collectNextRows(position: BoardPosition?, availablePositions: MutableSet<BoardPosition>) {
-        collect(position, availablePositions, Function { it.nextRow() })
-    }
+    private fun collectNextRows(position: BoardPosition?, availablePositions: MutableSet<BoardPosition>) =
+            collect(position, availablePositions, Function { it.nextRow() })
 
     private fun collect(position: BoardPosition?,
                         availablePositions: MutableSet<BoardPosition>,
                         updatePosition: Function<BoardPosition, BoardPosition>) {
         Optional.ofNullable(position)
                 .map(updatePosition)
-                .filter { position!! != it }
+                .filter { position!!.nonEquals(it) }
                 .filter { isEmptyBoardPosition(it) }
                 .ifPresent {
                     with(availablePositions) {
@@ -133,9 +125,7 @@ abstract class AbstractPiece(
         return this
     }
 
-    fun isEmptyBoardPosition(position: BoardPosition): Boolean {
-        return isNull(board[position])
-    }
+    fun isEmptyBoardPosition(position: BoardPosition): Boolean = isNull(board[position])
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -157,10 +147,6 @@ abstract class AbstractPiece(
 
     override fun toString() = "$color ${this.javaClass.simpleName} @ $position"
 }
-
-class Pawn(
-        override val board: Board,
-        override val color: PieceColor) : AbstractPiece(board, color), SpecialMovement, Promotion
 
 class Rook(
         override val board: Board,
