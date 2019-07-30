@@ -48,9 +48,16 @@ public interface Piece extends Serializable {
      * Move this piece to the position informed.
      *
      * @param position Position informed.
+     * @return Actual piece reference
      */
     Piece moveTo(BoardPosition position);
 
+    /**
+     * Move this piece to the position informed.
+     *
+     * @param position String position informed.
+     * @return Actual piece reference
+     */
     default Piece moveTo(String position) {
         return moveTo(BoardPosition.valueOf(position));
     }

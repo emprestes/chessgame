@@ -40,7 +40,7 @@ public class Board extends TreeMap<BoardPosition, Piece> {
     /**
      * Set up a chess game.
      */
-    void initPieces() {
+    void start() {
         for (BoardPosition position : BoardPosition.values()) {
             switch (position) {
                 case A1:
