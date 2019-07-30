@@ -158,10 +158,6 @@ abstract class AbstractPiece(
     override fun toString() = "$color ${this.javaClass.simpleName} @ $position"
 }
 
-class Knight(
-        override val board: Board,
-        override val color: PieceColor) : AbstractPiece(board, color)
-
 class Pawn(
         override val board: Board,
         override val color: PieceColor) : AbstractPiece(board, color), SpecialMovement, Promotion

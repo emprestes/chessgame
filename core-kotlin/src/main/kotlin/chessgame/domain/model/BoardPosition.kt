@@ -70,19 +70,19 @@ enum class BoardPosition(val column: Int, val row: Int) {
 
     private fun isFirstColumn(): Boolean = this.column == 1
 
-    private fun nonFirstColumn(): Boolean = !isFirstColumn()
+    fun nonFirstColumn(): Boolean = !isFirstColumn()
 
     private fun isLastColumn(): Boolean = this.column == 8
 
-    private fun nonLastColumn(): Boolean = !isLastColumn()
+    fun nonLastColumn(): Boolean = !isLastColumn()
 
     private fun isFirstRow(): Boolean = this.row == 1
 
-    private fun nonFirstRow(): Boolean = !isFirstRow()
+    fun nonFirstRow(): Boolean = !isFirstRow()
 
     private fun isLastRow(): Boolean = this.row == 8
 
-    private fun nonLastRow() = !isLastRow()
+    fun nonLastRow() = !isLastRow()
 
     fun nonEquals(position: BoardPosition): Boolean = this != position
 
