@@ -4,7 +4,6 @@ import chessgame.domain.Piece
 import java.util.*
 import java.util.Objects.isNull
 import java.util.function.Function
-import kotlin.collections.LinkedHashSet
 
 enum class PieceColor {
     BLACK, WHITE
@@ -22,13 +21,9 @@ abstract class AbstractPiece(
 
     override fun getAvailablePositions(): Set<BoardPosition> = Collections.emptySet()
 
-    private fun collectDiagonalLeft(position: BoardPosition?): Set<BoardPosition> {
-        val availablePositions = mutableSetOf<BoardPosition>()
-
+    private fun collectDiagonalLeft(position: BoardPosition?, availablePositions: MutableSet<BoardPosition>) {
         collectDiagonalLeftUp(position, availablePositions)
         collectDiagonalLeftDowns(position, availablePositions)
-
-        return availablePositions
     }
 
     private fun collectDiagonalLeftUp(position: BoardPosition?, availablePositions: MutableSet<BoardPosition>) =
@@ -37,13 +32,9 @@ abstract class AbstractPiece(
     private fun collectDiagonalLeftDowns(position: BoardPosition?, availablePositions: MutableSet<BoardPosition>) =
             collect(position, availablePositions, Function { it.diagonalLeftDown() })
 
-    private fun collectDiagonalRight(position: BoardPosition?): Set<BoardPosition> {
-        val availablePositions = LinkedHashSet<BoardPosition>()
-
+    private fun collectDiagonalRight(position: BoardPosition?, availablePositions: MutableSet<BoardPosition>) {
         collectDiagonalRightUp(position, availablePositions)
         collectDiagonalRightDown(position, availablePositions)
-
-        return availablePositions
     }
 
     private fun collectDiagonalRightUp(position: BoardPosition?, availablePositions: MutableSet<BoardPosition>) =
@@ -79,31 +70,19 @@ abstract class AbstractPiece(
                 }
     }
 
-    fun collectDiagonals(position: BoardPosition?): Set<BoardPosition> {
-        val availablePositions = mutableSetOf<BoardPosition>()
-
-        availablePositions.addAll(collectDiagonalLeft(position))
-        availablePositions.addAll(collectDiagonalRight(position))
-
-        return availablePositions
+    fun collectDiagonals(position: BoardPosition?, availablePositions: MutableSet<BoardPosition>) {
+        collectDiagonalLeft(position, availablePositions)
+        collectDiagonalRight(position, availablePositions)
     }
 
-    fun collectColumns(position: BoardPosition?): Set<BoardPosition> {
-        val availablePositions = mutableSetOf<BoardPosition>()
-
+    fun collectColumns(position: BoardPosition?, availablePositions: MutableSet<BoardPosition>) {
         collectPreviousColumns(position, availablePositions)
         collectNextColumns(position, availablePositions)
-
-        return availablePositions
     }
 
-    fun collectRows(position: BoardPosition?): Set<BoardPosition> {
-        val availablePositions = mutableSetOf<BoardPosition>()
-
+    fun collectRows(position: BoardPosition?, availablePositions: MutableSet<BoardPosition>) {
         collectPreviousRows(position, availablePositions)
         collectNextRows(position, availablePositions)
-
-        return availablePositions
     }
 
     override fun moveTo(position: BoardPosition): Piece {
@@ -147,7 +126,3 @@ abstract class AbstractPiece(
 
     override fun toString() = "$color ${this.javaClass.simpleName} @ $position"
 }
-
-class Rook(
-        override val board: Board,
-        override val color: PieceColor) : AbstractPiece(board, color)
