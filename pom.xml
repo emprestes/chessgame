@@ -8,7 +8,7 @@
  <packaging>pom</packaging>
  <version>1.0-SNAPSHOT</version>
 
- <name>[CHESS] Chess Game Project</name>
+ <name>[CHESS][POM] Chess Game Project</name>
  <url>https://github.com/emprestes/chessgame/wiki</url>
  <inceptionYear>2009</inceptionYear>
 
