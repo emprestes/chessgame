@@ -6,7 +6,6 @@ import chessgame.domain.model.PieceColor.BLACK
 import chessgame.domain.model.PieceColor.WHITE
 import java.util.*
 import java.util.function.Function
-import kotlin.collections.LinkedHashSet
 
 class Pawn(
         override val board: Board,
@@ -19,7 +18,7 @@ class Pawn(
     }
 
     override fun getAvailablePositions(): Set<BoardPosition> {
-        val availablePositions = LinkedHashSet<BoardPosition>()
+        val availablePositions = mutableSetOf<BoardPosition>()
 
         for ((color, moveItFunction) in MAP) {
             Optional.of(this)
