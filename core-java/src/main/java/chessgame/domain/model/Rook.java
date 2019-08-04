@@ -1,6 +1,6 @@
 package chessgame.domain.model;
 
-import java.util.Collections;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 /**
@@ -29,7 +29,12 @@ public class Rook extends AbstractPiece {
      */
     @Override
     public Set<BoardPosition> getAvailablePositions() {
-        // TODO Implementation here.
-        return Collections.emptySet();
+        final BoardPosition myPosition = getPosition();
+        final Set<BoardPosition> availablePositions = new LinkedHashSet<>();
+
+        availablePositions.addAll(collectColumns(myPosition));
+        availablePositions.addAll(collectRows(myPosition));
+
+        return availablePositions;
     }
 }

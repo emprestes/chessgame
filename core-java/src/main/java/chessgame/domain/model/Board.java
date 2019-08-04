@@ -3,7 +3,9 @@ package chessgame.domain.model;
 import chessgame.domain.Piece;
 import chessgame.domain.Player;
 import chessgame.domain.exception.BoardException;
+import chessgame.domain.factory.PieceFactory;
 
+import java.util.Arrays;
 import java.util.TreeMap;
 
 /**
@@ -28,35 +30,36 @@ public class Board extends TreeMap<BoardPosition, Piece> {
 
         this.whitePlayer = new HumanPlayer();
         this.blackPlayer = new HumanPlayer();
+    }
 
-        init();
+    void init() {
+        Arrays.stream(BoardPosition.values())
+                .forEach(position -> put(position, null));
     }
 
     /**
      * Set up a chess game.
-     *
-     * @return Board
      */
-    private Board init() {
-        for (BoardPosition p : BoardPosition.values()) {
-            switch (p) {
+    void start() {
+        for (BoardPosition position : BoardPosition.values()) {
+            switch (position) {
                 case A1:
                 case H1:
-                    put(whitePlayer, Piece.createWhiteRook(this, p));
+                    put(whitePlayer, PieceFactory.createWhiteRook(this, position));
                     break;
                 case B1:
                 case G1:
-                    put(whitePlayer, Piece.createWhiteKnight(this, p));
+                    put(whitePlayer, PieceFactory.createWhiteKnight(this, position));
                     break;
                 case C1:
                 case F1:
-                    put(whitePlayer, Piece.createWhiteBishop(this, p));
+                    put(whitePlayer, PieceFactory.createWhiteBishop(this, position));
                     break;
                 case D1:
-                    put(whitePlayer, Piece.createWhiteQueen(this));
+                    put(whitePlayer, PieceFactory.createWhiteQueen(this));
                     break;
                 case E1:
-                    put(whitePlayer, Piece.createWhiteKing(this));
+                    put(whitePlayer, PieceFactory.createWhiteKing(this));
                     break;
                 case A2:
                 case B2:
@@ -66,7 +69,7 @@ public class Board extends TreeMap<BoardPosition, Piece> {
                 case F2:
                 case G2:
                 case H2:
-                    put(whitePlayer, Piece.createWhitePawn(this, p));
+                    put(whitePlayer, PieceFactory.createWhitePawn(this, position));
                     break;
                 case A7:
                 case B7:
@@ -76,33 +79,35 @@ public class Board extends TreeMap<BoardPosition, Piece> {
                 case F7:
                 case G7:
                 case H7:
-                    put(blackPlayer, Piece.createBlackPawn(this, p));
+                    put(blackPlayer, PieceFactory.createBlackPawn(this, position));
                     break;
                 case A8:
                 case H8:
-                    put(blackPlayer, Piece.createBlackRook(this, p));
+                    put(blackPlayer, PieceFactory.createBlackRook(this, position));
                     break;
                 case B8:
                 case G8:
-                    put(blackPlayer, Piece.createBlackKnight(this, p));
+                    put(blackPlayer, PieceFactory.createBlackKnight(this, position));
                     break;
                 case C8:
                 case F8:
-                    put(blackPlayer, Piece.createBlackBishop(this, p));
+                    put(blackPlayer, PieceFactory.createBlackBishop(this, position));
                     break;
                 case D8:
-                    put(blackPlayer, Piece.createBlackQueen(this));
+                    put(blackPlayer, PieceFactory.createBlackQueen(this));
                     break;
                 case E8:
-                    put(blackPlayer, Piece.createBlackKing(this));
+                    put(blackPlayer, PieceFactory.createBlackKing(this));
                     break;
                 default:
-                    put(p, null);
+                    put(position, null);
                     break;
             }
         }
+    }
 
-        return this;
+    Piece get(String key) {
+        return super.get(BoardPosition.valueOf(key));
     }
 
     /**
@@ -121,9 +126,13 @@ public class Board extends TreeMap<BoardPosition, Piece> {
     @Override
     public Piece put(BoardPosition key, Piece value) {
         if (size() <= BoardPosition.values().length) {
+            if (value != null) {
+                super.put(value.getPosition(), null);
+                ((AbstractPiece) value).setPosition(key);
+            }
             return super.put(key, value);
         }
 
-        throw new BoardException("Board created! More positions aren't allow!");
+        throw new BoardException("Board created! More positions aren't allowed!");
     }
 }

@@ -3,8 +3,8 @@ package chessgame.domain.model;
 import chessgame.domain.Piece;
 import chessgame.domain.Player;
 
+import java.util.HashSet;
 import java.util.Set;
-import java.util.TreeSet;
 
 /**
  * Implementation for human player of chess game.
@@ -15,7 +15,7 @@ import java.util.TreeSet;
  */
 public class HumanPlayer implements Player {
 
-    private final Set<Piece> pieces = new TreeSet<>();
+    private final Set<Piece> pieces = new HashSet<>();
 
     /**
      * {@inheritDoc}
