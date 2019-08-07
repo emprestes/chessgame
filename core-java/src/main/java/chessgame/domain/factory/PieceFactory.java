@@ -2,22 +2,25 @@ package chessgame.domain.factory;
 
 import chessgame.domain.Piece;
 import chessgame.domain.exception.PieceException;
-import chessgame.domain.model.Bishop;
+import chessgame.domain.model.BlackBishop;
+import chessgame.domain.model.BlackKing;
+import chessgame.domain.model.BlackKnight;
+import chessgame.domain.model.BlackPawn;
+import chessgame.domain.model.BlackQueen;
+import chessgame.domain.model.BlackRook;
 import chessgame.domain.model.Board;
 import chessgame.domain.model.BoardPosition;
-import chessgame.domain.model.King;
-import chessgame.domain.model.Knight;
-import chessgame.domain.model.Pawn;
-import chessgame.domain.model.PieceColor;
-import chessgame.domain.model.Queen;
-import chessgame.domain.model.Rook;
+import chessgame.domain.model.WhiteBishop;
+import chessgame.domain.model.WhiteKing;
+import chessgame.domain.model.WhiteKnight;
+import chessgame.domain.model.WhitePawn;
+import chessgame.domain.model.WhiteQueen;
+import chessgame.domain.model.WhiteRook;
 
 import static chessgame.domain.model.BoardPosition.D1;
 import static chessgame.domain.model.BoardPosition.D8;
 import static chessgame.domain.model.BoardPosition.E1;
 import static chessgame.domain.model.BoardPosition.E8;
-import static chessgame.domain.model.PieceColor.BLACK;
-import static chessgame.domain.model.PieceColor.WHITE;
 
 /**
  * Factory to create chess pieces.
@@ -41,7 +44,7 @@ public final class PieceFactory {
      * @return King
      */
     public static Piece createBlackKing(Board board) {
-        return create(board, E8, BLACK, King.class);
+        return create(board, E8, BlackKing.class);
     }
 
     /**
@@ -51,7 +54,7 @@ public final class PieceFactory {
      * @return Queen
      */
     public static Piece createBlackQueen(Board board) {
-        return create(board, D8, BLACK, Queen.class);
+        return create(board, D8, BlackQueen.class);
     }
 
     /**
@@ -62,7 +65,7 @@ public final class PieceFactory {
      * @return Bishop
      */
     public static Piece createBlackBishop(Board board, BoardPosition position) {
-        return create(board, position, BLACK, Bishop.class);
+        return create(board, position, BlackBishop.class);
     }
 
     /**
@@ -73,7 +76,7 @@ public final class PieceFactory {
      * @return Knight
      */
     public static Piece createBlackKnight(Board board, BoardPosition position) {
-        return create(board, position, BLACK, Knight.class);
+        return create(board, position, BlackKnight.class);
     }
 
     /**
@@ -84,7 +87,7 @@ public final class PieceFactory {
      * @return Rook
      */
     public static Piece createBlackRook(Board board, BoardPosition position) {
-        return create(board, position, BLACK, Rook.class);
+        return create(board, position, BlackRook.class);
     }
 
     /**
@@ -95,7 +98,7 @@ public final class PieceFactory {
      * @return Pawn
      */
     public static Piece createBlackPawn(Board board, BoardPosition position) {
-        return create(board, position, BLACK, Pawn.class);
+        return create(board, position, BlackPawn.class);
     }
 
     /**
@@ -105,7 +108,7 @@ public final class PieceFactory {
      * @return King
      */
     public static Piece createWhiteKing(Board board) {
-        return create(board, E1, WHITE, King.class);
+        return create(board, E1, WhiteKing.class);
     }
 
     /**
@@ -115,7 +118,7 @@ public final class PieceFactory {
      * @return Queen
      */
     public static Piece createWhiteQueen(Board board) {
-        return create(board, D1, WHITE, Queen.class);
+        return create(board, D1, WhiteQueen.class);
     }
 
     /**
@@ -126,7 +129,7 @@ public final class PieceFactory {
      * @return Bishop
      */
     public static Piece createWhiteBishop(Board board, BoardPosition position) {
-        return create(board, position, WHITE, Bishop.class);
+        return create(board, position, WhiteBishop.class);
     }
 
     /**
@@ -137,7 +140,7 @@ public final class PieceFactory {
      * @return Knight
      */
     public static Piece createWhiteKnight(Board board, BoardPosition position) {
-        return create(board, position, WHITE, Knight.class);
+        return create(board, position, WhiteKnight.class);
     }
 
     /**
@@ -148,7 +151,7 @@ public final class PieceFactory {
      * @return Rook
      */
     public static Piece createWhiteRook(Board board, BoardPosition position) {
-        return create(board, position, WHITE, Rook.class);
+        return create(board, position, WhiteRook.class);
     }
 
     /**
@@ -159,26 +162,24 @@ public final class PieceFactory {
      * @return Pawn
      */
     public static Piece createWhitePawn(Board board, BoardPosition position) {
-        return create(board, position, WHITE, Pawn.class);
+        return create(board, position, WhitePawn.class);
     }
 
     /**
      * @param board    Board informed.
      * @param position Board position informed.
-     * @param color    Piece color informed.
      * @param classs   Piece class informed.
-     * @return Piece
+     * @return Piece Piece instance
      * @throws PieceException Throw this exception in a cause of instantiation problems.
      * @see Board
      * @see BoardPosition
-     * @see PieceColor
      * @see Piece
      */
-    private static Piece create(Board board, BoardPosition position, PieceColor color, Class<? extends Piece> classs)
+    private static Piece create(Board board, BoardPosition position, Class<? extends Piece> classs)
             throws PieceException {
         try {
-            Piece piece = classs.getConstructor(Board.class, PieceColor.class)
-                    .newInstance(board, color)
+            Piece piece = classs.getConstructor(Board.class)
+                    .newInstance(board)
                     .moveTo(position);
             board.put(position, piece);
             return piece;

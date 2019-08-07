@@ -16,7 +16,7 @@ import static chessgame.domain.model.PieceColor.WHITE;
  * @see chessgame.domain.Piece
  * @since September 2016
  */
-public class Pawn extends AbstractPiece {
+abstract class AbstractPawn extends AbstractPiece {
 
     private final Map<PieceColor, Function<BoardPosition, BoardPosition>> map;
 
@@ -25,11 +25,13 @@ public class Pawn extends AbstractPiece {
      *
      * @param board Board informed.
      * @param color Color informed.
+     * @param uniCode Unicode.
+     * @param htmlCode HTML code (decimal).
      * @see BoardPosition
      * @see PieceColor
      */
-    public Pawn(Board board, PieceColor color) {
-        super(board, color);
+    AbstractPawn(Board board, PieceColor color, String uniCode, String htmlCode) {
+        super(board, color, uniCode, htmlCode);
 
         map = Map.of(
                 WHITE, BoardPosition::nextRow,
@@ -45,7 +47,7 @@ public class Pawn extends AbstractPiece {
 
         map.forEach((color, positionFunction) -> Optional.of(this)
                 .filter(piece -> color.equals(piece.getColor()))
-                .map(Pawn::getPosition)
+                .map(AbstractPawn::getPosition)
                 .map(positionFunction)
                 .filter(this::isEmptyBoardPosition)
                 .filter(availablePositions::add)
