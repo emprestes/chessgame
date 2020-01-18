@@ -111,6 +111,7 @@
 
  <modules>
   <module>core-java</module>
+  <module>core-kotlin</module>
  </modules>
 
  <dependencies>
