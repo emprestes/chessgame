@@ -14,9 +14,8 @@
  <name>[CHESS][JAR][JAVA] Core module</name>
 
  <dependencies>
-
+  <!-- JUnit addons -->
   <dependency>
-   <!-- JUnit addons -->
    <groupId>junit-addons</groupId>
    <artifactId>junit-addons</artifactId>
    <version>1.4</version>
