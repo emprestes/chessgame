@@ -1,0 +1,13 @@
+<!-- Creating a chessboard -->
+<div id="containerFull">
+    <div id="container">
+        <div class="row"
+             ng-class-odd="'line-dark'"
+             ng-class-even="'line-light'"
+             ng-repeat="row in board.rows">
+            <div id="{{col}}{{row}}"
+                 ng-repeat="col in board.cols"
+                 ng-bind-html="board.getPieceSymbol(col, row) | trustAsHtml"></div>
+        </div>
+    </div>
+</div>

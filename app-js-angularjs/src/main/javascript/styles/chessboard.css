@@ -1,0 +1,63 @@
+/* Creating styles  */
+*, *::before, *::after {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+}
+
+#containerFull {
+    width: 780px;
+    margin: 0 auto;
+}
+
+#container {
+    border: 3px solid #000;
+    width: 566px;
+    height: 566px;
+    border-radius: 5px;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -300px;
+    margin-left: -258px;
+}
+
+.row {
+    clear: both;
+}
+
+.row div {
+    font-size: 3em;
+    float: left;
+    width: 70px;
+    height: 70px;
+    border-left: 1.5px solid #000;
+    border-bottom: 1.5px solid #000;
+    text-align: center;
+}
+
+.row div:first-child {
+    border-left: 0;
+}
+
+.line-light div:nth-child(2n+1)  {
+    background: #D18B47;
+    color: #000
+}
+
+.line-light div:nth-child(2n)  {
+    background: #FFCE9E;
+    color: #000
+}
+
+.line-dark div:nth-child(2n)  {
+    background: #D18B47;
+    color: #000
+}
+
+.line-dark div:nth-child(2n+1)  {
+    background: #FFCE9E;
+    color: #000
+}
