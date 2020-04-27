@@ -34,12 +34,13 @@ import static chessgame.domain.model.BoardPosition.H5;
 import static chessgame.domain.model.BoardPosition.H6;
 import static chessgame.domain.model.BoardPosition.H7;
 import static chessgame.domain.model.BoardPosition.H8;
+import static chessgame.domain.model.PieceColor.WHITE;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-public class KingWhiteTest {
+public class WhiteKingTest {
 
     private static final BoardPosition INITIAL_POSITION = E1;
 
@@ -56,12 +57,12 @@ public class KingWhiteTest {
 
     @Test
     public void createInstanceTest() {
-        assertTrue(whiteKing instanceof King);
+        assertTrue(whiteKing instanceof WhiteKing);
     }
 
     @Test
     public void whiteColorTest() {
-        assertEquals(PieceColor.WHITE, whiteKing.getColor());
+        assertEquals(WHITE, whiteKing.getColor());
     }
 
     @Test

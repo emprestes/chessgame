@@ -19,6 +19,10 @@ import static java.util.Objects.isNull;
  */
 abstract class AbstractPiece implements Piece {
 
+    private String uniCode;
+
+    private String htmlCode;
+
     private final Board board;
 
     private final PieceColor color;
@@ -33,11 +37,29 @@ abstract class AbstractPiece implements Piece {
      * @param board Board informed.
      * @param color Color informed.
      */
-    AbstractPiece(Board board, PieceColor color) {
+    AbstractPiece(Board board, PieceColor color, String uniCode, String htmlCode) {
         super();
 
         this.board = board;
         this.color = color;
+        this.uniCode = uniCode;
+        this.htmlCode = htmlCode;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String getUniCode() {
+        return uniCode;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public String getHtmlCode() {
+        return htmlCode;
     }
 
     /**

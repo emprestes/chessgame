@@ -9,18 +9,20 @@ import java.util.Set;
  * @see chessgame.domain.Piece
  * @since September 2016
  */
-public class Bishop extends AbstractPiece {
+abstract class AbstractBishop extends AbstractPiece {
 
     /**
      * Bishop's constructor.
      *
      * @param board Board informed.
      * @param color Color informed.
+     * @param uniCode Unicode.
+     * @param htmlCode HTML code (decimal).
      * @see BoardPosition
      * @see PieceColor
      */
-    public Bishop(Board board, PieceColor color) {
-        super(board, color);
+    AbstractBishop(Board board, PieceColor color, String uniCode, String htmlCode) {
+        super(board, color, uniCode, htmlCode);
     }
 
     /**

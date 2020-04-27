@@ -10,18 +10,20 @@ import java.util.Set;
  * @see chessgame.domain.Piece
  * @since September 2016
  */
-public class Queen extends AbstractPiece {
+abstract class AbstractQueen extends AbstractPiece {
 
     /**
      * Queen's constructor.
      *
      * @param board Board informed.
      * @param color Color informed.
+     * @param uniCode Unicode.
+     * @param htmlCode HTML code (decimal).
      * @see BoardPosition
      * @see PieceColor
      */
-    public Queen(Board board, PieceColor color) {
-        super(board, color);
+    AbstractQueen(Board board, PieceColor color, String uniCode, String htmlCode) {
+        super(board, color, uniCode, htmlCode);
     }
 
     /**

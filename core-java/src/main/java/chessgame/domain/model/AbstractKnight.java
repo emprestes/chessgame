@@ -15,18 +15,20 @@ import static java.util.stream.Collectors.toSet;
  * @see chessgame.domain.Piece
  * @since September 2016
  */
-public class Knight extends AbstractPiece {
+abstract class AbstractKnight extends AbstractPiece {
 
     /**
      * Knight's constructor.
      *
      * @param board Board informed.
      * @param color Color informed.
+     * @param uniCode Unicode.
+     * @param htmlCode HTML code (decimal).
      * @see BoardPosition
      * @see PieceColor
      */
-    public Knight(Board board, PieceColor color) {
-        super(board, color);
+    AbstractKnight(Board board, PieceColor color, String uniCode, String htmlCode) {
+        super(board, color, uniCode, htmlCode);
     }
 
     /**

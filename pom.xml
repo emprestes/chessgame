@@ -6,7 +6,7 @@
  <groupId>br.opensource.game.chessgame</groupId>
  <artifactId>chessgame</artifactId>
  <packaging>pom</packaging>
- <version>1.0.0.RELEASE</version>
+ <version>1.1-SNAPSHOT</version>
 
  <name>[CHESS][POM] Chess Game Project</name>
  <url>https://github.com/emprestes/chessgame/wiki</url>

@@ -7,11 +7,20 @@ import org.junit.Test;
 import java.util.Set;
 
 import static chessgame.domain.factory.PieceFactory.createWhitePawn;
-import static chessgame.domain.model.BoardPosition.*;
+import static chessgame.domain.model.BoardPosition.D2;
+import static chessgame.domain.model.BoardPosition.D3;
+import static chessgame.domain.model.BoardPosition.D4;
+import static chessgame.domain.model.BoardPosition.D5;
+import static chessgame.domain.model.BoardPosition.D6;
+import static chessgame.domain.model.BoardPosition.D7;
+import static chessgame.domain.model.BoardPosition.D8;
 import static chessgame.domain.model.PieceColor.WHITE;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
-public class PawnWhiteTest {
+public class WhitePawnTest {
 
     private static final BoardPosition INITIAL_POSITION = D2;
 
@@ -28,7 +37,7 @@ public class PawnWhiteTest {
 
     @Test
     public void createInstanceTest() {
-        assertTrue(whitePawn instanceof Pawn);
+        assertTrue(whitePawn instanceof WhitePawn);
     }
 
     @Test
