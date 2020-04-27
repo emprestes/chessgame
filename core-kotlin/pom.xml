@@ -2,54 +2,64 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>chessgame</artifactId>
-        <groupId>br.opensource.game.chessgame</groupId>
-        <version>1.0-SNAPSHOT</version>
-    </parent>
-    <modelVersion>4.0.0</modelVersion>
+ <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>chessgame-core-kotlin</artifactId>
-    <name>[CHESS][JAR][KOTLIN] Core module</name>
+ <parent>
+  <artifactId>chessgame</artifactId>
+  <groupId>br.opensource.game.chessgame</groupId>
+  <version>1.0.0.RELEASE</version>
+ </parent>
 
-    <build>
-        <plugins>
-            <plugin>
-                <artifactId>kotlin-maven-plugin</artifactId>
-                <groupId>org.jetbrains.kotlin</groupId>
-                <version>${kotlin.version}</version>
+ <artifactId>chessgame-core-kotlin</artifactId>
+ <name>[CHESS][JAR][KOTLIN] Core module</name>
 
-                <executions>
-                    <execution>
-                        <id>compile</id>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                    </execution>
+ <build>
+  <plugins>
+   <plugin>
+    <artifactId>kotlin-maven-plugin</artifactId>
+    <groupId>org.jetbrains.kotlin</groupId>
+    <version>${kotlin.version}</version>
 
-                    <execution>
-                        <id>test-compile</id>
-                        <goals>
-                            <goal>test-compile</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
+    <executions>
+     <execution>
+      <id>compile</id>
+      <goals>
+       <goal>compile</goal>
+      </goals>
+     </execution>
 
-        <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
-        <testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
-    </build>
+     <execution>
+      <id>test-compile</id>
+      <goals>
+       <goal>test-compile</goal>
+      </goals>
+     </execution>
+    </executions>
+   </plugin>
+  </plugins>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-stdlib</artifactId>
-            <version>${kotlin.version}</version>
-        </dependency>
-    </dependencies>
+  <sourceDirectory>${pom.basedir}/src/main/kotlin</sourceDirectory>
+  <testSourceDirectory>${pom.basedir}/src/test/kotlin</testSourceDirectory>
+ </build>
 
-    <properties>
-        <kotlin.version>1.2.51</kotlin.version>
-    </properties>
+ <dependencies>
+  <!-- Kotlin -->
+  <dependency>
+   <groupId>org.jetbrains.kotlin</groupId>
+   <artifactId>kotlin-stdlib-jdk8</artifactId>
+   <version>${kotlin.version}</version>
+  </dependency>
+
+  <!-- JUnit addons -->
+  <dependency>
+   <groupId>junit-addons</groupId>
+   <artifactId>junit-addons</artifactId>
+   <version>1.4</version>
+   <scope>test</scope>
+  </dependency>
+ </dependencies>
+
+ <properties>
+  <kotlin.version>1.3.72</kotlin.version>
+ </properties>
 </project>
