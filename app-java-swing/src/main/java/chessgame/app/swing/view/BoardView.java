@@ -113,7 +113,7 @@ public class BoardView extends View {
                 .ifPresent(found -> found.setText(pieceView));
     }
 
-    private final class PieceMouseAdapter extends MouseAdapter {
+    private static final class PieceMouseAdapter extends MouseAdapter {
 
         @Override
         public void mouseDragged(MouseEvent e) {
@@ -154,7 +154,7 @@ public class BoardView extends View {
         }
     }
 
-    private final class PieceTransferable implements Transferable {
+    private static final class PieceTransferable implements Transferable {
 
         private final Object piece;
 
@@ -183,7 +183,7 @@ public class BoardView extends View {
         }
     }
 
-    private final class PieceTransferHandler extends TransferHandler {
+    private static final class PieceTransferHandler extends TransferHandler {
 
         @Override
         public int getSourceActions(JComponent c) {
@@ -200,7 +200,7 @@ public class BoardView extends View {
         }
     }
 
-    private final class PositionDropTarget extends DropTarget {
+    private static final class PositionDropTarget extends DropTarget {
 
         private final Pattern piecePattern = Pattern.compile("&[#]\\d{1,4};");
 
