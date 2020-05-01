@@ -6,7 +6,7 @@
  <groupId>br.opensource.game.chessgame</groupId>
  <artifactId>chessgame</artifactId>
  <packaging>pom</packaging>
- <version>1.0-SNAPSHOT</version>
+ <version>1.0.0.RELEASE</version>
 
  <name>[CHESS] Chess Game Project</name>
  <url>https://github.com/emprestes/chessgame/wiki</url>
@@ -19,7 +19,7 @@
    <id>emprestes</id>
    <name>Prestes, E. M.</name>
    <email>emprestes@gmail.com</email>
-   <timezone>-3</timezone>
+   <timezone>+2</timezone>
   </developer>
  </developers>
 

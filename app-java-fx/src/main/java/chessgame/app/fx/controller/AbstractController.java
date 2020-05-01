@@ -1,6 +1,6 @@
 package chessgame.app.fx.controller;
 
-import chessgame.app.fx.Controller;
+import chessgame.app.fx.api.Controller;
 import javafx.stage.Stage;
 
 /**

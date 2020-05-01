@@ -1,6 +1,6 @@
 package chessgame.app.fx.util;
 
-import chessgame.app.fx.Controller;
+import chessgame.app.fx.api.Controller;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;

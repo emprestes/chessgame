@@ -2,12 +2,13 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
- <parent>
-  <artifactId>chessgame</artifactId>
-  <groupId>br.opensource.game.chessgame</groupId>
-  <version>1.0-SNAPSHOT</version>
- </parent>
  <modelVersion>4.0.0</modelVersion>
+
+ <parent>
+  <groupId>br.opensource.game.chessgame</groupId>
+  <artifactId>chessgame</artifactId>
+  <version>1.0.0.RELEASE</version>
+ </parent>
 
  <artifactId>chessgame-app-fx</artifactId>
  <name>[CHESS][APP] Desktop Application (JavaFX)</name>
@@ -15,27 +16,11 @@
  <build>
   <plugins>
    <plugin>
-    <groupId>org.codehaus.mojo</groupId>
-    <artifactId>exec-maven-plugin</artifactId>
-    <version>1.2.1</version>
-    <configuration>
-     <mainClass>chessgame.app.Chess</mainClass>
-    </configuration>
-   </plugin>
-   <plugin>
     <groupId>org.openjfx</groupId>
     <artifactId>javafx-maven-plugin</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.4</version>
     <configuration>
      <mainClass>chessgame.app.Chess</mainClass>
-    </configuration>
-   </plugin>
-   <plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-compiler-plugin</artifactId>
-    <configuration>
-     <source>9</source>
-     <target>9</target>
     </configuration>
    </plugin>
   </plugins>
@@ -56,6 +41,6 @@
  </dependencies>
 
  <properties>
-  <javafx-version>12.0.1</javafx-version>
+  <javafx-version>14</javafx-version>
  </properties>
 </project>
