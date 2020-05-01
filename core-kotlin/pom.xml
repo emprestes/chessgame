@@ -5,8 +5,8 @@
  <modelVersion>4.0.0</modelVersion>
 
  <parent>
-  <artifactId>chessgame</artifactId>
   <groupId>br.opensource.game.chessgame</groupId>
+  <artifactId>chessgame</artifactId>
   <version>1.0.0.RELEASE</version>
  </parent>
 

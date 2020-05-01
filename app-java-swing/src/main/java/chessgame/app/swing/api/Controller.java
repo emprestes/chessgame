@@ -1,4 +1,4 @@
-package chessgame.app.swing;
+package chessgame.app.swing.api;
 
 import java.awt.Dimension;
 
@@ -8,7 +8,7 @@ import java.awt.Dimension;
  * @author Prestes, E. M.
  * @see View
  * @see Dimension
- * @since October 20116
+ * @since October 2016
  */
 public interface Controller {
 

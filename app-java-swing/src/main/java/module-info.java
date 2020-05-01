@@ -1,5 +1,5 @@
 module chessgame.app.swing {
     requires java.desktop;
-    requires slf4j.api;
+    requires org.slf4j;
 
 }

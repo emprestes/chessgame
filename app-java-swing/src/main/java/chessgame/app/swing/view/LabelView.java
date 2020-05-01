@@ -1,6 +1,6 @@
 package chessgame.app.swing.view;
 
-import chessgame.app.swing.View;
+import chessgame.app.swing.api.View;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
