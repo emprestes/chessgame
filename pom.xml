@@ -8,7 +8,7 @@
  <packaging>pom</packaging>
  <version>1.0.0.RELEASE</version>
 
- <name>[CHESS][POM] Chess Game Project</name>
+ <name>[CHESS] Chess Game Project</name>
  <url>https://github.com/emprestes/chessgame/wiki</url>
  <inceptionYear>2009</inceptionYear>
 
@@ -19,7 +19,7 @@
    <id>emprestes</id>
    <name>Prestes, E. M.</name>
    <email>emprestes@gmail.com</email>
-   <timezone>-3</timezone>
+   <timezone>+2</timezone>
   </developer>
  </developers>
 
@@ -84,6 +84,15 @@
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-javadoc-plugin</artifactId>
     <version>3.1.0</version>
+    <executions>
+     <execution>
+      <id>javadoc-run</id>
+      <phase>package</phase>
+      <goals>
+       <goal>jar</goal>
+      </goals>
+     </execution>
+    </executions>
    </plugin>
 
    <plugin>
@@ -111,6 +120,7 @@
 
  <modules>
   <module>core-java</module>
+  <module>app-java-fx</module>
   <module>core-kotlin</module>
  </modules>
 
@@ -134,12 +144,12 @@
   <dependency>
    <groupId>org.slf4j</groupId>
    <artifactId>slf4j-api</artifactId>
-   <version>1.7.26</version>
+   <version>${slf4j.version}</version>
   </dependency>
   <!-- Binding for Log4J -->
   <dependency>
    <groupId>org.apache.logging.log4j</groupId>
-   <artifactId>log4j-slf4j-impl</artifactId>
+   <artifactId>log4j-slf4j18-impl</artifactId>
    <version>${log4j.version}</version>
   </dependency>
   <!-- Log4j API and Core implementation required for binding -->
@@ -162,6 +172,7 @@
   <maven.compiler.target>14</maven.compiler.target>
   <maven.compiler.vendor>openJDK</maven.compiler.vendor>
   <maven.compiler.release>14</maven.compiler.release>
-  <log4j.version>2.12.1</log4j.version>
+  <slf4j.version>1.8.0-beta4</slf4j.version>
+  <log4j.version>2.13.2</log4j.version>
  </properties>
 </project>
