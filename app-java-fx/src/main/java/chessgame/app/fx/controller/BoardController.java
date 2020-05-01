@@ -28,10 +28,10 @@ public class BoardController extends AbstractController {
     private final BoardFacade facade = new MockBoardFacade();
 
     @FXML
-    GridPane boardView;
+    public GridPane boardView;
 
     @FXML
-    private void initialize() {
+    public void initialize() {
         initialize(facade.initBlackPieces());
         initialize(facade.initWhitePieces());
     }

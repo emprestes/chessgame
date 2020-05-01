@@ -1,4 +1,4 @@
 /**
  * Interfaces available to GUI.
  */
-package chessgame.app.fx;
+package chessgame.app.fx.api;
