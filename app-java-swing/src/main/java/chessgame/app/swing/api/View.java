@@ -1,4 +1,4 @@
-package chessgame.app.swing;
+package chessgame.app.swing.api;
 
 import javax.swing.JPanel;
 import java.awt.LayoutManager;
