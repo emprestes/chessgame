@@ -1,4 +1,4 @@
-package chessgame.app.fx
+package chessgame.app.fx.api
 
 import javafx.stage.Stage
 

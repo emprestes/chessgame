@@ -1,6 +1,6 @@
 package chessgame.app.fx.controller
 
-import chessgame.app.fx.Controller
+import chessgame.app.fx.api.Controller
 import javafx.fxml.FXML
 import javafx.scene.layout.GridPane
 import javafx.stage.Stage
@@ -17,7 +17,7 @@ abstract class AbstractController : Controller {
 class BoardController : AbstractController() {
 
     @FXML
-    private var boardView: GridPane? = null
+    var boardView: GridPane? = null
 
     companion object {
 

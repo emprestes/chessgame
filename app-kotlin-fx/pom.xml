@@ -2,12 +2,13 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>chessgame</artifactId>
-        <groupId>br.opensource.game.chessgame</groupId>
-        <version>1.0-SNAPSHOT</version>
-    </parent>
     <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>br.opensource.game.chessgame</groupId>
+        <artifactId>chessgame</artifactId>
+        <version>1.0.0.RELEASE</version>
+    </parent>
 
     <artifactId>chessgame-app-kotlin-fx</artifactId>
     <name>[CHESS][APP][KOTLIN] Desktop Application (JavaFX)</name>
@@ -21,6 +22,7 @@
                 <executions>
                     <execution>
                         <id>compile</id>
+                        <phase>process-sources</phase>
                         <goals>
                             <goal>compile</goal>
                         </goals>
@@ -35,11 +37,11 @@
             </plugin>
 
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>1.2.1</version>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>0.0.4</version>
                 <configuration>
-                    <mainClass>chessgame.app.ChessKt</mainClass>
+                    <mainClass>chessgame.app.Chess</mainClass>
                 </configuration>
             </plugin>
         </plugins>
@@ -51,12 +53,23 @@
     <dependencies>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-stdlib</artifactId>
+            <artifactId>kotlin-stdlib-jdk8</artifactId>
             <version>${kotlin.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>${javafx-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-fxml</artifactId>
+            <version>${javafx-version}</version>
         </dependency>
     </dependencies>
 
     <properties>
-        <kotlin.version>1.2.51</kotlin.version>
+        <kotlin.version>1.3.72</kotlin.version>
+        <javafx-version>14</javafx-version>
     </properties>
 </project>
