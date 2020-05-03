@@ -7,7 +7,6 @@ import javafx.scene.Scene
 import javafx.stage.Stage
 import java.net.URL
 
-
 class FXMLHelper {
 
     companion object {
