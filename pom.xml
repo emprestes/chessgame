@@ -124,6 +124,7 @@
   <module>app-java-fx</module>
   <module>app-java-swing</module>
   <module>core-kotlin</module>
+  <module>app-js-angularjs</module>
  </modules>
 
  <dependencies>
