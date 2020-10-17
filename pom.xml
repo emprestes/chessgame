@@ -9,7 +9,7 @@
  <packaging>pom</packaging>
  <version>1.0.0.RELEASE</version>
 
- <name>[CHESS] Chess Game Project</name>
+ <name>[CHESS][POM] Chess Game Project</name>
  <url>https://github.com/emprestes/chessgame/wiki</url>
  <inceptionYear>2009</inceptionYear>
 
@@ -124,6 +124,7 @@
   <module>app-java-fx</module>
   <module>app-java-swing</module>
   <module>core-kotlin</module>
+  <module>app-kotlin-fx</module>
   <module>app-js-angularjs</module>
  </modules>
 
