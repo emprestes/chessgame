@@ -2,7 +2,7 @@ package chessgame.app
 
 import chessgame.app.fx.controller.BoardController.Companion.VIEW_TITLE
 import chessgame.app.fx.controller.BoardController.Companion.VIEW_URL
-import chessgame.app.fx.util.FXMLHelper.Companion.createScene
+import chessgame.app.fx.view.FXMLHelper.Companion.createScene
 import javafx.application.Application
 import javafx.application.Application.launch
 import javafx.stage.Stage

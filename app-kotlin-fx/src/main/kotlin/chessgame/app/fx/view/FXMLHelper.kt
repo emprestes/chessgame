@@ -1,4 +1,4 @@
-package chessgame.app.fx.util
+package chessgame.app.fx.view
 
 import chessgame.app.fx.api.Controller
 import javafx.fxml.FXMLLoader
