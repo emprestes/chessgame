@@ -17,12 +17,13 @@ import static chessgame.domain.model.BoardPosition.F1;
 import static chessgame.domain.model.BoardPosition.G2;
 import static chessgame.domain.model.BoardPosition.H1;
 import static chessgame.domain.model.BoardPosition.H7;
+import static chessgame.domain.model.PieceColor.WHITE;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-public class BishopWhileTest {
+public class WhiteBishopTest {
 
     private static final BoardPosition INITIAL_POSITION = F1;
 
@@ -39,12 +40,12 @@ public class BishopWhileTest {
 
     @Test
     public void createInstanceTest() {
-        assertTrue(whiteBishop instanceof Bishop);
+        assertTrue(whiteBishop instanceof WhiteBishop);
     }
 
     @Test
     public void whiteColorTest() {
-        assertEquals(PieceColor.WHITE, whiteBishop.getColor());
+        assertEquals(WHITE, whiteBishop.getColor());
     }
 
     @Test

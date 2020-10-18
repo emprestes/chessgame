@@ -14,12 +14,13 @@ import static chessgame.domain.model.BoardPosition.B3;
 import static chessgame.domain.model.BoardPosition.D1;
 import static chessgame.domain.model.BoardPosition.H1;
 import static chessgame.domain.model.BoardPosition.H8;
+import static chessgame.domain.model.PieceColor.WHITE;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
-public class QueenWhiteTest {
+public class WhiteQueenTest {
 
     private static final BoardPosition INITIAL_POSITION = D1;
 
@@ -36,12 +37,12 @@ public class QueenWhiteTest {
 
     @Test
     public void createInstanceTest() {
-        assertTrue(whiteQueen instanceof Queen);
+        assertTrue(whiteQueen instanceof WhiteQueen);
     }
 
     @Test
     public void whiteColorTest() {
-        assertEquals(PieceColor.WHITE, whiteQueen.getColor());
+        assertEquals(WHITE, whiteQueen.getColor());
     }
 
     @Test
