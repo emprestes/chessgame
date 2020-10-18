@@ -1,4 +1,4 @@
-package chessgame.app.swing.api;
+package chessgame.app.swing;
 
 import java.awt.Dimension;
 

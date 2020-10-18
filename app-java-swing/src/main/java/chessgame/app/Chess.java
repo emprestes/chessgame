@@ -1,8 +1,8 @@
 package chessgame.app;
 
 import chessgame.app.swing.Application;
-import chessgame.app.swing.api.Controller;
-import chessgame.app.swing.api.View;
+import chessgame.app.swing.Controller;
+import chessgame.app.swing.View;
 import chessgame.app.swing.controller.BoardController;
 import chessgame.app.swing.view.LabelView;
 

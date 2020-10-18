@@ -1,6 +1,6 @@
 package chessgame.app.swing.view;
 
-import chessgame.app.swing.api.View;
+import chessgame.app.swing.View;
 import org.slf4j.Logger;
 
 import javax.swing.JComponent;
