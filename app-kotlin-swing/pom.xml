@@ -2,14 +2,43 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>chessgame</artifactId>
-        <groupId>br.opensource.game.chessgame</groupId>
-        <version>1.0-SNAPSHOT</version>
-    </parent>
-    <modelVersion>4.0.0</modelVersion>
+ <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>chessgame-app-kotlin-swing</artifactId>
-    <name>[CHESS][JAR][KT] Desktop Application (JavaSwing)</name>
+ <parent>
+  <artifactId>chessgame</artifactId>
+  <groupId>br.opensource.game.chessgame</groupId>
+  <version>1.0.0.RELEASE</version>
+ </parent>
 
+ <artifactId>chessgame-app-kotlin-swing</artifactId>
+ <name>[CHESS][KOTLIN] Desktop Application (JavaSwing)</name>
+
+ <build>
+  <plugins>
+   <plugin>
+    <groupId>org.jetbrains.kotlin</groupId>
+    <artifactId>kotlin-maven-plugin</artifactId>
+   </plugin>
+  </plugins>
+
+  <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
+ </build>
+
+ <dependencies>
+  <!-- Kotlin -->
+  <dependency>
+   <groupId>org.jetbrains.kotlin</groupId>
+   <artifactId>kotlin-stdlib</artifactId>
+  </dependency>
+
+  <!-- SLF4J -->
+  <dependency>
+   <groupId>org.slf4j</groupId>
+   <artifactId>slf4j-api</artifactId>
+  </dependency>
+  <dependency>
+   <groupId>org.apache.logging.log4j</groupId>
+   <artifactId>log4j-slf4j18-impl</artifactId>
+  </dependency>
+ </dependencies>
 </project>
