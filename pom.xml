@@ -172,6 +172,7 @@
   <module>app-java-swing</module>
   <module>core-kotlin</module>
   <module>app-kotlin-fx</module>
+  <module>app-kotlin-swing</module>
   <module>core-js</module>
   <module>app-js-angularjs</module>
  </modules>
