@@ -1,6 +1,6 @@
 package chessgame.app.fx.controller
 
-import chessgame.app.fx.api.Controller
+import chessgame.app.fx.Controller
 import javafx.fxml.FXML
 import javafx.scene.layout.GridPane
 import javafx.stage.Stage
