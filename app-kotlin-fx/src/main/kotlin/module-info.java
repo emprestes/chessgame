@@ -1,7 +1,6 @@
 module chessgame.app.fx {
     requires javafx.controls;
     requires javafx.fxml;
-    requires kotlin.stdlib.jdk8;
     requires kotlin.stdlib;
 
     exports chessgame.app;

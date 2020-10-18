@@ -1,4 +1,4 @@
 /**
- * Application of Chess Game.
+ * Chess game application.
  */
 package chessgame.app;

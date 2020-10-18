@@ -11,36 +11,61 @@
  </parent>
 
  <artifactId>chessgame-app-fx</artifactId>
- <name>[CHESS][APP][JAVA] Desktop Application (JavaFX)</name>
+ <name>[CHESS][JAVA] Desktop Application (JavaFX)</name>
 
  <build>
   <plugins>
    <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-compiler-plugin</artifactId>
+   </plugin>
+
+   <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-checkstyle-plugin</artifactId>
+   </plugin>
+
+   <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-javadoc-plugin</artifactId>
+   </plugin>
+
+   <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-resources-plugin</artifactId>
+   </plugin>
+
+   <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-source-plugin</artifactId>
+   </plugin>
+
+   <plugin>
     <groupId>org.openjfx</groupId>
     <artifactId>javafx-maven-plugin</artifactId>
-    <version>0.0.4</version>
-    <configuration>
-     <mainClass>chessgame.app.Chess</mainClass>
-    </configuration>
    </plugin>
   </plugins>
  </build>
 
  <dependencies>
+  <!-- JavaFX -->
   <dependency>
    <groupId>org.openjfx</groupId>
    <artifactId>javafx-controls</artifactId>
-   <version>${javafx-version}</version>
   </dependency>
-
   <dependency>
    <groupId>org.openjfx</groupId>
    <artifactId>javafx-fxml</artifactId>
-   <version>${javafx-version}</version>
+  </dependency>
+
+  <!-- SLF4J -->
+  <dependency>
+   <groupId>org.slf4j</groupId>
+   <artifactId>slf4j-api</artifactId>
+  </dependency>
+  <dependency>
+   <groupId>org.apache.logging.log4j</groupId>
+   <artifactId>log4j-slf4j18-impl</artifactId>
   </dependency>
  </dependencies>
-
- <properties>
-  <javafx-version>14</javafx-version>
- </properties>
 </project>

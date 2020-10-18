@@ -1,4 +1,4 @@
 /**
- * Swing components of Chess Game.
+ * Swing components for Chess Game.
  */
 package chessgame.app.swing;

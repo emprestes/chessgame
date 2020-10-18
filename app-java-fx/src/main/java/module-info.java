@@ -1,3 +1,6 @@
+/**
+ * JavaFX application
+ */
 module chessgame.app.fx {
     requires javafx.controls;
     requires javafx.fxml;

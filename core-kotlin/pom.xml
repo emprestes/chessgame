@@ -11,25 +11,17 @@
  </parent>
 
  <artifactId>chessgame-core-kotlin</artifactId>
- <name>[CHESS][JAR][KOTLIN] Core module</name>
+ <name>[CHESS][KOTLIN] Core module</name>
 
  <build>
   <plugins>
    <plugin>
     <artifactId>kotlin-maven-plugin</artifactId>
     <groupId>org.jetbrains.kotlin</groupId>
-    <version>${kotlin.version}</version>
-
     <executions>
      <execution>
-      <id>compile</id>
-      <goals>
-       <goal>compile</goal>
-      </goals>
-     </execution>
-
-     <execution>
       <id>test-compile</id>
+      <phase>process-sources</phase>
       <goals>
        <goal>test-compile</goal>
       </goals>
@@ -46,20 +38,17 @@
   <!-- Kotlin -->
   <dependency>
    <groupId>org.jetbrains.kotlin</groupId>
-   <artifactId>kotlin-stdlib-jdk8</artifactId>
-   <version>${kotlin.version}</version>
+   <artifactId>kotlin-stdlib</artifactId>
   </dependency>
 
-  <!-- JUnit addons -->
+  <!-- JUnit -->
+  <dependency>
+   <groupId>junit</groupId>
+   <artifactId>junit</artifactId>
+  </dependency>
   <dependency>
    <groupId>junit-addons</groupId>
    <artifactId>junit-addons</artifactId>
-   <version>1.4</version>
-   <scope>test</scope>
   </dependency>
  </dependencies>
-
- <properties>
-  <kotlin.version>1.3.72</kotlin.version>
- </properties>
 </project>

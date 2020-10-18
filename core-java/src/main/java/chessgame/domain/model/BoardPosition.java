@@ -1,7 +1,8 @@
 package chessgame.domain.model;
 
 import java.util.Arrays;
-import java.util.Optional;
+
+import static java.util.Optional.of;
 
 /**
  * Positions of Chessboard.
@@ -9,7 +10,6 @@ import java.util.Optional;
  * @author Prestes, E. M.
  * @since September 2016
  */
-
 public enum BoardPosition {
     A1(1, 1), A2(1, 2), A3(1, 3), A4(1, 4),
     A5(1, 5), A6(1, 6), A7(1, 7), A8(1, 8),
@@ -28,40 +28,65 @@ public enum BoardPosition {
     H1(8, 1), H2(8, 2), H3(8, 3), H4(8, 4),
     H5(8, 5), H6(8, 6), H7(8, 7), H8(8, 8);
 
-    private int column;
-    private int row;
+    private final int column;
+    private final int row;
 
     BoardPosition(int column, int row) {
         this.column = column;
         this.row = row;
     }
 
+    /**
+     * Find next column of the Chessboard.
+     *
+     * @return {@link BoardPosition}
+     */
     public BoardPosition nextColumn() {
-        return Optional.of(this)
+        return of(this)
                 .filter(BoardPosition::isLastColumn)
                 .orElse(valueOf(this.column + 1, this.row));
     }
 
+    /**
+     * Find next row of the Chessboard.
+     *
+     * @return {@link BoardPosition}
+     */
     public BoardPosition nextRow() {
-        return Optional.of(this)
+        return of(this)
                 .filter(BoardPosition::isLastRow)
                 .orElse(valueOf(this.column, this.row + 1));
     }
 
+    /**
+     * Find previous row of the Chessboard.
+     *
+     * @return {@link BoardPosition}
+     */
     public BoardPosition previousRow() {
-        return Optional.of(this)
+        return of(this)
                 .filter(BoardPosition::isFirstRow)
                 .orElse(valueOf(this.column, this.row - 1));
     }
 
+    /**
+     * Find previous column of the Chessboard.
+     *
+     * @return {@link BoardPosition}
+     */
     public BoardPosition previousColumn() {
-        return Optional.of(this)
+        return of(this)
                 .filter(BoardPosition::isFirstColumn)
                 .orElse(valueOf(this.column - 1, this.row));
     }
 
+    /**
+     * Find diagonal right up of the Chessboard.
+     *
+     * @return {@link BoardPosition}
+     */
     public BoardPosition diagonalRightUp() {
-        return Optional.of(this)
+        return of(this)
                 .filter(BoardPosition::nonLastColumn)
                 .map(BoardPosition::nextColumn)
                 .filter(this::nonEquals)
@@ -70,8 +95,13 @@ public enum BoardPosition {
                 .orElse(this);
     }
 
+    /**
+     * Find diagonal right down of the Chessboard.
+     *
+     * @return {@link BoardPosition}
+     */
     public BoardPosition diagonalRightDown() {
-        return Optional.of(this)
+        return of(this)
                 .filter(BoardPosition::nonLastColumn)
                 .map(BoardPosition::nextColumn)
                 .filter(this::nonEquals)
@@ -80,8 +110,13 @@ public enum BoardPosition {
                 .orElse(this);
     }
 
+    /**
+     * Find diagonal left up of the Chessboard.
+     *
+     * @return {@link BoardPosition}
+     */
     public BoardPosition diagonalLeftUp() {
-        return Optional.of(this)
+        return of(this)
                 .filter(BoardPosition::nonFirstColumn)
                 .map(BoardPosition::previousColumn)
                 .filter(this::nonEquals)
@@ -90,8 +125,13 @@ public enum BoardPosition {
                 .orElse(this);
     }
 
+    /**
+     * Find diagonal left down of the Chessboard.
+     *
+     * @return {@link BoardPosition}
+     */
     public BoardPosition diagonalLeftDown() {
-        return Optional.of(this)
+        return of(this)
                 .filter(BoardPosition::nonFirstColumn)
                 .map(BoardPosition::previousColumn)
                 .filter(this::nonEquals)
@@ -100,38 +140,84 @@ public enum BoardPosition {
                 .orElse(this);
     }
 
+    /**
+     * Checks if this position is the first column.
+     *
+     * @return {@link Boolean}
+     */
     public Boolean isFirstColumn() {
         return this.column == 1;
     }
 
+    /**
+     * Checks if this position is not the first column.
+     *
+     * @return {@link Boolean}
+     */
     public Boolean nonFirstColumn() {
         return !isFirstColumn();
     }
 
+    /**
+     * Checks if this position is the last column.
+     *
+     * @return {@link Boolean}
+     */
     public Boolean isLastColumn() {
         return this.column == 8;
     }
 
+    /**
+     * Checks if this position is not the last column.
+     *
+     * @return {@link Boolean}
+     */
     public Boolean nonLastColumn() {
         return !isLastColumn();
     }
 
+    /**
+     * Checks if this position is the first row.
+     *
+     * @return {@link Boolean}
+     */
     public Boolean isFirstRow() {
         return this.row == 1;
     }
 
+    /**
+     * Checks if this position is not the first row.
+     *
+     * @return {@link Boolean}
+     */
     public Boolean nonFirstRow() {
         return !isFirstRow();
     }
 
+    /**
+     * Checks if this position is the last row.
+     *
+     * @return {@link Boolean}
+     */
     public Boolean isLastRow() {
         return this.row == 8;
     }
 
+    /**
+     * Checks if this position is not the last row.
+     *
+     * @return {@link Boolean}
+     */
     public Boolean nonLastRow() {
         return !isLastRow();
     }
 
+    /**
+     * Checks if this position is not equalled by position informed.
+     *
+     * @param position Position informed.
+     * @return {@link Boolean}
+     */
     public Boolean nonEquals(BoardPosition position) {
         return !this.equals(position);
     }

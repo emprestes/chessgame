@@ -21,24 +21,21 @@
 		<module name="ParameterName"/>
 		<module name="StaticVariableName"/>
 		<module name="TypeName"/>
-		<module name="AvoidStarImport">
-			<metadata name="com.atlassw.tools.eclipse.checkstyle.comment"
-													value="Utilizar apenas Imports utilizados. Não importar todos (*)"/>
-		</module>
+		<module name="AvoidStarImport"/>
 		<module name="IllegalImport">
 			<property name="illegalPkgs" value="sun,oracle,jboss"/>
 		</module>
-		<module name="RedundantImport" />
+		<module name="RedundantImport"/>
 		<module name="UnusedImports">
-			<property name="severity" value="error" />
+			<property name="severity" value="error"/>
 		</module>
 		<module name="MethodLength">
-			<property name="max" value="300" />
+			<property name="max" value="300"/>
 		</module>
 		<module name="ParameterNumber">
-			<property name="max" value="20" />
+			<property name="max" value="20"/>
 		</module>
-		<module name="EmptyForIteratorPad" />
+		<module name="EmptyForIteratorPad"/>
 		<module name="MethodParamPad" />
 		<module name="NoWhitespaceAfter">
 			<property name="tokens"

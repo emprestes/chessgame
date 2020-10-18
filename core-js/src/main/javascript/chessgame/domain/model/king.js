@@ -4,4 +4,4 @@ const king = {
     getAvailablePositions
 };
 
-export default king
+export default king;

@@ -11,7 +11,7 @@
  </parent>
 
  <artifactId>chessgame-app-js-angularjs</artifactId>
- <name>[CHESS][APP][JS] Web Application (Angular.JS)</name>
+ <name>[CHESS][JS] Web Application (Angular.JS)</name>
 
  <build>
   <resources>
