@@ -2,22 +2,47 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
- <parent>
-  <artifactId>chessgame</artifactId>
-  <groupId>br.opensource.game.chessgame</groupId>
-  <version>1.0-SNAPSHOT</version>
- </parent>
  <modelVersion>4.0.0</modelVersion>
 
+ <parent>
+  <groupId>br.opensource.game.chessgame</groupId>
+  <artifactId>chessgame</artifactId>
+  <version>1.0.0.RELEASE</version>
+ </parent>
+
  <artifactId>chessgame-app-swing</artifactId>
- <name>[CHESS][JAR] Desktop Application (JavaSwing)</name>
+ <name>[CHESS][JAVA] Desktop Application (JavaSwing)</name>
 
  <build>
   <plugins>
    <plugin>
     <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-compiler-plugin</artifactId>
+   </plugin>
+
+   <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-checkstyle-plugin</artifactId>
+   </plugin>
+
+   <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-javadoc-plugin</artifactId>
+   </plugin>
+
+   <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-resources-plugin</artifactId>
+   </plugin>
+
+   <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-source-plugin</artifactId>
+   </plugin>
+
+   <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-jar-plugin</artifactId>
-    <version>2.4</version>
     <configuration>
      <archive>
       <manifest>
@@ -31,11 +56,19 @@
    <plugin>
     <groupId>org.codehaus.mojo</groupId>
     <artifactId>exec-maven-plugin</artifactId>
-    <version>1.2.1</version>
-    <configuration>
-     <mainClass>chessgame.app.Chess</mainClass>
-    </configuration>
    </plugin>
   </plugins>
  </build>
+
+ <dependencies>
+  <!-- SLF4J -->
+  <dependency>
+   <groupId>org.slf4j</groupId>
+   <artifactId>slf4j-api</artifactId>
+  </dependency>
+  <dependency>
+   <groupId>org.apache.logging.log4j</groupId>
+   <artifactId>log4j-slf4j18-impl</artifactId>
+  </dependency>
+ </dependencies>
 </project>
