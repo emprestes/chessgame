@@ -2,33 +2,26 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
-        <artifactId>chessgame</artifactId>
-        <groupId>br.opensource.game.chessgame</groupId>
-        <version>1.0-SNAPSHOT</version>
-    </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>br.opensource.game.chessgame</groupId>
+        <artifactId>chessgame</artifactId>
+        <version>1.0.0.RELEASE</version>
+    </parent>
+
     <artifactId>chessgame-core-kotlin</artifactId>
-    <name>[CHESS][JAR][KOTLIN] Core module</name>
+    <name>[CHESS][KOTLIN] Core module</name>
 
     <build>
         <plugins>
             <plugin>
                 <artifactId>kotlin-maven-plugin</artifactId>
                 <groupId>org.jetbrains.kotlin</groupId>
-                <version>${kotlin.version}</version>
-
                 <executions>
                     <execution>
-                        <id>compile</id>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                    </execution>
-
-                    <execution>
                         <id>test-compile</id>
+                        <phase>process-sources</phase>
                         <goals>
                             <goal>test-compile</goal>
                         </goals>
@@ -37,19 +30,25 @@
             </plugin>
         </plugins>
 
-        <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
-        <testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
+        <sourceDirectory>${pom.basedir}/src/main/kotlin</sourceDirectory>
+        <testSourceDirectory>${pom.basedir}/src/test/kotlin</testSourceDirectory>
     </build>
 
     <dependencies>
+        <!-- Kotlin -->
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib</artifactId>
-            <version>${kotlin.version}</version>
+        </dependency>
+
+        <!-- JUnit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>junit-addons</groupId>
+            <artifactId>junit-addons</artifactId>
         </dependency>
     </dependencies>
-
-    <properties>
-        <kotlin.version>1.2.51</kotlin.version>
-    </properties>
 </project>

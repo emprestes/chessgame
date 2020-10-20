@@ -1,1 +1,0 @@
-package chessgame.domain.factory;
