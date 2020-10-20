@@ -10,9 +10,11 @@ import javafx.stage.Stage
 class Chess : Application() {
 
     override fun start(primaryStage: Stage?) {
-        primaryStage?.scene = createScene(primaryStage, VIEW_TITLE, VIEW_URL)
-        primaryStage?.isResizable = false
-        primaryStage?.show()
+        primaryStage?.let {
+            it.scene = createScene(it, VIEW_TITLE, VIEW_URL)
+            it.isResizable = false
+            it.show()
+        }
     }
 }
 
