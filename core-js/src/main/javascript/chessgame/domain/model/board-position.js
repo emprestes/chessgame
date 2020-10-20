@@ -121,4 +121,4 @@ const valueOf = (column, row) => {
     }
 };
 
-export default BoardPosition
+export default BoardPosition;
