@@ -263,7 +263,7 @@
   <version.common-lang>2.6</version.common-lang>
   <version.slf4j>1.8.0-beta4</version.slf4j>
   <version.log4j>2.13.2</version.log4j>
-  <version.junit>4.12</version.junit>
+  <version.junit>4.13.1</version.junit>
   <version.junit-addons>1.4</version.junit-addons>
  </properties>
 </project>
