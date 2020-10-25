@@ -5,8 +5,8 @@
  <modelVersion>4.0.0</modelVersion>
 
  <parent>
-  <artifactId>chessgame</artifactId>
   <groupId>br.opensource.game.chessgame</groupId>
+  <artifactId>chessgame</artifactId>
   <version>1.0.0.RELEASE</version>
  </parent>
 
@@ -18,6 +18,14 @@
    <plugin>
     <groupId>org.jetbrains.kotlin</groupId>
     <artifactId>kotlin-maven-plugin</artifactId>
+   </plugin>
+
+   <plugin>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>exec-maven-plugin</artifactId>
+    <configuration>
+     <mainClass>chessgame.app.ChessKt</mainClass>
+    </configuration>
    </plugin>
   </plugins>
 
