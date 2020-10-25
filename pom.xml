@@ -25,96 +25,140 @@
  </developers>
 
  <build>
+  <pluginManagement>
+   <plugins>
+    <plugin>
+     <groupId>org.apache.maven.plugins</groupId>
+     <artifactId>maven-jar-plugin</artifactId>
+     <version>${plugin.version.jar}</version>
+    </plugin>
+
+    <plugin>
+     <groupId>org.apache.maven.plugins</groupId>
+     <artifactId>maven-toolchains-plugin</artifactId>
+     <version>${plugin.version.toolchains}</version>
+     <configuration>
+      <toolchains>
+       <jdk>
+        <version>${maven.compiler.source}</version>
+        <vendor>${maven.compiler.vendor}</vendor>
+       </jdk>
+      </toolchains>
+     </configuration>
+     <executions>
+      <execution>
+       <goals>
+        <goal>toolchain</goal>
+       </goals>
+      </execution>
+     </executions>
+    </plugin>
+
+    <plugin>
+     <groupId>org.apache.maven.plugins</groupId>
+     <artifactId>maven-compiler-plugin</artifactId>
+     <version>${plugin.version.compiler}</version>
+    </plugin>
+
+    <plugin>
+     <groupId>org.apache.maven.plugins</groupId>
+     <artifactId>maven-checkstyle-plugin</artifactId>
+     <version>${plugin.version.checkstyle}</version>
+     <executions>
+      <execution>
+       <id>validate</id>
+       <phase>validate</phase>
+       <configuration>
+        <configLocation>src/checkstyle.xml</configLocation>
+        <consoleOutput>true</consoleOutput>
+        <failsOnError>true</failsOnError>
+        <encoding>${project.build.sourceEncoding}</encoding>
+        <excludes>**/module-info.java</excludes>
+       </configuration>
+       <goals>
+        <goal>check</goal>
+       </goals>
+      </execution>
+     </executions>
+    </plugin>
+
+    <plugin>
+     <groupId>org.apache.maven.plugins</groupId>
+     <artifactId>maven-javadoc-plugin</artifactId>
+     <version>${plugin.version.maven}</version>
+     <executions>
+      <execution>
+       <id>javadoc-run</id>
+       <phase>package</phase>
+       <goals>
+        <goal>jar</goal>
+       </goals>
+      </execution>
+     </executions>
+    </plugin>
+
+    <plugin>
+     <groupId>org.apache.maven.plugins</groupId>
+     <artifactId>maven-resources-plugin</artifactId>
+     <version>${plugin.version.maven}</version>
+    </plugin>
+
+    <plugin>
+     <groupId>org.apache.maven.plugins</groupId>
+     <artifactId>maven-source-plugin</artifactId>
+     <version>${plugin.version.maven}</version>
+     <executions>
+      <execution>
+       <id>attach-sources</id>
+       <phase>verify</phase>
+       <goals>
+        <goal>jar-no-fork</goal>
+       </goals>
+      </execution>
+     </executions>
+    </plugin>
+
+    <plugin>
+     <groupId>org.jetbrains.kotlin</groupId>
+     <artifactId>kotlin-maven-plugin</artifactId>
+     <version>${version.kotlin}</version>
+     <executions>
+      <execution>
+       <id>compile</id>
+       <phase>process-sources</phase>
+       <goals>
+        <goal>compile</goal>
+       </goals>
+      </execution>
+     </executions>
+    </plugin>
+
+    <plugin>
+     <groupId>org.codehaus.mojo</groupId>
+     <artifactId>exec-maven-plugin</artifactId>
+     <version>${plugin.version.exec}</version>
+    </plugin>
+
+    <plugin>
+     <groupId>org.openjfx</groupId>
+     <artifactId>javafx-maven-plugin</artifactId>
+     <version>${plugin.version.javafx}</version>
+     <configuration>
+      <mainClass>chessgame.app.Chess</mainClass>
+     </configuration>
+    </plugin>
+   </plugins>
+  </pluginManagement>
+
   <plugins>
    <plugin>
     <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-compiler-plugin</artifactId>
-    <version>3.8.1</version>
-   </plugin>
-
-   <plugin>
-    <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-jar-plugin</artifactId>
-    <version>3.1.2</version>
    </plugin>
 
    <plugin>
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-toolchains-plugin</artifactId>
-    <version>3.0.0</version>
-    <configuration>
-     <toolchains>
-      <jdk>
-       <version>${maven.compiler.source}</version>
-       <vendor>${maven.compiler.vendor}</vendor>
-      </jdk>
-     </toolchains>
-    </configuration>
-    <executions>
-     <execution>
-      <goals>
-       <goal>toolchain</goal>
-      </goals>
-     </execution>
-    </executions>
-   </plugin>
-
-   <plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-checkstyle-plugin</artifactId>
-    <version>3.1.1</version>
-    <executions>
-     <execution>
-      <id>validate</id>
-      <phase>validate</phase>
-      <configuration>
-       <configLocation>src/checkstyle.xml</configLocation>
-       <consoleOutput>true</consoleOutput>
-       <failsOnError>true</failsOnError>
-       <encoding>${project.build.sourceEncoding}</encoding>
-       <excludes>**/module-info.java</excludes>
-      </configuration>
-      <goals>
-       <goal>check</goal>
-      </goals>
-     </execution>
-    </executions>
-   </plugin>
-
-   <plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-javadoc-plugin</artifactId>
-    <version>3.1.0</version>
-    <executions>
-     <execution>
-      <id>javadoc-run</id>
-      <phase>package</phase>
-      <goals>
-       <goal>jar</goal>
-      </goals>
-     </execution>
-    </executions>
-   </plugin>
-
-   <plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-resources-plugin</artifactId>
-    <version>3.1.0</version>
-   </plugin>
-
-   <plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-source-plugin</artifactId>
-    <version>3.1.0</version>
-    <executions>
-     <execution>
-      <id>attach-sources</id>
-      <phase>verify</phase>
-      <goals>
-       <goal>jar-no-fork</goal>
-      </goals>
-     </execution>
-    </executions>
    </plugin>
   </plugins>
  </build>
@@ -124,57 +168,102 @@
   <module>app-java-fx</module>
   <module>app-java-swing</module>
   <module>core-kotlin</module>
+  <module>app-kotlin-fx</module>
+  <module>app-kotlin-swing</module>
+  <module>core-js</module>
+  <module>app-js-angularjs</module>
  </modules>
 
- <dependencies>
-  <!-- Jakarta Commons -->
-  <dependency>
-   <groupId>commons-lang</groupId>
-   <artifactId>commons-lang</artifactId>
-   <version>2.6</version>
-  </dependency>
+ <dependencyManagement>
+  <dependencies>
+   <!-- Kotlin -->
+   <dependency>
+    <groupId>org.jetbrains.kotlin</groupId>
+    <artifactId>kotlin-stdlib</artifactId>
+    <version>${version.kotlin}</version>
+   </dependency>
 
-  <!-- JUnit -->
-  <dependency>
-   <groupId>junit</groupId>
-   <artifactId>junit</artifactId>
-   <version>4.13.1</version>
-   <scope>test</scope>
-  </dependency>
+   <!-- JavaFX -->
+   <dependency>
+    <groupId>org.openjfx</groupId>
+    <artifactId>javafx-controls</artifactId>
+    <version>${version.javafx}</version>
+   </dependency>
+   <dependency>
+    <groupId>org.openjfx</groupId>
+    <artifactId>javafx-fxml</artifactId>
+    <version>${version.javafx}</version>
+   </dependency>
 
-  <!-- SLF4J -->
-  <dependency>
-   <groupId>org.slf4j</groupId>
-   <artifactId>slf4j-api</artifactId>
-   <version>${slf4j.version}</version>
-  </dependency>
-  <!-- Binding for Log4J -->
-  <dependency>
-   <groupId>org.apache.logging.log4j</groupId>
-   <artifactId>log4j-slf4j18-impl</artifactId>
-   <version>${log4j.version}</version>
-  </dependency>
-  <!-- Log4j API and Core implementation required for binding -->
-  <dependency>
-   <groupId>org.apache.logging.log4j</groupId>
-   <artifactId>log4j-api</artifactId>
-   <version>${log4j.version}</version>
-  </dependency>
-  <!-- Log4j -->
-  <dependency>
-   <groupId>org.apache.logging.log4j</groupId>
-   <artifactId>log4j-core</artifactId>
-   <version>${log4j.version}</version>
-  </dependency>
- </dependencies>
+   <!-- Jakarta Commons -->
+   <dependency>
+    <groupId>commons-lang</groupId>
+    <artifactId>commons-lang</artifactId>
+    <version>${version.common-lang}</version>
+   </dependency>
+
+   <!-- SLF4J -->
+   <dependency>
+    <groupId>org.slf4j</groupId>
+    <artifactId>slf4j-api</artifactId>
+    <version>${version.slf4j}</version>
+   </dependency>
+   <dependency>
+    <groupId>org.apache.logging.log4j</groupId>
+    <artifactId>log4j-slf4j18-impl</artifactId>
+    <version>${version.log4j}</version>
+   </dependency>
+
+   <!-- Log4j -->
+   <dependency>
+    <groupId>org.apache.logging.log4j</groupId>
+    <artifactId>log4j-api</artifactId>
+    <version>${version.log4j}</version>
+   </dependency>
+   <dependency>
+    <groupId>org.apache.logging.log4j</groupId>
+    <artifactId>log4j-core</artifactId>
+    <version>${version.log4j}</version>
+   </dependency>
+
+   <!-- JUnit -->
+   <dependency>
+    <groupId>junit</groupId>
+    <artifactId>junit</artifactId>
+    <version>${version.junit}</version>
+    <scope>test</scope>
+   </dependency>
+   <dependency>
+    <groupId>junit-addons</groupId>
+    <artifactId>junit-addons</artifactId>
+    <version>${version.junit-addons}</version>
+    <scope>test</scope>
+   </dependency>
+  </dependencies>
+ </dependencyManagement>
 
  <properties>
   <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  <maven.compiler.source>14</maven.compiler.source>
-  <maven.compiler.target>14</maven.compiler.target>
+
+  <maven.compiler.source>15</maven.compiler.source>
+  <maven.compiler.target>15</maven.compiler.target>
+  <maven.compiler.release>15</maven.compiler.release>
   <maven.compiler.vendor>openJDK</maven.compiler.vendor>
-  <maven.compiler.release>14</maven.compiler.release>
-  <slf4j.version>1.8.0-beta4</slf4j.version>
-  <log4j.version>2.13.2</log4j.version>
+
+  <plugin.version.checkstyle>3.1.1</plugin.version.checkstyle>
+  <plugin.version.compiler>3.8.1</plugin.version.compiler>
+  <plugin.version.exec>1.2.1</plugin.version.exec>
+  <plugin.version.javafx>0.0.4</plugin.version.javafx>
+  <plugin.version.jar>2.4</plugin.version.jar>
+  <plugin.version.maven>3.1.0</plugin.version.maven>
+  <plugin.version.toolchains>3.0.0</plugin.version.toolchains>
+
+  <version.kotlin>1.4.10</version.kotlin>
+  <version.javafx>14</version.javafx>
+  <version.common-lang>2.6</version.common-lang>
+  <version.slf4j>1.8.0-beta4</version.slf4j>
+  <version.log4j>2.13.2</version.log4j>
+  <version.junit>4.12</version.junit>
+  <version.junit-addons>1.4</version.junit-addons>
  </properties>
 </project>

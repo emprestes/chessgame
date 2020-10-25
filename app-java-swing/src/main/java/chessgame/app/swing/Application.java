@@ -21,11 +21,11 @@ public abstract class Application {
      * @param classs Application class informed.
      * @param args   Arguments informed.
      */
-    protected static void launch(Class<? extends Application> classs, String... args) {
+    protected static void launch(Class< ? extends Application> classs, String... args) {
         SwingUtilities.invokeLater(() -> {
             try {
                 JFrame view = new JFrame();
-                Constructor<? extends Application> constructor = classs.getConstructor();
+                Constructor< ? extends Application> constructor = classs.getConstructor();
                 Application app = constructor.newInstance();
 
                 app.start(view);
@@ -43,7 +43,6 @@ public abstract class Application {
      * Behaviour to start the application.
      *
      * @param view Window informed.
-     *
      * @throws Exception Throw problem during application initialization.
      */
     public abstract void start(JFrame view) throws Exception;

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+ <modelVersion>4.0.0</modelVersion>
+
+ <parent>
+  <groupId>br.opensource.game.chessgame</groupId>
+  <artifactId>chessgame</artifactId>
+  <version>1.0.0.RELEASE</version>
+ </parent>
+
+ <artifactId>chessgame-app-js-angularjs</artifactId>
+ <name>[CHESS][JS] Web Application (Angular.JS)</name>
+
+ <build>
+  <resources>
+   <resource>
+    <directory>src/main/javascript</directory>
+    <filtering>true</filtering>
+   </resource>
+  </resources>
+ </build>
+</project>

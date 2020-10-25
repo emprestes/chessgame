@@ -11,15 +11,46 @@
  </parent>
 
  <artifactId>chessgame-core-java</artifactId>
- <name>[CHESS][JAR][JAVA] Core module</name>
+ <name>[CHESS][JAVA] Core module</name>
+
+ <build>
+  <plugins>
+   <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-compiler-plugin</artifactId>
+   </plugin>
+
+   <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-checkstyle-plugin</artifactId>
+   </plugin>
+
+   <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-javadoc-plugin</artifactId>
+   </plugin>
+
+   <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-resources-plugin</artifactId>
+   </plugin>
+
+   <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-source-plugin</artifactId>
+   </plugin>
+  </plugins>
+ </build>
 
  <dependencies>
-  <!-- JUnit addons -->
+  <!-- JUnit -->
+  <dependency>
+   <groupId>junit</groupId>
+   <artifactId>junit</artifactId>
+  </dependency>
   <dependency>
    <groupId>junit-addons</groupId>
    <artifactId>junit-addons</artifactId>
-   <version>1.4</version>
-   <scope>test</scope>
   </dependency>
  </dependencies>
 </project>

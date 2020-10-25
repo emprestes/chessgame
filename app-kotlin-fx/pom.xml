@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+ <modelVersion>4.0.0</modelVersion>
+
+ <parent>
+  <groupId>br.opensource.game.chessgame</groupId>
+  <artifactId>chessgame</artifactId>
+  <version>1.0.0.RELEASE</version>
+ </parent>
+
+ <artifactId>chessgame-app-kotlin-fx</artifactId>
+ <name>[CHESS][KOTLIN] Desktop Application (JavaFX)</name>
+
+ <build>
+  <plugins>
+   <plugin>
+    <groupId>org.jetbrains.kotlin</groupId>
+    <artifactId>kotlin-maven-plugin</artifactId>
+   </plugin>
+
+   <plugin>
+    <groupId>org.openjfx</groupId>
+    <artifactId>javafx-maven-plugin</artifactId>
+   </plugin>
+  </plugins>
+
+  <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
+ </build>
+
+ <dependencies>
+  <!-- Kotlin -->
+  <dependency>
+   <groupId>org.jetbrains.kotlin</groupId>
+   <artifactId>kotlin-stdlib</artifactId>
+  </dependency>
+
+  <!-- JavaFX -->
+  <dependency>
+   <groupId>org.openjfx</groupId>
+   <artifactId>javafx-controls</artifactId>
+  </dependency>
+  <dependency>
+   <groupId>org.openjfx</groupId>
+   <artifactId>javafx-fxml</artifactId>
+  </dependency>
+
+  <!-- SLF4J -->
+  <dependency>
+   <groupId>org.slf4j</groupId>
+   <artifactId>slf4j-api</artifactId>
+  </dependency>
+  <dependency>
+   <groupId>org.apache.logging.log4j</groupId>
+   <artifactId>log4j-slf4j18-impl</artifactId>
+  </dependency>
+ </dependencies>
+</project>

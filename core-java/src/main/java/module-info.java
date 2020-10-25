@@ -1,3 +1,6 @@
+/**
+ * Java core module
+ */
 module chessgame.core {
 
     exports chessgame.domain;

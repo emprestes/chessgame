@@ -37,6 +37,10 @@ public interface Piece extends Serializable {
      */
     BoardPosition getPosition();
 
+    String getUniCode();
+
+    String getHtmlCode();
+
     /**
      * Recovery available positions of a piece.
      *
