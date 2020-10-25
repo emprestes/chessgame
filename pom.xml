@@ -169,7 +169,7 @@
   <plugin.version.maven>3.1.0</plugin.version.maven>
   <plugin.version.toolchains>3.0.0</plugin.version.toolchains>
 
-  <version.junit>4.12</version.junit>
+  <version.junit>4.13.1</version.junit>
   <version.junit-addons>1.4</version.junit-addons>
  </properties>
 </project>
