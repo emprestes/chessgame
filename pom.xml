@@ -100,9 +100,6 @@
      <groupId>org.codehaus.mojo</groupId>
      <artifactId>exec-maven-plugin</artifactId>
      <version>${plugin.version.exec}</version>
-     <configuration>
-      <mainClass>chessgame.app.Chess</mainClass>
-     </configuration>
     </plugin>
    </plugins>
   </pluginManagement>
