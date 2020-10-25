@@ -56,6 +56,9 @@
    <plugin>
     <groupId>org.codehaus.mojo</groupId>
     <artifactId>exec-maven-plugin</artifactId>
+    <configuration>
+     <mainClass>chessgame.app.Chess</mainClass>
+    </configuration>
    </plugin>
   </plugins>
  </build>
