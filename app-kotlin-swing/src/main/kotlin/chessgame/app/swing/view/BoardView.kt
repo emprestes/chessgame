@@ -86,7 +86,7 @@ class BoardView(cols: Array<String>, rows: Array<String>) : View(GridLayout(cols
                 .filter { block -> block is JTextPane }
                 .map { block -> block as JTextPane }
                 .filter { block -> block.name == pos }
-                .filter { block -> !block.text.isEmpty }
+                .filter { block -> block.text.isNotBlank() }
                 .findFirst()
                 .ifPresent { found -> found.text = pieceView }
     }
@@ -113,7 +113,7 @@ class BoardView(cols: Array<String>, rows: Array<String>) : View(GridLayout(cols
 
         override fun mousePressed(e: MouseEvent) {
             with(e.source as JEditorPane) {
-                if (!text.isEmpty) {
+                if (text.isNotBlank()) {
                     transferHandler.exportAsDrag(this, e, MOVE)
                     text = ""
                 }
