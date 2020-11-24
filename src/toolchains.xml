@@ -8,6 +8,7 @@
             <vendor>openJDK</vendor>
         </provides>
         <configuration>
+            <!-- set the path of your jdkhome below -->
             <jdkHome>/usr/lib/jvm/java-15-oracle</jdkHome>
         </configuration>
     </toolchain>
