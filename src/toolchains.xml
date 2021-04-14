@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF8"?>
+<toolchains>
+    <!-- JDK toolchains -->
+    <toolchain>
+        <type>jdk</type>
+        <provides>
+            <version>15</version>
+            <vendor>openJDK</vendor>
+        </provides>
+        <configuration>
+            <!-- set the path of your jdkhome below -->
+            <jdkHome>/usr/lib/jvm/java-15-oracle</jdkHome>
+        </configuration>
+    </toolchain>
+</toolchains>
