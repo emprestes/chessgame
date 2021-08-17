@@ -59,7 +59,7 @@ public class BlackRookTest {
     }
 
     @Test
-    public void moveToH8Test() {
+    public void moveToAValidPositionTest() {
         assertNotNull(board.get(INITIAL_POSITION.toString()));
         assertNull(board.get(H8));
 

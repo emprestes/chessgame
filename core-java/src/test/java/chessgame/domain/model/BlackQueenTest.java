@@ -11,6 +11,7 @@ import static chessgame.domain.model.BoardPosition.A8;
 import static chessgame.domain.model.BoardPosition.B6;
 import static chessgame.domain.model.BoardPosition.B8;
 import static chessgame.domain.model.BoardPosition.D8;
+import static chessgame.domain.model.BoardPosition.H1;
 import static chessgame.domain.model.BoardPosition.H4;
 import static chessgame.domain.model.BoardPosition.H8;
 import static chessgame.domain.model.PieceColor.BLACK;
@@ -18,6 +19,7 @@ import static chessgame.domain.model.PieceFactory.createBlackQueen;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class BlackQueenTest {
@@ -52,7 +54,7 @@ public class BlackQueenTest {
     }
 
     @Test
-    public void moveToA8Test() {
+    public void moveToAValidPositionTest() {
         assertNotNull(board.get(INITIAL_POSITION.toString()));
         assertNull(board.get(A8));
 
@@ -60,6 +62,16 @@ public class BlackQueenTest {
 
         assertNull(board.get(INITIAL_POSITION));
         assertNotNull(board.get("A8"));
+    }
+
+    @Test
+    public void moveToAnInvalidPositionTest() {
+        assertNotNull(board.get(INITIAL_POSITION.toString()));
+        assertNull(board.get(H1));
+
+        assertThrows(IllegalStateException.class,
+                () -> blackQueen.moveTo(H1),
+                "This movement shouldn't happen to " + H1);
     }
 
     @Test
