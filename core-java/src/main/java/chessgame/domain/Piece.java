@@ -1,6 +1,5 @@
 package chessgame.domain;
 
-import chessgame.domain.model.Board;
 import chessgame.domain.model.BoardPosition;
 import chessgame.domain.model.PieceColor;
 
@@ -47,6 +46,10 @@ public interface Piece extends Serializable {
      * @return Set
      */
     Set<BoardPosition> getAvailablePositions();
+
+    default int availablePositionsSize() {
+        return getAvailablePositions().size();
+    }
 
     /**
      * Move this piece to the position informed.

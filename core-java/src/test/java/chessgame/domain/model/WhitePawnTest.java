@@ -1,12 +1,11 @@
 package chessgame.domain.model;
 
+import chessgame.domain.Board;
 import chessgame.domain.Piece;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import java.util.Set;
-
-import static chessgame.domain.factory.PieceFactory.createWhitePawn;
+import static chessgame.domain.model.BoardFactory.createBoard;
 import static chessgame.domain.model.BoardPosition.D2;
 import static chessgame.domain.model.BoardPosition.D3;
 import static chessgame.domain.model.BoardPosition.D4;
@@ -14,11 +13,14 @@ import static chessgame.domain.model.BoardPosition.D5;
 import static chessgame.domain.model.BoardPosition.D6;
 import static chessgame.domain.model.BoardPosition.D7;
 import static chessgame.domain.model.BoardPosition.D8;
+import static chessgame.domain.model.BoardPosition.H8;
 import static chessgame.domain.model.PieceColor.WHITE;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import static chessgame.domain.model.PieceFactory.createWhitePawn;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class WhitePawnTest {
 
@@ -28,9 +30,9 @@ public class WhitePawnTest {
 
     private Piece whitePawn;
 
-    @Before
+    @BeforeEach
     public void setUp() {
-        board = new Board();
+        board = createBoard();
         board.init();
         whitePawn = createWhitePawn(board, INITIAL_POSITION);
     }
@@ -52,7 +54,7 @@ public class WhitePawnTest {
     }
 
     @Test
-    public void moveToD4Test() {
+    public void moveToAValidPositionTest() {
         assertNotNull(board.get(INITIAL_POSITION.toString()));
         assertNull(board.get(D4));
 
@@ -63,23 +65,31 @@ public class WhitePawnTest {
     }
 
     @Test
+    public void moveToAnInvalidPositionTest() {
+        assertNotNull(board.get(INITIAL_POSITION.toString()));
+        assertNull(board.get(H8));
+
+        assertThrows(IllegalStateException.class,
+                () -> whitePawn.moveTo(H8),
+                "This movement shouldn't happen to " + H8);
+    }
+
+    @Test
     public void getAvailablePositionsFromD3Test() {
-        final Set<BoardPosition> pos = whitePawn
+        assertEquals(1, whitePawn
                 .moveTo("D3")
-                .getAvailablePositions();
-        assertEquals(1, pos.size());
+                .availablePositionsSize());
     }
 
     @Test
     public void getAvailablePositionsFromD8Test() {
-        final Set<BoardPosition> pos = whitePawn
+        assertEquals(0, whitePawn
                 .moveTo(D3)
                 .moveTo(D4)
                 .moveTo(D5)
                 .moveTo(D6)
                 .moveTo(D7)
                 .moveTo(D8)
-                .getAvailablePositions();
-        assertEquals(0, pos.size());
+                .availablePositionsSize());
     }
 }

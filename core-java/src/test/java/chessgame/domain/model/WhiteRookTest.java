@@ -1,12 +1,11 @@
 package chessgame.domain.model;
 
+import chessgame.domain.Board;
 import chessgame.domain.Piece;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import java.util.Set;
-
-import static chessgame.domain.factory.PieceFactory.createWhiteRook;
+import static chessgame.domain.model.BoardFactory.createBoard;
 import static chessgame.domain.model.BoardPosition.A1;
 import static chessgame.domain.model.BoardPosition.A5;
 import static chessgame.domain.model.BoardPosition.A8;
@@ -25,10 +24,12 @@ import static chessgame.domain.model.BoardPosition.H6;
 import static chessgame.domain.model.BoardPosition.H7;
 import static chessgame.domain.model.BoardPosition.H8;
 import static chessgame.domain.model.PieceColor.WHITE;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import static chessgame.domain.model.PieceFactory.createWhiteRook;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class WhiteRookTest {
 
@@ -38,9 +39,9 @@ public class WhiteRookTest {
 
     private Piece whiteRook;
 
-    @Before
+    @BeforeEach
     public void setUp() {
-        board = new Board();
+        board = createBoard();
         board.init();
         whiteRook = createWhiteRook(board, INITIAL_POSITION);
     }
@@ -62,7 +63,7 @@ public class WhiteRookTest {
     }
 
     @Test
-    public void moveToA8Test() {
+    public void moveToAValidPositionTest() {
         assertNotNull(board.get(INITIAL_POSITION.toString()));
         assertNull(board.get(A8));
 
@@ -73,51 +74,57 @@ public class WhiteRookTest {
     }
 
     @Test
+    public void moveToAnInvalidPositionTest() {
+        assertNotNull(board.get(INITIAL_POSITION.toString()));
+        assertNull(board.get(H8));
+
+        assertThrows(IllegalStateException.class,
+                () -> whiteRook.moveTo(H8),
+                "This movement shouldn't happen to " + H8);
+    }
+
+    @Test
     public void getAvailablePositionsFromD5Test() {
-        final Set<BoardPosition> pos = whiteRook
+        assertEquals(14, whiteRook
                 .moveTo(A5)
                 .moveTo(B5)
                 .moveTo(C5)
                 .moveTo(D5)
-                .getAvailablePositions();
-        assertEquals(14, pos.size());
+                .availablePositionsSize());
     }
 
     @Test
     public void getAvailablePositionsFromB3Test() {
-        final Set<BoardPosition> pos = whiteRook
+        assertEquals(14, whiteRook
                 .moveTo(B1)
                 .moveTo(B2)
                 .moveTo(B3)
-                .getAvailablePositions();
-        assertEquals(14, pos.size());
+                .availablePositionsSize());
     }
 
     @Test
     public void getAvailablePositionsFromInitialPositionTest() {
-        final Set<BoardPosition> pos = whiteRook.getAvailablePositions();
-        assertEquals(14, pos.size());
+        assertEquals(14, whiteRook
+                .availablePositionsSize());
     }
 
     @Test
     public void getAvailablePositionsFromH1Test() {
-        final Set<BoardPosition> pos = whiteRook
+        assertEquals(14, whiteRook
                 .moveTo(H1)
-                .getAvailablePositions();
-        assertEquals(14, pos.size());
+                .availablePositionsSize());
     }
 
     @Test
     public void getAvailablePositionsFromA8Test() {
-        final Set<BoardPosition> pos = whiteRook
+        assertEquals(14, whiteRook
                 .moveTo(A8)
-                .getAvailablePositions();
-        assertEquals(14, pos.size());
+                .availablePositionsSize());
     }
 
     @Test
     public void getAvailablePositionsFromH8Test() {
-        final Set<BoardPosition> pos = whiteRook
+        assertEquals(14, whiteRook
                 .moveTo(H1)
                 .moveTo(H2)
                 .moveTo(H3)
@@ -126,7 +133,6 @@ public class WhiteRookTest {
                 .moveTo(H6)
                 .moveTo(H7)
                 .moveTo(H8)
-                .getAvailablePositions();
-        assertEquals(14, pos.size());
+                .availablePositionsSize());
     }
 }

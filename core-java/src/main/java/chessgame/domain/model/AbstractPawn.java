@@ -1,5 +1,7 @@
 package chessgame.domain.model;
 
+import chessgame.domain.Board;
+
 import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Optional;

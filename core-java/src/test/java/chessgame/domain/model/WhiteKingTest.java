@@ -1,12 +1,11 @@
 package chessgame.domain.model;
 
+import chessgame.domain.Board;
 import chessgame.domain.Piece;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import java.util.Set;
-
-import static chessgame.domain.factory.PieceFactory.createWhiteKing;
+import static chessgame.domain.model.BoardFactory.createBoard;
 import static chessgame.domain.model.BoardPosition.A1;
 import static chessgame.domain.model.BoardPosition.A2;
 import static chessgame.domain.model.BoardPosition.A3;
@@ -17,7 +16,6 @@ import static chessgame.domain.model.BoardPosition.A7;
 import static chessgame.domain.model.BoardPosition.A8;
 import static chessgame.domain.model.BoardPosition.B1;
 import static chessgame.domain.model.BoardPosition.C1;
-import static chessgame.domain.model.BoardPosition.C3;
 import static chessgame.domain.model.BoardPosition.D1;
 import static chessgame.domain.model.BoardPosition.E1;
 import static chessgame.domain.model.BoardPosition.F1;
@@ -35,10 +33,12 @@ import static chessgame.domain.model.BoardPosition.H6;
 import static chessgame.domain.model.BoardPosition.H7;
 import static chessgame.domain.model.BoardPosition.H8;
 import static chessgame.domain.model.PieceColor.WHITE;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import static chessgame.domain.model.PieceFactory.createWhiteKing;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class WhiteKingTest {
 
@@ -48,9 +48,9 @@ public class WhiteKingTest {
 
     private Piece whiteKing;
 
-    @Before
+    @BeforeEach
     public void init() {
-        board = new Board();
+        board = createBoard();
         board.init();
         whiteKing = createWhiteKing(board);
     }
@@ -83,31 +83,29 @@ public class WhiteKingTest {
     }
 
     @Test
-    public void moveToInvalidPositionTest() {
-        assertNotNull(board.get(INITIAL_POSITION));
-        assertNull(board.get(C3));
+    public void moveToAnInvalidPositionTest() {
+        assertNotNull(board.get(INITIAL_POSITION.toString()));
+        assertNull(board.get(H8));
 
-        whiteKing.moveTo(C3);
-
-        assertNotNull(board.get(INITIAL_POSITION));
-        assertNull(board.get(C3));
+        assertThrows(IllegalStateException.class,
+                () -> whiteKing.moveTo(H8),
+                "This movement shouldn't happen to " + H8);
     }
 
     @Test
     public void getAvailablePositionsFromF5Test() {
-        final Set<BoardPosition> pos = whiteKing
+        assertEquals(8, whiteKing
                 .moveTo(F1)
                 .moveTo(F2)
                 .moveTo(F3)
                 .moveTo(F4)
                 .moveTo(F5)
-                .getAvailablePositions();
-        assertEquals(8, pos.size());
+                .availablePositionsSize());
     }
 
     @Test
     public void getAvailablePositionsFromH5Test() {
-        final Set<BoardPosition> pos = whiteKing
+        assertEquals(5, whiteKing
                 .moveTo(F1)
                 .moveTo(G1)
                 .moveTo(H1)
@@ -115,34 +113,31 @@ public class WhiteKingTest {
                 .moveTo(H3)
                 .moveTo(H4)
                 .moveTo(H5)
-                .getAvailablePositions();
-        assertEquals(5, pos.size());
+                .availablePositionsSize());
     }
 
     @Test
     public void getAvailablePositionsFromA1Test() {
-        final Set<BoardPosition> pos = whiteKing
+        assertEquals(3, whiteKing
                 .moveTo(D1)
                 .moveTo(C1)
                 .moveTo(B1)
                 .moveTo(A1)
-                .getAvailablePositions();
-        assertEquals(3, pos.size());
+                .availablePositionsSize());
     }
 
     @Test
     public void getAvailablePositionsFromH1Test() {
-        final Set<BoardPosition> pos = whiteKing
+        assertEquals(3, whiteKing
                 .moveTo(F1)
                 .moveTo(G1)
                 .moveTo(H1)
-                .getAvailablePositions();
-        assertEquals(3, pos.size());
+                .availablePositionsSize());
     }
 
     @Test
     public void getAvailablePositionsFromA8Test() {
-        final Set<BoardPosition> pos = whiteKing
+        assertEquals(3, whiteKing
                 .moveTo(D1)
                 .moveTo(C1)
                 .moveTo(B1)
@@ -154,13 +149,12 @@ public class WhiteKingTest {
                 .moveTo(A6)
                 .moveTo(A7)
                 .moveTo(A8)
-                .getAvailablePositions();
-        assertEquals(3, pos.size());
+                .availablePositionsSize());
     }
 
     @Test
     public void getAvailablePositionsFromH8Test() {
-        final Set<BoardPosition> pos = whiteKing
+        assertEquals(3, whiteKing
                 .moveTo(F1)
                 .moveTo(G1)
                 .moveTo(H1)
@@ -171,7 +165,6 @@ public class WhiteKingTest {
                 .moveTo(H6)
                 .moveTo(H7)
                 .moveTo(H8)
-                .getAvailablePositions();
-        assertEquals(3, pos.size());
+                .availablePositionsSize());
     }
 }

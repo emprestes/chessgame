@@ -1,5 +1,7 @@
 package chessgame.domain.model;
 
+import chessgame.domain.Board;
+
 import static chessgame.domain.model.PieceColor.WHITE;
 
 public class WhiteKnight extends AbstractKnight {

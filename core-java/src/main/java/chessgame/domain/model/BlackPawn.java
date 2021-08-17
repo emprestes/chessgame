@@ -1,5 +1,7 @@
 package chessgame.domain.model;
 
+import chessgame.domain.Board;
+
 import static chessgame.domain.model.PieceColor.BLACK;
 
 public class BlackPawn extends AbstractPawn {

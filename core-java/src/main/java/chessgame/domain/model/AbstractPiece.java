@@ -1,5 +1,6 @@
 package chessgame.domain.model;
 
+import chessgame.domain.Board;
 import chessgame.domain.Piece;
 
 import java.util.LinkedHashSet;
@@ -7,6 +8,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
 
+import static java.lang.String.format;
 import static java.util.Objects.isNull;
 
 /**
@@ -19,9 +21,8 @@ import static java.util.Objects.isNull;
  */
 abstract class AbstractPiece implements Piece {
 
-    private String uniCode;
-
-    private String htmlCode;
+    private final String uniCode;
+    private final String htmlCode;
 
     private final Board board;
 
@@ -187,23 +188,40 @@ abstract class AbstractPiece implements Piece {
 
     @Override
     public Piece moveTo(BoardPosition position) {
-        Optional.of(this)
-                .filter(piece -> isNull(piece.position))
-                .ifPresent(piece -> {
-                    piece.setInitialPosition(position);
-                    piece.setPosition(position);
-                });
+        moveToFirstPosition(position);
 
         getAvailablePositions().stream()
                 .filter(position::equals)
                 .findFirst()
                 .ifPresent(availablePosition -> getBoard().put(availablePosition, this));
 
+        checkInvalidPosition(position);
+
         return this;
+    }
+
+    private void checkInvalidPosition(BoardPosition position) {
+        if (getPosition().nonEquals(position)) {
+            throw new IllegalStateException(
+                    format("This %s has an impossible movement from %s to %s", getName(), getPosition(), position));
+        }
+    }
+
+    private void moveToFirstPosition(BoardPosition position) {
+        Optional.of(this)
+                .filter(piece -> isNull(piece.position))
+                .ifPresent(piece -> {
+                    piece.setInitialPosition(position);
+                    piece.setPosition(position);
+                });
     }
 
     Boolean isEmptyBoardPosition(BoardPosition position) {
         return isNull(board.get(position));
+    }
+
+    String getName() {
+        return getClass().getSimpleName();
     }
 
     /**
@@ -211,6 +229,6 @@ abstract class AbstractPiece implements Piece {
      */
     @Override
     public String toString() {
-        return String.format("%s %s @ %s", getColor(), getClass().getSimpleName(), getPosition());
+        return format("%s %s @ %s", getColor(), getName(), getPosition());
     }
 }
