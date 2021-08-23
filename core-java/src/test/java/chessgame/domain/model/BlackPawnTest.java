@@ -7,52 +7,52 @@ import org.junit.jupiter.api.Test;
 
 import static chessgame.domain.PieceColor.BLACK;
 import static chessgame.domain.model.BoardFactory.createBoard;
-import static chessgame.domain.model.PieceFactory.createBlackQueen;
+import static chessgame.domain.model.PieceFactory.createBlackPawn;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class BlackQueenTest {
+public class BlackPawnTest {
 
-    private static final String INITIAL_POSITION = "D8";
+    private static final String INITIAL_POSITION = "D7";
 
     private Board board;
 
-    private Piece blackQueen;
+    private Piece blackPawn;
 
     @BeforeEach
     public void setUp() {
         board = createBoard();
         board.init();
-        blackQueen = createBlackQueen(board);
+        blackPawn = createBlackPawn(board, INITIAL_POSITION);
     }
 
     @Test
     public void createInstanceTest() {
-        assertTrue(blackQueen instanceof BlackQueen);
+        assertTrue(blackPawn instanceof BlackPawn);
     }
 
     @Test
-    public void blackColorTest() {
-        assertEquals(BLACK, blackQueen.getColor());
+    public void whiteColorTest() {
+        assertEquals(BLACK, blackPawn.getColor());
     }
 
     @Test
     public void initPositionTest() {
-        assertEquals(INITIAL_POSITION, blackQueen.getPositionAsString());
-        assertEquals(blackQueen, board.get(INITIAL_POSITION));
+        assertEquals(INITIAL_POSITION, blackPawn.getPositionAsString());
+        assertEquals(blackPawn, board.get(INITIAL_POSITION));
     }
 
     @Test
     public void moveToAValidPositionTest() {
-        final String position = "A8";
+        final String position = "D5";
 
         assertNotNull(board.get(INITIAL_POSITION));
         assertNull(board.get(position));
 
-        blackQueen.moveTo(position);
+        blackPawn.moveTo(position);
 
         assertNull(board.get(INITIAL_POSITION));
         assertNotNull(board.get(position));
@@ -60,53 +60,39 @@ public class BlackQueenTest {
 
     @Test
     public void moveToAnInvalidPositionTest() {
-        final String position = "H1";
+        final String position = "H8";
 
         assertNotNull(board.get(INITIAL_POSITION));
         assertNull(board.get(position));
 
         assertThrows(IllegalStateException.class,
-                () -> blackQueen.moveTo(position),
+                () -> blackPawn.moveTo(position),
                 "This movement shouldn't happen to " + position);
     }
 
     @Test
     public void moveToEmptyPositionTest() {
         assertThrows(IllegalStateException.class,
-                () -> blackQueen.moveTo(new String[0]),
+                () -> blackPawn.moveTo(new String[0]),
                 "This movement shouldn't happen to an empty position");
     }
 
     @Test
     public void getAvailablePositionsFromInitialPositionTest() {
-        assertEquals(21, blackQueen.availablePositionsSize());
+        assertEquals(2, blackPawn.availablePositionsSize());
     }
 
     @Test
-    public void getAvailablePositionsFromA8Test() {
-        assertEquals(21, blackQueen
-                .moveTo("A8")
+    public void getAvailablePositionsFromD6Test() {
+        assertEquals(1, blackPawn
+                .moveTo("D6")
                 .availablePositionsSize());
     }
 
     @Test
-    public void getAvailablePositionsFromD7Test() {
-        assertEquals(23, blackQueen
-                .moveTo("D7")
-                .availablePositionsSize());
-    }
-
-    @Test
-    public void getAvailablePositionsFromF6Test() {
-        assertEquals(25, blackQueen
-                .moveTo("F6")
-                .availablePositionsSize());
-    }
-
-    @Test
-    public void getAvailablePositionsFromD5Test() {
-        assertEquals(27, blackQueen
-                .moveTo("D5")
+    public void getAvailablePositionsFromD8Test() {
+        assertEquals(0, blackPawn
+                .moveTo("D5", "D4", "D3", "D2", "D1")
                 .availablePositionsSize());
     }
 }

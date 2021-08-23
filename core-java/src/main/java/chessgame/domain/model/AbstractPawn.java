@@ -1,6 +1,8 @@
 package chessgame.domain.model;
 
 import chessgame.domain.Board;
+import chessgame.domain.BoardPosition;
+import chessgame.domain.PieceColor;
 
 import java.util.LinkedHashSet;
 import java.util.Map;
@@ -8,8 +10,8 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
 
-import static chessgame.domain.model.PieceColor.BLACK;
-import static chessgame.domain.model.PieceColor.WHITE;
+import static chessgame.domain.PieceColor.BLACK;
+import static chessgame.domain.PieceColor.WHITE;
 
 /**
  * Pawn of Chess game.

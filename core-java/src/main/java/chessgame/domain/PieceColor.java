@@ -1,4 +1,4 @@
-package chessgame.domain.model;
+package chessgame.domain;
 
 /**
  * Colors of Chess piece.

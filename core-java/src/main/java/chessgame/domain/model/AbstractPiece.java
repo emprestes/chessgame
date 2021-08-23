@@ -1,7 +1,9 @@
 package chessgame.domain.model;
 
 import chessgame.domain.Board;
+import chessgame.domain.BoardPosition;
 import chessgame.domain.Piece;
+import chessgame.domain.PieceColor;
 
 import java.util.LinkedHashSet;
 import java.util.Optional;
@@ -10,6 +12,7 @@ import java.util.function.Function;
 
 import static java.lang.String.format;
 import static java.util.Objects.isNull;
+import static java.util.stream.Stream.of;
 
 /**
  * Abstract class of chess piece with common state and behaviour.
@@ -187,7 +190,17 @@ abstract class AbstractPiece implements Piece {
     }
 
     @Override
-    public Piece moveTo(BoardPosition position) {
+    public Piece moveTo(BoardPosition... positions) {
+        of(positions)
+                .findFirst()
+                .orElseThrow(() -> new IllegalStateException("Impossible to move to empty position."));
+        of(positions)
+                .forEach(this::moveTo);
+
+        return this;
+    }
+
+    private void moveTo(BoardPosition position) {
         moveToFirstPosition(position);
 
         getAvailablePositions().stream()
@@ -196,8 +209,6 @@ abstract class AbstractPiece implements Piece {
                 .ifPresent(availablePosition -> getBoard().put(availablePosition, this));
 
         checkInvalidPosition(position);
-
-        return this;
     }
 
     private void checkInvalidPosition(BoardPosition position) {

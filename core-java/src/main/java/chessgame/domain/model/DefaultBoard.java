@@ -1,6 +1,7 @@
 package chessgame.domain.model;
 
 import chessgame.domain.Board;
+import chessgame.domain.BoardPosition;
 import chessgame.domain.Piece;
 import chessgame.domain.Player;
 import chessgame.domain.exception.BoardException;

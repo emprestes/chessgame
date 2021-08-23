@@ -1,6 +1,8 @@
 package chessgame.domain.model;
 
 import chessgame.domain.Board;
+import chessgame.domain.BoardPosition;
+import chessgame.domain.PieceColor;
 
 import java.util.Set;
 

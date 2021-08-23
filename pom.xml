@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
  <modelVersion>4.0.0</modelVersion>
 
  <groupId>br.opensource.game.chessgame</groupId>
@@ -158,9 +158,9 @@
  <properties>
   <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-  <maven.compiler.source>15</maven.compiler.source>
-  <maven.compiler.target>15</maven.compiler.target>
-  <maven.compiler.release>15</maven.compiler.release>
+  <maven.compiler.source>16</maven.compiler.source>
+  <maven.compiler.target>16</maven.compiler.target>
+  <maven.compiler.release>16</maven.compiler.release>
   <maven.compiler.vendor>openJDK</maven.compiler.vendor>
 
   <plugin.version.checkstyle>3.1.1</plugin.version.checkstyle>

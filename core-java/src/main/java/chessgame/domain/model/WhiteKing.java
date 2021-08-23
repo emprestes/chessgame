@@ -2,7 +2,7 @@ package chessgame.domain.model;
 
 import chessgame.domain.Board;
 
-import static chessgame.domain.model.PieceColor.WHITE;
+import static chessgame.domain.PieceColor.WHITE;
 
 public class WhiteKing extends AbstractKing {
 

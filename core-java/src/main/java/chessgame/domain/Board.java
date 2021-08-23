@@ -1,7 +1,5 @@
 package chessgame.domain;
 
-import chessgame.domain.model.BoardPosition;
-
 public interface Board {
 
     void init();

@@ -1,10 +1,10 @@
-package chessgame.domain.model;
+package chessgame.domain;
 
 import java.util.Arrays;
 import java.util.Optional;
 
-import static chessgame.domain.model.BoardColor.DARK;
-import static chessgame.domain.model.BoardColor.LIGHT;
+import static chessgame.domain.BoardColor.DARK;
+import static chessgame.domain.BoardColor.LIGHT;
 
 /**
  * Positions of Chessboard.
