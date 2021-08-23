@@ -15,6 +15,9 @@ import java.util.Set;
  */
 public class HumanPlayer implements Player {
 
+    /**
+     * Pieces of this human player.
+     */
     private final Set<Piece> pieces = new HashSet<>();
 
     /**

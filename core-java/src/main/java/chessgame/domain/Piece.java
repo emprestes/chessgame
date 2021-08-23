@@ -44,8 +44,18 @@ public interface Piece extends Serializable {
         return "" + getPosition();
     }
 
+    /**
+     * Recover unicode value of this piece.
+     *
+     * @return String
+     */
     String getUniCode();
 
+    /**
+     * Recover html code value of thsi piece.
+     *
+     * @return String
+     */
     String getHtmlCode();
 
     /**
@@ -55,6 +65,11 @@ public interface Piece extends Serializable {
      */
     Set<BoardPosition> getAvailablePositions();
 
+    /**
+     * Count and recover the size of available positions.
+     *
+     * @return int
+     */
     default int availablePositionsSize() {
         return getAvailablePositions().size();
     }

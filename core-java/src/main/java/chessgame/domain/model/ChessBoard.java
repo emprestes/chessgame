@@ -9,18 +9,18 @@ import chessgame.domain.exception.BoardException;
 import java.util.Arrays;
 import java.util.TreeMap;
 
-import static chessgame.domain.model.PieceFactory.createBlackBishop;
-import static chessgame.domain.model.PieceFactory.createBlackKing;
-import static chessgame.domain.model.PieceFactory.createBlackKnight;
-import static chessgame.domain.model.PieceFactory.createBlackPawn;
-import static chessgame.domain.model.PieceFactory.createBlackQueen;
-import static chessgame.domain.model.PieceFactory.createBlackRook;
-import static chessgame.domain.model.PieceFactory.createWhiteBishop;
-import static chessgame.domain.model.PieceFactory.createWhiteKing;
-import static chessgame.domain.model.PieceFactory.createWhiteKnight;
-import static chessgame.domain.model.PieceFactory.createWhitePawn;
-import static chessgame.domain.model.PieceFactory.createWhiteQueen;
-import static chessgame.domain.model.PieceFactory.createWhiteRook;
+import static chessgame.domain.factory.PieceFactory.createBlackBishop;
+import static chessgame.domain.factory.PieceFactory.createBlackKing;
+import static chessgame.domain.factory.PieceFactory.createBlackKnight;
+import static chessgame.domain.factory.PieceFactory.createBlackPawn;
+import static chessgame.domain.factory.PieceFactory.createBlackQueen;
+import static chessgame.domain.factory.PieceFactory.createBlackRook;
+import static chessgame.domain.factory.PieceFactory.createWhiteBishop;
+import static chessgame.domain.factory.PieceFactory.createWhiteKing;
+import static chessgame.domain.factory.PieceFactory.createWhiteKnight;
+import static chessgame.domain.factory.PieceFactory.createWhitePawn;
+import static chessgame.domain.factory.PieceFactory.createWhiteQueen;
+import static chessgame.domain.factory.PieceFactory.createWhiteRook;
 
 /**
  * Chessboard.
@@ -30,20 +30,36 @@ import static chessgame.domain.model.PieceFactory.createWhiteRook;
  * @see Player
  * @since September 2016
  */
-public class DefaultBoard extends TreeMap<BoardPosition, Piece> implements Board {
+public class ChessBoard extends TreeMap<BoardPosition, Piece> implements Board {
 
+    /**
+     * White player
+     */
     private final Player whitePlayer;
 
+    /**
+     * Black player
+     */
     private final Player blackPlayer;
 
     /**
      * Default constructor
      */
-    DefaultBoard() {
+    public ChessBoard() {
+        this(new HumanPlayer(), new HumanPlayer());
+    }
+
+    /**
+     * Constructor compose by two players.
+     *
+     * @param whitePlayer White Player
+     * @param blackPlayer Black Player
+     */
+    ChessBoard(Player whitePlayer, Player blackPlayer) {
         super();
 
-        this.whitePlayer = new HumanPlayer();
-        this.blackPlayer = new HumanPlayer();
+        this.whitePlayer = whitePlayer;
+        this.blackPlayer = blackPlayer;
     }
 
     @Override
@@ -79,11 +95,6 @@ public class DefaultBoard extends TreeMap<BoardPosition, Piece> implements Board
     @Override
     public Piece get(BoardPosition key) {
         return super.get(key);
-    }
-
-    @Override
-    public Piece get(String key) {
-        return get(BoardPosition.valueOf(key));
     }
 
     /**

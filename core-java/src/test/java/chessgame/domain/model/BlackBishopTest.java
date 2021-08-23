@@ -6,8 +6,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static chessgame.domain.PieceColor.BLACK;
-import static chessgame.domain.model.BoardFactory.createBoard;
-import static chessgame.domain.model.PieceFactory.createBlackBishop;
+import static chessgame.domain.factory.BoardFactory.createBoard;
+import static chessgame.domain.factory.PieceFactory.createBlackBishop;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;

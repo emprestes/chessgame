@@ -1,4 +1,4 @@
 /**
- * Interfaces and factories of Chess game model.
+ * Interfaces of Chess game model.
  */
 package chessgame.domain;

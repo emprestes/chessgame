@@ -1,9 +1,21 @@
-package chessgame.domain.model;
+package chessgame.domain.factory;
 
 import chessgame.domain.Board;
 import chessgame.domain.BoardPosition;
 import chessgame.domain.Piece;
 import chessgame.domain.exception.PieceException;
+import chessgame.domain.model.BlackBishop;
+import chessgame.domain.model.BlackKing;
+import chessgame.domain.model.BlackKnight;
+import chessgame.domain.model.BlackPawn;
+import chessgame.domain.model.BlackQueen;
+import chessgame.domain.model.BlackRook;
+import chessgame.domain.model.WhiteBishop;
+import chessgame.domain.model.WhiteKing;
+import chessgame.domain.model.WhiteKnight;
+import chessgame.domain.model.WhitePawn;
+import chessgame.domain.model.WhiteQueen;
+import chessgame.domain.model.WhiteRook;
 
 import static chessgame.domain.BoardPosition.D1;
 import static chessgame.domain.BoardPosition.D8;

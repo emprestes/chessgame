@@ -40,30 +40,55 @@ public enum BoardPosition {
         this.color = color;
     }
 
+    /**
+     * Go to the next column.
+     *
+     * @return BoardPosition
+     */
     public BoardPosition nextColumn() {
         return Optional.of(this)
                 .filter(BoardPosition::isLastColumn)
                 .orElse(valueOf(this.column + 1, this.row));
     }
 
+    /**
+     * Go to the next row.
+     *
+     * @return BoardPosition
+     */
     public BoardPosition nextRow() {
         return Optional.of(this)
                 .filter(BoardPosition::isLastRow)
                 .orElse(valueOf(this.column, this.row + 1));
     }
 
+    /**
+     * Go to the previous row.
+     *
+     * @return BoardPosition
+     */
     public BoardPosition previousRow() {
         return Optional.of(this)
                 .filter(BoardPosition::isFirstRow)
                 .orElse(valueOf(this.column, this.row - 1));
     }
 
+    /**
+     * Go to the previous column.
+     *
+     * @return BoardPosition
+     */
     public BoardPosition previousColumn() {
         return Optional.of(this)
                 .filter(BoardPosition::isFirstColumn)
                 .orElse(valueOf(this.column - 1, this.row));
     }
 
+    /**
+     * Go to the diagonal right up.
+     *
+     * @return BoardPosition
+     */
     public BoardPosition diagonalRightUp() {
         return Optional.of(this)
                 .filter(BoardPosition::nonLastColumn)
@@ -74,6 +99,11 @@ public enum BoardPosition {
                 .orElse(this);
     }
 
+    /**
+     * Go to the diagonal right down.
+     *
+     * @return BoardPosition
+     */
     public BoardPosition diagonalRightDown() {
         return Optional.of(this)
                 .filter(BoardPosition::nonLastColumn)
@@ -84,6 +114,11 @@ public enum BoardPosition {
                 .orElse(this);
     }
 
+    /**
+     * Go to the diagonal left up.
+     *
+     * @return BoardPosition
+     */
     public BoardPosition diagonalLeftUp() {
         return Optional.of(this)
                 .filter(BoardPosition::nonFirstColumn)
@@ -94,6 +129,11 @@ public enum BoardPosition {
                 .orElse(this);
     }
 
+    /**
+     * Go to the diagonal left down.
+     *
+     * @return BoardPosition
+     */
     public BoardPosition diagonalLeftDown() {
         return Optional.of(this)
                 .filter(BoardPosition::nonFirstColumn)
@@ -104,42 +144,93 @@ public enum BoardPosition {
                 .orElse(this);
     }
 
+    /**
+     * Check if this position is the first column.
+     *
+     * @return Boolean
+     */
     public Boolean isFirstColumn() {
         return this.column == 1;
     }
 
+    /**
+     * Check if this position is not the first column.
+     *
+     * @return Boolean
+     */
     public Boolean nonFirstColumn() {
         return !isFirstColumn();
     }
 
+    /**
+     * Check if this position is the last column.
+     *
+     * @return Boolean
+     */
     public Boolean isLastColumn() {
         return this.column == 8;
     }
 
+    /**
+     * Check if this position is not the last column.
+     *
+     * @return Boolean
+     */
     public Boolean nonLastColumn() {
         return !isLastColumn();
     }
 
+    /**
+     * Check if this position is the first row.
+     *
+     * @return Boolean
+     */
     public Boolean isFirstRow() {
         return this.row == 1;
     }
 
+    /**
+     * Check if this position is not the first row.
+     *
+     * @return Boolean
+     */
     public Boolean nonFirstRow() {
         return !isFirstRow();
     }
 
+    /**
+     * Check if this position is the last row.
+     *
+     * @return Boolean
+     */
     public Boolean isLastRow() {
         return this.row == 8;
     }
 
+    /**
+     * Check if this position is not the last row.
+     *
+     * @return Boolean
+     */
     public Boolean nonLastRow() {
         return !isLastRow();
     }
 
+    /**
+     * Check if both positions are not the same.
+     *
+     * @param position Position informed.
+     * @return Boolean
+     */
     public Boolean nonEquals(BoardPosition position) {
         return !this.equals(position);
     }
 
+    /**
+     * Recover the color of this piece.
+     *
+     * @return CharSequence
+     */
     public CharSequence getColor() {
         return String.valueOf(color);
     }

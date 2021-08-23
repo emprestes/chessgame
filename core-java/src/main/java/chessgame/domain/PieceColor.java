@@ -7,5 +7,12 @@ package chessgame.domain;
  * @since September 2016
  */
 public enum PieceColor {
-    BLACK, WHITE
+    /**
+     * Black piece color.
+     */
+    BLACK,
+    /**
+     * White piece color.
+     */
+    WHITE
 }
