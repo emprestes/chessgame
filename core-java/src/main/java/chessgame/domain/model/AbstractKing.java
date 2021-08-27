@@ -29,7 +29,7 @@ abstract class AbstractKing extends AbstractPiece {
      * @see PieceColor
      */
     AbstractKing(Board board, PieceColor color, String uniCode, String htmlCode) {
-        super(board, color, uniCode, htmlCode);
+        super(board, color, "King", uniCode, htmlCode);
     }
 
     /**

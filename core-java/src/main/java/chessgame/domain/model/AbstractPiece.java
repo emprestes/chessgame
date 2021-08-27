@@ -6,6 +6,7 @@ import chessgame.domain.Piece;
 import chessgame.domain.PieceColor;
 
 import java.util.LinkedHashSet;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
@@ -24,6 +25,7 @@ import static java.util.stream.Stream.of;
  */
 abstract class AbstractPiece implements Piece {
 
+    private final String name;
     private final String uniCode;
     private final String htmlCode;
 
@@ -41,10 +43,11 @@ abstract class AbstractPiece implements Piece {
      * @param board Board informed.
      * @param color Color informed.
      */
-    AbstractPiece(Board board, PieceColor color, String uniCode, String htmlCode) {
+    AbstractPiece(Board board, PieceColor color, String name, String uniCode, String htmlCode) {
         super();
 
         this.board = board;
+        this.name = name;
         this.color = color;
         this.uniCode = uniCode;
         this.htmlCode = htmlCode;
@@ -189,6 +192,9 @@ abstract class AbstractPiece implements Piece {
         return availablePositions;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Piece moveTo(BoardPosition... positions) {
         of(positions)
@@ -232,7 +238,26 @@ abstract class AbstractPiece implements Piece {
     }
 
     String getName() {
-        return getClass().getSimpleName();
+        return String.format("%s %s", getColor(), name);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof AbstractPiece)) return false;
+        AbstractPiece that = (AbstractPiece) o;
+        return Objects.equals(name, that.name)
+                && Objects.equals(getUniCode(), that.getUniCode())
+                && Objects.equals(getHtmlCode(), that.getHtmlCode())
+                && Objects.equals(getBoard(), that.getBoard())
+                && getColor() == that.getColor()
+                && initialPosition == that.initialPosition
+                && getPosition() == that.getPosition();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, getUniCode(), getHtmlCode(), getBoard(), getColor(), initialPosition, getPosition());
     }
 
     /**
@@ -240,6 +265,6 @@ abstract class AbstractPiece implements Piece {
      */
     @Override
     public String toString() {
-        return format("%s %s @ %s", getColor(), getName(), getPosition());
+        return format("%s %s @ %s", getColor(), name, getPosition());
     }
 }

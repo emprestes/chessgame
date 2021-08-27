@@ -27,7 +27,7 @@ abstract class AbstractRook extends AbstractPiece {
      * @see PieceColor
      */
     AbstractRook(Board board, PieceColor color, String uniCode, String htmlCode) {
-        super(board, color, uniCode, htmlCode);
+        super(board, color, "Rook", uniCode, htmlCode);
     }
 
     /**

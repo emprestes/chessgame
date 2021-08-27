@@ -35,7 +35,7 @@ abstract class AbstractPawn extends AbstractPiece {
      * @see PieceColor
      */
     AbstractPawn(Board board, PieceColor color, String uniCode, String htmlCode) {
-        super(board, color, uniCode, htmlCode);
+        super(board, color, "Pawn", uniCode, htmlCode);
 
         map = Map.of(
                 WHITE, BoardPosition::nextRow,

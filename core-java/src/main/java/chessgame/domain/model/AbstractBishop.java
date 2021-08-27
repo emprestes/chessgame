@@ -26,7 +26,7 @@ abstract class AbstractBishop extends AbstractPiece {
      * @see PieceColor
      */
     AbstractBishop(Board board, PieceColor color, String uniCode, String htmlCode) {
-        super(board, color, uniCode, htmlCode);
+        super(board, color, "Bishop", uniCode, htmlCode);
     }
 
     /**

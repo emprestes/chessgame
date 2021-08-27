@@ -32,7 +32,7 @@ abstract class AbstractKnight extends AbstractPiece {
      * @see PieceColor
      */
     AbstractKnight(Board board, PieceColor color, String uniCode, String htmlCode) {
-        super(board, color, uniCode, htmlCode);
+        super(board, color, "Knight", uniCode, htmlCode);
     }
 
     /**
