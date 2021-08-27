@@ -1,13 +1,19 @@
 package chessgame.domain.model;
 
+import chessgame.domain.Board;
+import chessgame.domain.BoardPosition;
 import chessgame.domain.Piece;
+import chessgame.domain.PieceColor;
 
 import java.util.LinkedHashSet;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.function.Function;
 
+import static java.lang.String.format;
 import static java.util.Objects.isNull;
+import static java.util.stream.Stream.of;
 
 /**
  * Abstract class of chess piece with common state and behaviour.
@@ -19,9 +25,9 @@ import static java.util.Objects.isNull;
  */
 abstract class AbstractPiece implements Piece {
 
-    private String uniCode;
-
-    private String htmlCode;
+    private final String name;
+    private final String uniCode;
+    private final String htmlCode;
 
     private final Board board;
 
@@ -37,10 +43,11 @@ abstract class AbstractPiece implements Piece {
      * @param board Board informed.
      * @param color Color informed.
      */
-    AbstractPiece(Board board, PieceColor color, String uniCode, String htmlCode) {
+    AbstractPiece(Board board, PieceColor color, String name, String uniCode, String htmlCode) {
         super();
 
         this.board = board;
+        this.name = name;
         this.color = color;
         this.uniCode = uniCode;
         this.htmlCode = htmlCode;
@@ -185,25 +192,72 @@ abstract class AbstractPiece implements Piece {
         return availablePositions;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public Piece moveTo(BoardPosition position) {
-        Optional.of(this)
-                .filter(piece -> isNull(piece.position))
-                .ifPresent(piece -> {
-                    piece.setInitialPosition(position);
-                    piece.setPosition(position);
-                });
+    public Piece moveTo(BoardPosition... positions) {
+        of(positions)
+                .findFirst()
+                .orElseThrow(() -> new IllegalStateException("Impossible to move to empty position."));
+        of(positions)
+                .forEach(this::moveTo);
+
+        return this;
+    }
+
+    private void moveTo(BoardPosition position) {
+        moveToFirstPosition(position);
 
         getAvailablePositions().stream()
                 .filter(position::equals)
                 .findFirst()
                 .ifPresent(availablePosition -> getBoard().put(availablePosition, this));
 
-        return this;
+        checkInvalidPosition(position);
+    }
+
+    private void checkInvalidPosition(BoardPosition position) {
+        if (getPosition().nonEquals(position)) {
+            throw new IllegalStateException(
+                    format("This %s has an impossible movement from %s to %s", getName(), getPosition(), position));
+        }
+    }
+
+    private void moveToFirstPosition(BoardPosition position) {
+        Optional.of(this)
+                .filter(piece -> isNull(piece.position))
+                .ifPresent(piece -> {
+                    piece.setInitialPosition(position);
+                    piece.setPosition(position);
+                });
     }
 
     Boolean isEmptyBoardPosition(BoardPosition position) {
         return isNull(board.get(position));
+    }
+
+    String getName() {
+        return String.format("%s %s", getColor(), name);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof AbstractPiece)) return false;
+        AbstractPiece that = (AbstractPiece) o;
+        return Objects.equals(name, that.name)
+                && Objects.equals(getUniCode(), that.getUniCode())
+                && Objects.equals(getHtmlCode(), that.getHtmlCode())
+                && Objects.equals(getBoard(), that.getBoard())
+                && getColor() == that.getColor()
+                && initialPosition == that.initialPosition
+                && getPosition() == that.getPosition();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, getUniCode(), getHtmlCode(), getBoard(), getColor(), initialPosition, getPosition());
     }
 
     /**
@@ -211,6 +265,6 @@ abstract class AbstractPiece implements Piece {
      */
     @Override
     public String toString() {
-        return String.format("%s %s @ %s", getColor(), getClass().getSimpleName(), getPosition());
+        return format("%s %s @ %s", getColor(), name, getPosition());
     }
 }

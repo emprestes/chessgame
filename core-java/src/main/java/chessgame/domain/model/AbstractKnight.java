@@ -1,9 +1,13 @@
 package chessgame.domain.model;
 
-import java.util.List;
+import chessgame.domain.Board;
+import chessgame.domain.BoardPosition;
+import chessgame.domain.PieceColor;
+
 import java.util.Set;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Stream;
 
 import static java.util.Optional.of;
 import static java.util.stream.Collectors.toSet;
@@ -28,7 +32,7 @@ abstract class AbstractKnight extends AbstractPiece {
      * @see PieceColor
      */
     AbstractKnight(Board board, PieceColor color, String uniCode, String htmlCode) {
-        super(board, color, uniCode, htmlCode);
+        super(board, color, "Knight", uniCode, htmlCode);
     }
 
     /**
@@ -37,16 +41,15 @@ abstract class AbstractKnight extends AbstractPiece {
     @Override
     public Set<BoardPosition> getAvailablePositions() {
         final BoardPosition myPosition = getPosition();
-        return List.of(
-                getPosition(myPosition.nextColumn(), BoardPosition::nextRow, BoardPosition::nonLastRow),
-                getPosition(myPosition.nextColumn(), BoardPosition::previousRow, BoardPosition::nonFirstRow),
-                getPosition(myPosition.nextRow(), BoardPosition::nextColumn, BoardPosition::nonLastColumn),
-                getPosition(myPosition.nextRow(), BoardPosition::previousColumn, BoardPosition::nonFirstColumn),
-                getPosition(myPosition.previousRow(), BoardPosition::nextColumn, BoardPosition::nonLastColumn),
-                getPosition(myPosition.previousRow(), BoardPosition::previousColumn, BoardPosition::nonFirstColumn),
-                getPosition(myPosition.previousColumn(), BoardPosition::nextRow, BoardPosition::nonLastRow),
-                getPosition(myPosition.previousColumn(), BoardPosition::previousRow, BoardPosition::nonFirstRow))
-                .stream()
+        return Stream.of(
+                        getPosition(myPosition.nextColumn(), BoardPosition::nextRow, BoardPosition::nonLastRow),
+                        getPosition(myPosition.nextColumn(), BoardPosition::previousRow, BoardPosition::nonFirstRow),
+                        getPosition(myPosition.nextRow(), BoardPosition::nextColumn, BoardPosition::nonLastColumn),
+                        getPosition(myPosition.nextRow(), BoardPosition::previousColumn, BoardPosition::nonFirstColumn),
+                        getPosition(myPosition.previousRow(), BoardPosition::nextColumn, BoardPosition::nonLastColumn),
+                        getPosition(myPosition.previousRow(), BoardPosition::previousColumn, BoardPosition::nonFirstColumn),
+                        getPosition(myPosition.previousColumn(), BoardPosition::nextRow, BoardPosition::nonLastRow),
+                        getPosition(myPosition.previousColumn(), BoardPosition::previousRow, BoardPosition::nonFirstRow))
                 .filter(myPosition::nonEquals)
                 .filter(this::isEmptyBoardPosition)
                 .collect(toSet());

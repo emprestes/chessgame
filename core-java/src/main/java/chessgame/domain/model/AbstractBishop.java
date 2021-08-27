@@ -1,5 +1,9 @@
 package chessgame.domain.model;
 
+import chessgame.domain.Board;
+import chessgame.domain.BoardPosition;
+import chessgame.domain.PieceColor;
+
 import java.util.Set;
 
 /**
@@ -22,7 +26,7 @@ abstract class AbstractBishop extends AbstractPiece {
      * @see PieceColor
      */
     AbstractBishop(Board board, PieceColor color, String uniCode, String htmlCode) {
-        super(board, color, uniCode, htmlCode);
+        super(board, color, "Bishop", uniCode, htmlCode);
     }
 
     /**

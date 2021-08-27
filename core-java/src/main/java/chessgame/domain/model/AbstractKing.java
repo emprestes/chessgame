@@ -1,7 +1,11 @@
 package chessgame.domain.model;
 
-import java.util.List;
+import chessgame.domain.Board;
+import chessgame.domain.BoardPosition;
+import chessgame.domain.PieceColor;
+
 import java.util.Set;
+import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toSet;
 
@@ -25,7 +29,7 @@ abstract class AbstractKing extends AbstractPiece {
      * @see PieceColor
      */
     AbstractKing(Board board, PieceColor color, String uniCode, String htmlCode) {
-        super(board, color, uniCode, htmlCode);
+        super(board, color, "King", uniCode, htmlCode);
     }
 
     /**
@@ -34,10 +38,10 @@ abstract class AbstractKing extends AbstractPiece {
     @Override
     public Set<BoardPosition> getAvailablePositions() {
         final BoardPosition myPosition = getPosition();
-        return List.of(myPosition.nextRow(), myPosition.previousRow(),
-                myPosition.nextColumn(), myPosition.previousColumn(),
-                myPosition.diagonalLeftDown(), myPosition.diagonalLeftUp(),
-                myPosition.diagonalRightDown(), myPosition.diagonalRightUp()).stream()
+        return Stream.of(myPosition.nextRow(), myPosition.previousRow(),
+                        myPosition.nextColumn(), myPosition.previousColumn(),
+                        myPosition.diagonalLeftDown(), myPosition.diagonalLeftUp(),
+                        myPosition.diagonalRightDown(), myPosition.diagonalRightUp())
                 .filter(myPosition::nonEquals)
                 .filter(this::isEmptyBoardPosition)
                 .collect(toSet());

@@ -1,11 +1,9 @@
 package chessgame.domain;
 
-import chessgame.domain.model.Board;
-import chessgame.domain.model.BoardPosition;
-import chessgame.domain.model.PieceColor;
-
 import java.io.Serializable;
 import java.util.Set;
+
+import static java.util.stream.Stream.of;
 
 /**
  * Interface of chess piece with available behaviours to use into a match.
@@ -37,8 +35,27 @@ public interface Piece extends Serializable {
      */
     BoardPosition getPosition();
 
+    /**
+     * Recovery current position of chess piece.
+     *
+     * @return String
+     */
+    default String getPositionAsString() {
+        return "" + getPosition();
+    }
+
+    /**
+     * Recover unicode value of this piece.
+     *
+     * @return String
+     */
     String getUniCode();
 
+    /**
+     * Recover html code value of thsi piece.
+     *
+     * @return String
+     */
     String getHtmlCode();
 
     /**
@@ -49,20 +66,33 @@ public interface Piece extends Serializable {
     Set<BoardPosition> getAvailablePositions();
 
     /**
+     * Count and recover the size of available positions.
+     *
+     * @return int
+     */
+    default int availablePositionsSize() {
+        return getAvailablePositions().size();
+    }
+
+    /**
      * Move this piece to the position informed.
      *
      * @param position Position informed.
      * @return Actual piece reference
      */
-    Piece moveTo(BoardPosition position);
+    Piece moveTo(BoardPosition... position);
 
     /**
      * Move this piece to the position informed.
      *
-     * @param position String position informed.
+     * @param positions String positions informed.
      * @return Actual piece reference
      */
-    default Piece moveTo(String position) {
-        return moveTo(BoardPosition.valueOf(position));
+    default Piece moveTo(String... positions) {
+        return moveTo(of(positions)
+                .filter(position -> !position.isEmpty())
+                .filter(position -> !position.isBlank())
+                .map(BoardPosition::valueOf)
+                .toArray(BoardPosition[]::new));
     }
 }

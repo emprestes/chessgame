@@ -5,54 +5,54 @@ import chessgame.domain.Piece;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static chessgame.domain.PieceColor.WHITE;
+import static chessgame.domain.PieceColor.BLACK;
 import static chessgame.domain.factory.BoardFactory.createBoard;
-import static chessgame.domain.factory.PieceFactory.createWhiteQueen;
+import static chessgame.domain.factory.PieceFactory.createBlackKnight;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class WhiteQueenTest {
+public class BlackKnightTest {
 
-    private static final String INITIAL_POSITION = "D1";
+    private static final String INITIAL_POSITION = "B8";
 
     private Board board;
 
-    private Piece whiteQueen;
+    private Piece blackKnight;
 
     @BeforeEach
     public void setUp() {
         board = createBoard();
         board.init();
-        whiteQueen = createWhiteQueen(board);
+        blackKnight = createBlackKnight(board, INITIAL_POSITION);
     }
 
     @Test
     public void createInstanceTest() {
-        assertTrue(whiteQueen instanceof WhiteQueen);
+        assertTrue(blackKnight instanceof BlackKnight);
     }
 
     @Test
     public void whiteColorTest() {
-        assertEquals(WHITE, whiteQueen.getColor());
+        assertEquals(BLACK, blackKnight.getColor());
     }
 
     @Test
     public void initPositionTest() {
-        assertEquals(INITIAL_POSITION, whiteQueen.getPositionAsString());
-        assertEquals(whiteQueen, board.get(INITIAL_POSITION));
+        assertEquals(INITIAL_POSITION, blackKnight.getPositionAsString());
+        assertEquals(blackKnight, board.get(INITIAL_POSITION));
     }
 
     @Test
     public void moveToAValidPositionTest() {
-        final String position = "A1";
+        final String position = "A6";
 
         assertNotNull(board.get(INITIAL_POSITION));
         assertNull(board.get(position));
 
-        whiteQueen.moveTo(position);
+        blackKnight.moveTo(position);
 
         assertNull(board.get(INITIAL_POSITION));
         assertNotNull(board.get(position));
@@ -66,61 +66,42 @@ public class WhiteQueenTest {
         assertNull(board.get(position));
 
         assertThrows(IllegalStateException.class,
-                () -> whiteQueen.moveTo(position),
+                () -> blackKnight.moveTo(position),
                 "This movement shouldn't happen to " + position);
     }
 
     @Test
     public void moveToEmptyPositionTest() {
         assertThrows(IllegalStateException.class,
-                () -> whiteQueen.moveTo(new String[0]),
+                () -> blackKnight.moveTo(new String[0]),
                 "This movement shouldn't happen to an empty position");
     }
 
     @Test
-    public void getAvailablePositionsFromInitialPositionTest() {
-        assertEquals(21, whiteQueen.availablePositionsSize());
-    }
-
-    @Test
-    public void getAvailablePositionsFromD5Test() {
-        assertEquals(27, whiteQueen
-                .moveTo("D5")
-                .availablePositionsSize());
-    }
-
-    @Test
-    public void getAvailablePositionsFromB4Test() {
-        assertEquals(23, whiteQueen
-                .moveTo("B1", "B3")
-                .availablePositionsSize());
-    }
-
-    @Test
-    public void getAvailablePositionsFromA1Test() {
-        assertEquals(21, whiteQueen
-                .moveTo("A1")
-                .availablePositionsSize());
-    }
-
-    @Test
-    public void getAvailablePositionsFromH1Test() {
-        assertEquals(21, whiteQueen
-                .moveTo("H1")
-                .availablePositionsSize());
-    }
-
-    @Test
     public void getAvailablePositionsFromA8Test() {
-        assertEquals(21, whiteQueen
-                .moveTo("A1", "A8")
+        assertEquals(2, blackKnight
+                .moveTo("D7")
+                .moveTo("B6")
+                .moveTo("A8")
                 .availablePositionsSize());
     }
 
     @Test
-    public void getAvailablePositionsFromH8Test() {
-        assertEquals(21, whiteQueen
-                .moveTo("H1", "H8")
+    public void getAvailablePositionsFromInitialPositionTest() {
+        assertEquals(3, blackKnight.availablePositionsSize());
+    }
+
+    @Test
+    public void getAvailablePositionsFromA6Test() {
+        assertEquals(4, blackKnight
+                .moveTo("A6")
+                .availablePositionsSize());
+    }
+
+    @Test
+    public void getAvailablePositionsFromC6Test() {
+        assertEquals(8, blackKnight
+                .moveTo("C6")
                 .availablePositionsSize());
     }
 }

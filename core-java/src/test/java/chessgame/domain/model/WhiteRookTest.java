@@ -1,46 +1,30 @@
 package chessgame.domain.model;
 
+import chessgame.domain.Board;
 import chessgame.domain.Piece;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import java.util.Set;
-
+import static chessgame.domain.PieceColor.WHITE;
+import static chessgame.domain.factory.BoardFactory.createBoard;
 import static chessgame.domain.factory.PieceFactory.createWhiteRook;
-import static chessgame.domain.model.BoardPosition.A1;
-import static chessgame.domain.model.BoardPosition.A5;
-import static chessgame.domain.model.BoardPosition.A8;
-import static chessgame.domain.model.BoardPosition.B1;
-import static chessgame.domain.model.BoardPosition.B2;
-import static chessgame.domain.model.BoardPosition.B3;
-import static chessgame.domain.model.BoardPosition.B5;
-import static chessgame.domain.model.BoardPosition.C5;
-import static chessgame.domain.model.BoardPosition.D5;
-import static chessgame.domain.model.BoardPosition.H1;
-import static chessgame.domain.model.BoardPosition.H2;
-import static chessgame.domain.model.BoardPosition.H3;
-import static chessgame.domain.model.BoardPosition.H4;
-import static chessgame.domain.model.BoardPosition.H5;
-import static chessgame.domain.model.BoardPosition.H6;
-import static chessgame.domain.model.BoardPosition.H7;
-import static chessgame.domain.model.BoardPosition.H8;
-import static chessgame.domain.model.PieceColor.WHITE;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class WhiteRookTest {
 
-    private static final BoardPosition INITIAL_POSITION = A1;
+    private static final String INITIAL_POSITION = "A1";
 
     private Board board;
 
     private Piece whiteRook;
 
-    @Before
+    @BeforeEach
     public void setUp() {
-        board = new Board();
+        board = createBoard();
         board.init();
         whiteRook = createWhiteRook(board, INITIAL_POSITION);
     }
@@ -57,76 +41,80 @@ public class WhiteRookTest {
 
     @Test
     public void initPositionTest() {
-        assertEquals(INITIAL_POSITION, whiteRook.getPosition());
+        assertEquals(INITIAL_POSITION, whiteRook.getPositionAsString());
         assertEquals(whiteRook, board.get(INITIAL_POSITION));
     }
 
     @Test
-    public void moveToA8Test() {
-        assertNotNull(board.get(INITIAL_POSITION.toString()));
-        assertNull(board.get(A8));
+    public void moveToAValidPositionTest() {
+        final String position = "A8";
 
-        whiteRook.moveTo(A8);
+        assertNotNull(board.get(INITIAL_POSITION));
+        assertNull(board.get(position));
+
+        whiteRook.moveTo(position);
 
         assertNull(board.get(INITIAL_POSITION));
-        assertNotNull(board.get(A8));
+        assertNotNull(board.get(position));
     }
 
     @Test
-    public void getAvailablePositionsFromD5Test() {
-        final Set<BoardPosition> pos = whiteRook
-                .moveTo(A5)
-                .moveTo(B5)
-                .moveTo(C5)
-                .moveTo(D5)
-                .getAvailablePositions();
-        assertEquals(14, pos.size());
+    public void moveToAnInvalidPositionTest() {
+        final String position = "H8";
+
+        assertNotNull(board.get(INITIAL_POSITION));
+        assertNull(board.get(position));
+
+        assertThrows(IllegalStateException.class,
+                () -> whiteRook.moveTo(position),
+                "This movement shouldn't happen to " + position);
     }
 
     @Test
-    public void getAvailablePositionsFromB3Test() {
-        final Set<BoardPosition> pos = whiteRook
-                .moveTo(B1)
-                .moveTo(B2)
-                .moveTo(B3)
-                .getAvailablePositions();
-        assertEquals(14, pos.size());
+    public void moveToEmptyPositionTest() {
+        assertThrows(IllegalStateException.class,
+                () -> whiteRook.moveTo(new String[0]),
+                "This movement shouldn't happen to an empty position");
     }
 
     @Test
     public void getAvailablePositionsFromInitialPositionTest() {
-        final Set<BoardPosition> pos = whiteRook.getAvailablePositions();
-        assertEquals(14, pos.size());
+        assertEquals(14, whiteRook
+                .availablePositionsSize());
     }
 
     @Test
-    public void getAvailablePositionsFromH1Test() {
-        final Set<BoardPosition> pos = whiteRook
-                .moveTo(H1)
-                .getAvailablePositions();
-        assertEquals(14, pos.size());
+    public void getAvailablePositionsFromD5Test() {
+        assertEquals(14, whiteRook
+                .moveTo("A5", "D5")
+                .availablePositionsSize());
+    }
+
+    @Test
+    public void getAvailablePositionsFromB3Test() {
+        assertEquals(14, whiteRook
+                .moveTo("B1", "B3")
+                .availablePositionsSize());
+    }
+
+    @Test
+    public void getAvailablePositionsFromE4Test() {
+        assertEquals(14, whiteRook
+                .moveTo("E1", "E4")
+                .availablePositionsSize());
     }
 
     @Test
     public void getAvailablePositionsFromA8Test() {
-        final Set<BoardPosition> pos = whiteRook
-                .moveTo(A8)
-                .getAvailablePositions();
-        assertEquals(14, pos.size());
+        assertEquals(14, whiteRook
+                .moveTo("A8")
+                .availablePositionsSize());
     }
 
     @Test
     public void getAvailablePositionsFromH8Test() {
-        final Set<BoardPosition> pos = whiteRook
-                .moveTo(H1)
-                .moveTo(H2)
-                .moveTo(H3)
-                .moveTo(H4)
-                .moveTo(H5)
-                .moveTo(H6)
-                .moveTo(H7)
-                .moveTo(H8)
-                .getAvailablePositions();
-        assertEquals(14, pos.size());
+        assertEquals(14, whiteRook
+                .moveTo("H1", "H8")
+                .availablePositionsSize());
     }
 }

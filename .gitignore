@@ -2,7 +2,8 @@
 *˜
 
 # IntelliJ
-.idea
+out/
+.idea/
 *.iml
 
 # Eclipse

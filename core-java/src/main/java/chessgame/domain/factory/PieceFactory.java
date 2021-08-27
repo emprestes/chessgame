@@ -1,5 +1,7 @@
 package chessgame.domain.factory;
 
+import chessgame.domain.Board;
+import chessgame.domain.BoardPosition;
 import chessgame.domain.Piece;
 import chessgame.domain.exception.PieceException;
 import chessgame.domain.model.BlackBishop;
@@ -8,8 +10,6 @@ import chessgame.domain.model.BlackKnight;
 import chessgame.domain.model.BlackPawn;
 import chessgame.domain.model.BlackQueen;
 import chessgame.domain.model.BlackRook;
-import chessgame.domain.model.Board;
-import chessgame.domain.model.BoardPosition;
 import chessgame.domain.model.WhiteBishop;
 import chessgame.domain.model.WhiteKing;
 import chessgame.domain.model.WhiteKnight;
@@ -17,10 +17,11 @@ import chessgame.domain.model.WhitePawn;
 import chessgame.domain.model.WhiteQueen;
 import chessgame.domain.model.WhiteRook;
 
-import static chessgame.domain.model.BoardPosition.D1;
-import static chessgame.domain.model.BoardPosition.D8;
-import static chessgame.domain.model.BoardPosition.E1;
-import static chessgame.domain.model.BoardPosition.E8;
+import static chessgame.domain.BoardPosition.D1;
+import static chessgame.domain.BoardPosition.D8;
+import static chessgame.domain.BoardPosition.E1;
+import static chessgame.domain.BoardPosition.E8;
+import static java.util.Objects.isNull;
 
 /**
  * Factory to create chess pieces.
@@ -64,8 +65,30 @@ public final class PieceFactory {
      * @param position Position informed.
      * @return Bishop
      */
+    public static Piece createBlackBishop(Board board, String position) {
+        return createBlackBishop(board, toBoardPosition(position));
+    }
+
+    /**
+     * Create a new instance of black bishop.
+     *
+     * @param board    Board informed.
+     * @param position Position informed.
+     * @return Bishop
+     */
     public static Piece createBlackBishop(Board board, BoardPosition position) {
         return create(board, position, BlackBishop.class);
+    }
+
+    /**
+     * Create a new instance of black knight.
+     *
+     * @param board    Board informed.
+     * @param position Position informed.
+     * @return Knight
+     */
+    public static Piece createBlackKnight(Board board, String position) {
+        return createBlackKnight(board, toBoardPosition(position));
     }
 
     /**
@@ -86,8 +109,30 @@ public final class PieceFactory {
      * @param position Position informed.
      * @return Rook
      */
+    public static Piece createBlackRook(Board board, String position) {
+        return createBlackRook(board, toBoardPosition(position));
+    }
+
+    /**
+     * Create a new instance of black rook.
+     *
+     * @param board    Board informed.
+     * @param position Position informed.
+     * @return Rook
+     */
     public static Piece createBlackRook(Board board, BoardPosition position) {
         return create(board, position, BlackRook.class);
+    }
+
+    /**
+     * Create a new instance of black pawn.
+     *
+     * @param board    Board informed.
+     * @param position Position informed.
+     * @return Pawn
+     */
+    public static Piece createBlackPawn(Board board, String position) {
+        return createBlackPawn(board, toBoardPosition(position));
     }
 
     /**
@@ -128,8 +173,30 @@ public final class PieceFactory {
      * @param position Position informed.
      * @return Bishop
      */
+    public static Piece createWhiteBishop(Board board, String position) {
+        return createWhiteBishop(board, toBoardPosition(position));
+    }
+
+    /**
+     * Create a new instance of white bishop.
+     *
+     * @param board    Board informed.
+     * @param position Position informed.
+     * @return Bishop
+     */
     public static Piece createWhiteBishop(Board board, BoardPosition position) {
         return create(board, position, WhiteBishop.class);
+    }
+
+    /**
+     * Create a new instance of white knight.
+     *
+     * @param board    Board informed.
+     * @param position Position informed.
+     * @return Knight
+     */
+    public static Piece createWhiteKnight(Board board, String position) {
+        return createWhiteKnight(board, toBoardPosition(position));
     }
 
     /**
@@ -150,8 +217,30 @@ public final class PieceFactory {
      * @param position Position informed.
      * @return Rook
      */
+    public static Piece createWhiteRook(Board board, String position) {
+        return createWhiteRook(board, toBoardPosition(position));
+    }
+
+    /**
+     * Create a new instance of white rook.
+     *
+     * @param board    Board informed.
+     * @param position Position informed.
+     * @return Rook
+     */
     public static Piece createWhiteRook(Board board, BoardPosition position) {
         return create(board, position, WhiteRook.class);
+    }
+
+    /**
+     * Create a new instance of white pawn.
+     *
+     * @param board    Board informed.
+     * @param position Position informed.
+     * @return Pawn
+     */
+    public static Piece createWhitePawn(Board board, String position) {
+        return createWhitePawn(board, toBoardPosition(position));
     }
 
     /**
@@ -186,5 +275,13 @@ public final class PieceFactory {
         } catch (ReflectiveOperationException cause) {
             throw new PieceException(cause);
         }
+    }
+
+    private static BoardPosition toBoardPosition(String position) {
+        return BoardPosition.valueOf(toUpperCase(position));
+    }
+
+    private static String toUpperCase(String value) {
+        return isNull(value) ? "" : value.toUpperCase();
     }
 }
