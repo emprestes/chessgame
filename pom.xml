@@ -258,7 +258,7 @@
   <plugin.version.maven>3.1.0</plugin.version.maven>
   <plugin.version.toolchains>3.0.0</plugin.version.toolchains>
 
-  <version.kotlin>1.4.10</version.kotlin>
+  <version.kotlin>1.6.0</version.kotlin>
   <version.javafx>14</version.javafx>
   <version.common-lang>2.6</version.common-lang>
   <version.slf4j>1.8.0-beta4</version.slf4j>
